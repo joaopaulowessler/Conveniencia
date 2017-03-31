@@ -36,7 +36,7 @@
                   <KeyStroke key="Ctrl+F"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Tiago\Desktop\Icones\user_add.png"/>
+                  <Image iconType="3" name="/Frames/Icones/user_add.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Funcion&#xe1;rio"/>
               </Properties>
@@ -52,7 +52,7 @@
                   <KeyStroke key="Ctrl+P"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Tiago\Desktop\Icones\tag_blue_add.png"/>
+                  <Image iconType="3" name="/Frames/Icones/tag_blue_add.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Produto"/>
               </Properties>
@@ -73,7 +73,7 @@
                   <KeyStroke key="Ctrl+S"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Tiago\Desktop\Icones\cart.png"/>
+                  <Image iconType="3" name="/Frames/Icones/cart.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Servi&#xe7;os"/>
               </Properties>
@@ -210,7 +210,7 @@
                           <Component id="jInternalFrameServicos" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jInternalFrameProduto" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="358" max="32767" attributes="0"/>
+                      <EmptySpace pref="346" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -357,7 +357,7 @@
                               <Component id="cliCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="cliNovo" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="245" max="32767" attributes="0"/>
+                          <EmptySpace pref="261" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -644,7 +644,7 @@
                               <Component id="proCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="proNovo" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="195" max="32767" attributes="0"/>
+                          <EmptySpace pref="211" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -901,7 +901,7 @@
                               <Component id="funCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="funNovo" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="220" max="32767" attributes="0"/>
+                          <EmptySpace pref="236" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1171,7 +1171,7 @@
                               <Component id="serNovo" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="serSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="194" max="32767" attributes="0"/>
+                          <EmptySpace pref="210" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

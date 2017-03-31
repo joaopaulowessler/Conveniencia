@@ -367,7 +367,7 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(cliExcluir)
                     .addComponent(cliCancelar)
                     .addComponent(cliNovo))
-                .addContainerGap(245, Short.MAX_VALUE))
+                .addContainerGap(261, Short.MAX_VALUE))
         );
 
         jInternalFrameProduto.setClosable(true);
@@ -476,7 +476,7 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(proExcluir)
                     .addComponent(proCancelar)
                     .addComponent(proNovo))
-                .addContainerGap(195, Short.MAX_VALUE))
+                .addContainerGap(211, Short.MAX_VALUE))
         );
 
         jInternalFrameFuncionario.setClosable(true);
@@ -676,7 +676,7 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(funExcluir)
                     .addComponent(funCancelar)
                     .addComponent(funNovo))
-                .addContainerGap(220, Short.MAX_VALUE))
+                .addContainerGap(236, Short.MAX_VALUE))
         );
 
         jInternalFrameServicos.setClosable(true);
@@ -777,7 +777,7 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(serCancelar)
                     .addComponent(serNovo)
                     .addComponent(serSalvar))
-                .addContainerGap(194, Short.MAX_VALUE))
+                .addContainerGap(210, Short.MAX_VALUE))
         );
 
         jDesktopPane.setLayer(jInternalFrameClientes, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -810,7 +810,7 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(jInternalFrameClientes, javax.swing.GroupLayout.Alignment.LEADING))
                     .addComponent(jInternalFrameServicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jInternalFrameProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(358, Short.MAX_VALUE))
+                .addContainerGap(346, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanelPrincipalLayout = new javax.swing.GroupLayout(jPanelPrincipal);
@@ -850,7 +850,7 @@ public class Menu extends javax.swing.JFrame {
         MenuCadastros.add(jSeparator1);
 
         funcionario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
-        funcionario.setIcon(new javax.swing.ImageIcon("C:\\Users\\Tiago\\Desktop\\Icones\\user_add.png")); // NOI18N
+        funcionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frames/Icones/user_add.png"))); // NOI18N
         funcionario.setText("Funcionário");
         funcionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -861,7 +861,7 @@ public class Menu extends javax.swing.JFrame {
         MenuCadastros.add(jSeparator2);
 
         produto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
-        produto.setIcon(new javax.swing.ImageIcon("C:\\Users\\Tiago\\Desktop\\Icones\\tag_blue_add.png")); // NOI18N
+        produto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frames/Icones/tag_blue_add.png"))); // NOI18N
         produto.setText("Produto");
         produto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -875,7 +875,7 @@ public class Menu extends javax.swing.JFrame {
         MenuServicos.setText("Serviços");
 
         servicos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
-        servicos.setIcon(new javax.swing.ImageIcon("C:\\Users\\Tiago\\Desktop\\Icones\\cart.png")); // NOI18N
+        servicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frames/Icones/cart.png"))); // NOI18N
         servicos.setText("Serviços");
         servicos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
