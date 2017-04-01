@@ -12,7 +12,7 @@ public class Login extends javax.swing.JFrame{
         
         entrar.addActionListener(action);
         cancelar.addActionListener(action);
-        setIcon();
+        //setIcon();
     }
 
     @SuppressWarnings("unchecked")
@@ -164,9 +164,9 @@ public class Login extends javax.swing.JFrame{
         });        
         
     }
-    private void setIcon() {
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("login.png")));
-    }
+    //private void setIcon() {
+    //    setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("login.png")));
+    //}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelar;

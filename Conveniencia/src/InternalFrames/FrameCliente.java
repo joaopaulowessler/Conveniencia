@@ -2,6 +2,7 @@ package InternalFrames;
 
 import Actions.ActionCliente;
 import Classes.ClasseCliente;
+import javax.swing.JOptionPane;
 
 public class FrameCliente extends javax.swing.JInternalFrame {
     
@@ -122,6 +123,11 @@ public class FrameCliente extends javax.swing.JInternalFrame {
         });
 
         cliNome.setEnabled(false);
+        cliNome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cliNomeKeyReleased(evt);
+            }
+        });
 
         cliCpf.setEnabled(false);
 
@@ -322,6 +328,10 @@ public class FrameCliente extends javax.swing.JInternalFrame {
     private void cliCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cliCancelarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cliCancelarActionPerformed
+
+    private void cliNomeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cliNomeKeyReleased
+        cliente.setCliNome(cliNome.getText());
+    }//GEN-LAST:event_cliNomeKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

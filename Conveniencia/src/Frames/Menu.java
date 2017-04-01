@@ -193,8 +193,8 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_ajudaActionPerformed
 
     private void sobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sobreActionPerformed
-        JOptionPane.showMessageDialog(null,"Software desenvolvido por:\nJoão Paulo Wessler\nSamuel Martins\nTiago dos Santos\nFoi"+
-                " desenvolvido aplicando o \nconhecimento da matéria de Tópicos I.\nLecionada por Gilberto Vieira da Silva");
+        JOptionPane.showMessageDialog(null,"Software desenvolvido por:\nJoão Paulo Wessler\nSamuel Martins\nTiago dos Santos\n"+
+                " Desenvolvido aplicando o conhecimento da matéria de Tópicos I, lecionada por Gilberto Vieira da Silva");
     }//GEN-LAST:event_sobreActionPerformed
 
     private void clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteActionPerformed
