@@ -78,6 +78,8 @@ public class FrameProduto extends javax.swing.JInternalFrame {
         jLabel32 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
 
+        setTitle("Produto");
+
         proDataCadastro.setEnabled(false);
 
         proPreco.setEnabled(false);

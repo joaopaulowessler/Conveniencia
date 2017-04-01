@@ -74,6 +74,8 @@ public class FrameServico extends javax.swing.JInternalFrame {
         jLabel34 = new javax.swing.JLabel();
         serFuncionario = new javax.swing.JTextField();
 
+        setTitle("Serviços");
+
         serProduto.setEnabled(false);
 
         jLabel35.setText("Produto");

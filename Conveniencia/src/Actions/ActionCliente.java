@@ -29,7 +29,6 @@ public class ActionCliente implements ActionListener {
             System.out.println(classeCliente.getCliEndereco());
             System.out.println(classeCliente.getCliEstado());
             System.out.println(classeCliente.getCliNome());
-            System.out.println(classeCliente.getCliPlaca());
             System.out.println(classeCliente.getCliRg());
             System.out.println(classeCliente.getCliSexo());
             System.out.println(classeCliente.getCliTelefone());
@@ -40,7 +39,8 @@ public class ActionCliente implements ActionListener {
         }
 
         if (e.getActionCommand().equals("Cancelar")) {
-           frameCliente.cancelarCliente();
+            frameCliente.cancelarCliente();
+            classeCliente.cancelarCliente();
         }
     }
 }

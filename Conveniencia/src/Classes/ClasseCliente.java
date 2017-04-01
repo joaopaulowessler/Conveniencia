@@ -8,11 +8,23 @@ public class ClasseCliente {
     private String cliRg;       //rg
     private String cliSexo;     //sexo
     private String cliTelefone; //telefone
-    private String cliPlaca;    //placa
     private String cliEmail;    //email
     private String cliCidade;   //cidade
     private String cliEstado;   //estado
     private String cliEndereco; //endereço
+    
+    public ClasseCliente(){
+        this.cliCodigo   = 0;
+        this.cliNome     = "";
+        this.cliCpf      = "";
+        this.cliRg       = "";
+        this.cliSexo     = "";
+        this.cliTelefone = "";
+        this.cliEmail    = "";
+        this.cliCidade   = "";
+        this.cliEstado   = "";
+        this.cliEndereco = "";
+    }
     
     public void setCliCodigo(int cliCodigo){
         this.cliCodigo = cliCodigo;
@@ -55,19 +67,11 @@ public class ClasseCliente {
     }
     
     public void setCliTelefone(String cliTelefone){
-        this.cliNome = cliTelefone;
+        this.cliTelefone = cliTelefone;
     }
     
     public String getCliTelefone(){
         return this.cliTelefone;
-    }
-    
-    public void setCliPlaca(String cliPlaca){
-        this.cliPlaca = cliPlaca;
-    }
-    
-    public String getCliPlaca(){
-        return this.cliPlaca;
     }
     
     public void setCliEmail(String cliEmail){
@@ -100,5 +104,18 @@ public class ClasseCliente {
             
     public String getCliEndereco(){
         return this.cliEndereco;
+    }
+    
+    public void cancelarCliente(){
+        this.cliCodigo   = 0;
+        this.cliNome     = "";
+        this.cliCpf      = "";
+        this.cliRg       = "";
+        this.cliSexo     = "";
+        this.cliTelefone = "";
+        this.cliEmail    = "";
+        this.cliCidade   = "";
+        this.cliEstado   = "";
+        this.cliEndereco = "";
     }
 }

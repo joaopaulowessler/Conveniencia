@@ -49,6 +49,8 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
         jLabel22 = new javax.swing.JLabel();
         funSalvar = new javax.swing.JButton();
 
+        setTitle("Funcionários");
+
         jLabel14.setText("Endereço:");
 
         funEndereco.setEnabled(false);

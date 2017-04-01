@@ -26,18 +26,17 @@ public class FrameCliente extends javax.swing.JInternalFrame {
         cliSexoMasculino.setSelected(false);
         cliSexoFeminino.setSelected(false);
         cliTelefone.setText("");
-        cliPlaca.setText("");
         cliRg.setText("");
         cliEmail.setText("");
         cliCidade.setText("");
         cliEndereco.setText("");
         
+        cliCodigo.setEnabled(true);
         cliNome.setEnabled(true);
         cliCpf.setEnabled(true);
         cliSexoMasculino.setEnabled(true);
         cliSexoFeminino.setEnabled(true);
         cliTelefone.setEnabled(true);
-        cliPlaca.setEnabled(true);
         cliRg.setEnabled(true);
         cliEmail.setEnabled(true);
         cliCidade.setEnabled(true);
@@ -57,18 +56,17 @@ public class FrameCliente extends javax.swing.JInternalFrame {
         cliSexoMasculino.setSelected(false);
         cliSexoFeminino.setSelected(false);
         cliTelefone.setText("");
-        cliPlaca.setText("");
         cliRg.setText("");
         cliEmail.setText("");
         cliCidade.setText("");
         cliEndereco.setText("");
         
+        cliCodigo.setEnabled(false);
         cliNome.setEnabled(false);
         cliCpf.setEnabled(false);
         cliSexoMasculino.setEnabled(false);
         cliSexoFeminino.setEnabled(false);
         cliTelefone.setEnabled(false);
-        cliPlaca.setEnabled(false);
         cliRg.setEnabled(false);
         cliEmail.setEnabled(false);
         cliCidade.setEnabled(false);
@@ -94,11 +92,9 @@ public class FrameCliente extends javax.swing.JInternalFrame {
         cliTelefone = new javax.swing.JTextField();
         cliCidade = new javax.swing.JTextField();
         cliEndereco = new javax.swing.JTextField();
-        cliPlaca = new javax.swing.JTextField();
         cliSexoMasculino = new javax.swing.JRadioButton();
         cliSexoFeminino = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
-        cliEstado = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         cliNovo = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -109,16 +105,24 @@ public class FrameCliente extends javax.swing.JInternalFrame {
         cliCancelar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        cliEstado = new javax.swing.JTextField();
+
+        setTitle("Clientes");
 
         jLabel10.setText("Endereço:");
 
         jLabel11.setText("Estado:");
 
+        cliCodigo.setEnabled(false);
         cliCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cliCodigoActionPerformed(evt);
+            }
+        });
+        cliCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cliCodigoKeyReleased(evt);
             }
         });
 
@@ -130,6 +134,11 @@ public class FrameCliente extends javax.swing.JInternalFrame {
         });
 
         cliCpf.setEnabled(false);
+        cliCpf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cliCpfKeyReleased(evt);
+            }
+        });
 
         cliRg.setEnabled(false);
         cliRg.addActionListener(new java.awt.event.ActionListener() {
@@ -137,33 +146,67 @@ public class FrameCliente extends javax.swing.JInternalFrame {
                 cliRgActionPerformed(evt);
             }
         });
+        cliRg.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cliRgKeyReleased(evt);
+            }
+        });
 
         cliEmail.setEnabled(false);
+        cliEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cliEmailKeyReleased(evt);
+            }
+        });
 
         cliTelefone.setEnabled(false);
+        cliTelefone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cliTelefoneKeyReleased(evt);
+            }
+        });
 
         cliCidade.setEnabled(false);
+        cliCidade.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cliCidadeKeyReleased(evt);
+            }
+        });
 
         cliEndereco.setEnabled(false);
-
-        cliPlaca.setEnabled(false);
+        cliEndereco.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cliEnderecoKeyReleased(evt);
+            }
+        });
 
         cliSexoMasculino.setText("Masculino");
         cliSexoMasculino.setEnabled(false);
+        cliSexoMasculino.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cliSexoMasculinoItemStateChanged(evt);
+            }
+        });
+        cliSexoMasculino.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cliSexoMasculinoKeyPressed(evt);
+            }
+        });
 
         cliSexoFeminino.setText("Feminino");
         cliSexoFeminino.setEnabled(false);
-
-        jLabel1.setText("Código:");
-
-        cliEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP ", "AM ", "BA ", "CE ", "DF ", "ES ", "GO ", "MA ", "MT ", "MS ", "MG ", "PA ", "PB ", "PR ", "PE ", "PI ", "RJ ", "RN", "RS", "RO", "RR ", "SC ", "SP ", "SE ", "TO" }));
-        cliEstado.setAutoscrolls(true);
-        cliEstado.setEnabled(false);
-        cliEstado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cliEstadoActionPerformed(evt);
+        cliSexoFeminino.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cliSexoFemininoItemStateChanged(evt);
             }
         });
+        cliSexoFeminino.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cliSexoFemininoKeyPressed(evt);
+            }
+        });
+
+        jLabel1.setText("Código:");
 
         jLabel2.setText("Nome:");
 
@@ -193,9 +236,14 @@ public class FrameCliente extends javax.swing.JInternalFrame {
 
         jLabel7.setText("Email:");
 
-        jLabel8.setText("Placa:");
-
         jLabel9.setText("Cidade:");
+
+        cliEstado.setEnabled(false);
+        cliEstado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cliEstadoKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -232,25 +280,17 @@ public class FrameCliente extends javax.swing.JInternalFrame {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(cliCpf)
                                         .addComponent(cliTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(29, 29, 29)
-                                            .addComponent(jLabel8))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addGap(40, 40, 40)
-                                            .addComponent(jLabel4)))
+                                    .addGap(40, 40, 40)
+                                    .addComponent(jLabel4)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(cliRg, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(cliPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(cliRg, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(cliEmail)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createSequentialGroup()
                                     .addComponent(cliCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jLabel11)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(cliEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(94, 94, 94))
+                                    .addComponent(cliEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(cliEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(cliSexoMasculino)
@@ -283,9 +323,7 @@ public class FrameCliente extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(cliTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(cliPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cliTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -306,7 +344,7 @@ public class FrameCliente extends javax.swing.JInternalFrame {
                     .addComponent(cliSalvar)
                     .addComponent(cliExcluir)
                     .addComponent(cliCancelar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -321,10 +359,6 @@ public class FrameCliente extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cliRgActionPerformed
 
-    private void cliEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cliEstadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cliEstadoActionPerformed
-
     private void cliCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cliCancelarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cliCancelarActionPerformed
@@ -332,6 +366,54 @@ public class FrameCliente extends javax.swing.JInternalFrame {
     private void cliNomeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cliNomeKeyReleased
         cliente.setCliNome(cliNome.getText());
     }//GEN-LAST:event_cliNomeKeyReleased
+
+    private void cliCodigoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cliCodigoKeyReleased
+        cliente.setCliCodigo(Integer.parseInt(cliCodigo.getText()));
+    }//GEN-LAST:event_cliCodigoKeyReleased
+
+    private void cliCpfKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cliCpfKeyReleased
+        cliente.setCliCpf(cliCpf.getText());
+    }//GEN-LAST:event_cliCpfKeyReleased
+
+    private void cliRgKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cliRgKeyReleased
+        cliente.setCliRg(cliRg.getText());
+    }//GEN-LAST:event_cliRgKeyReleased
+
+    private void cliTelefoneKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cliTelefoneKeyReleased
+        cliente.setCliTelefone(cliTelefone.getText());
+    }//GEN-LAST:event_cliTelefoneKeyReleased
+
+    private void cliEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cliEmailKeyReleased
+        cliente.setCliEmail(cliEmail.getText());
+    }//GEN-LAST:event_cliEmailKeyReleased
+
+    private void cliCidadeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cliCidadeKeyReleased
+        cliente.setCliCidade(cliCidade.getText());
+    }//GEN-LAST:event_cliCidadeKeyReleased
+
+    private void cliEnderecoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cliEnderecoKeyReleased
+        cliente.setCliEndereco(cliEndereco.getText());
+    }//GEN-LAST:event_cliEnderecoKeyReleased
+
+    private void cliSexoMasculinoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cliSexoMasculinoKeyPressed
+        cliente.setCliSexo("M");
+    }//GEN-LAST:event_cliSexoMasculinoKeyPressed
+
+    private void cliSexoFemininoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cliSexoFemininoKeyPressed
+        cliente.setCliSexo("F");
+    }//GEN-LAST:event_cliSexoFemininoKeyPressed
+
+    private void cliEstadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cliEstadoKeyReleased
+        cliente.setCliEstado(cliEstado.getText());
+    }//GEN-LAST:event_cliEstadoKeyReleased
+
+    private void cliSexoMasculinoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cliSexoMasculinoItemStateChanged
+        
+    }//GEN-LAST:event_cliSexoMasculinoItemStateChanged
+
+    private void cliSexoFemininoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cliSexoFemininoItemStateChanged
+        
+    }//GEN-LAST:event_cliSexoFemininoItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -341,11 +423,10 @@ public class FrameCliente extends javax.swing.JInternalFrame {
     private javax.swing.JTextField cliCpf;
     private javax.swing.JTextField cliEmail;
     private javax.swing.JTextField cliEndereco;
-    private javax.swing.JComboBox<String> cliEstado;
+    private javax.swing.JTextField cliEstado;
     private javax.swing.JButton cliExcluir;
     private javax.swing.JTextField cliNome;
     private javax.swing.JButton cliNovo;
-    private javax.swing.JTextField cliPlaca;
     private javax.swing.JTextField cliRg;
     private javax.swing.JButton cliSalvar;
     private javax.swing.JRadioButton cliSexoFeminino;
@@ -360,7 +441,6 @@ public class FrameCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
 }
