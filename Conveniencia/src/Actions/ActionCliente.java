@@ -7,40 +7,40 @@ import java.awt.event.ActionListener;
 
 public class ActionCliente implements ActionListener {
 
-    private Menu menu;
-    private ClasseCliente cla;
+    private Frames.FrameCliente frameCliente;
+    private ClasseCliente classeCliente;
 
-    public ActionCliente(Menu menu, ClasseCliente c) {
-        this.menu = menu;
-        this.cla = c;
+    public ActionCliente(Frames.FrameCliente fraCli, ClasseCliente claCli) {
+        this.frameCliente  = fraCli;
+        this.classeCliente = claCli;
     }
 
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Novo")) {
             
-            menu.novoCliente();
+            frameCliente.novoCliente();
         }
 
         if (e.getActionCommand().equals("Salvar")) {
             
-            System.out.println(cla.getCliCodigo());
-            System.out.println(cla.getCliCidade());
-            System.out.println(cla.getCliCpf());
-            System.out.println(cla.getCliEndereco());
-            System.out.println(cla.getCliEstado());
-            System.out.println(cla.getCliNome());
-            System.out.println(cla.getCliPlaca());
-            System.out.println(cla.getCliRg());
-            System.out.println(cla.getCliSexo());
-            System.out.println(cla.getCliTelefone());
-            System.out.println(cla.getcCliEmail());
+            System.out.println(classeCliente.getCliCodigo());
+            System.out.println(classeCliente.getCliCidade());
+            System.out.println(classeCliente.getCliCpf());
+            System.out.println(classeCliente.getCliEndereco());
+            System.out.println(classeCliente.getCliEstado());
+            System.out.println(classeCliente.getCliNome());
+            System.out.println(classeCliente.getCliPlaca());
+            System.out.println(classeCliente.getCliRg());
+            System.out.println(classeCliente.getCliSexo());
+            System.out.println(classeCliente.getCliTelefone());
+            System.out.println(classeCliente.getcCliEmail());
         }
 
         if (e.getActionCommand().equals("Excluir")) {
         }
 
         if (e.getActionCommand().equals("Cancelar")) {
-           menu.cancelarCliente();
+           frameCliente.cancelarCliente();
         }
     }
 }

@@ -7,28 +7,28 @@ import java.awt.event.ActionListener;
 
 public class ActionProduto implements ActionListener{
 
-    private Menu menu;
-    private ClasseProduto prod;
+    private Frames.FrameProduto frameProduto;
+    private ClasseProduto       classeProduto;
     
-    public ActionProduto(Menu menu, ClasseProduto p){
-        this.menu = menu;
-        this.prod = p;
+    public ActionProduto(Frames.FrameProduto fraPro, ClasseProduto claPro){
+        this.frameProduto  = fraPro;
+        this.classeProduto = claPro;
     }    
     
     public void actionPerformed(ActionEvent e) { 
         if (e.getActionCommand().equals("Novo")){            
             
-            menu.novoProduto();
+            frameProduto.novoProduto();
         }
         
         if (e.getActionCommand().equals("Salvar")){
             
-            System.out.println(prod.getProdCodigo());
-            System.out.println(prod.getProdDataCadastro());
-            System.out.println(prod.getProdDesc());
-            System.out.println(prod.getProdFronecedor());
-            System.out.println(prod.getProdPreco());
-            System.out.println(prod.getProdUM());
+            System.out.println(classeProduto.getProdCodigo());
+            System.out.println(classeProduto.getProdDataCadastro());
+            System.out.println(classeProduto.getProdDesc());
+            System.out.println(classeProduto.getProdFronecedor());
+            System.out.println(classeProduto.getProdPreco());
+            System.out.println(classeProduto.getProdUM());
         }
 
         if (e.getActionCommand().equals("Excluir")){
@@ -36,7 +36,7 @@ public class ActionProduto implements ActionListener{
         
         if (e.getActionCommand().equals("Cancelar")){
             
-            menu.cancelarProduto();
+            frameProduto.cancelarProduto();
         }        
     } 
 }

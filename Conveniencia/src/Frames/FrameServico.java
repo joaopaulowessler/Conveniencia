@@ -6,15 +6,15 @@ import Classes.ClasseServicos;
 public class FrameServico extends javax.swing.JInternalFrame {
     
     private ClasseServicos servicos   = new ClasseServicos();
-    private ActionServicos actServico = new ActionServicos(this, servicos);
+    //private ActionServicos actServico = new ActionServicos(this, servicos);
     
     public FrameServico() {
         initComponents();
         
-        serSalvar.addActionListener(actServico);
+        /*serSalvar.addActionListener(actServico);
         serExcluir.addActionListener(actServico);
         serCancelar.addActionListener(actServico);
-        serNovo.addActionListener(actServico);
+        serNovo.addActionListener(actServico);*/
     }
 
     @SuppressWarnings("unchecked")

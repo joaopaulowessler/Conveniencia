@@ -17,8 +17,8 @@ public class Menu extends javax.swing.JFrame {
     
     public Menu() {
         initComponents();
-        //setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
-        //jDesktopPane.setVisible(false);        
+        jDesktopPane.setVisible(true);
+        setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);        
         //setIcon();
     }    
 
@@ -179,7 +179,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_produtoActionPerformed
 
     private void servicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_servicosActionPerformed
-        jDesktopPane.setVisible(true);        
+        jDesktopPane.setVisible(true);
         FrameServico fser = new FrameServico();
         fser.setVisible(true);        
     }//GEN-LAST:event_servicosActionPerformed
@@ -200,9 +200,10 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_clienteActionPerformed
 
     private void funcionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funcionarioActionPerformed
-        jDesktopPane.setVisible(true);
-        FrameFuncionario ffun = new FrameFuncionario();
-        ffun.setVisible(true); 
+        FrameFuncionario fraFun = new FrameFuncionario();
+        jDesktopPane.add(fraFun);
+        fraFun.setVisible(true);
+         
     }//GEN-LAST:event_funcionarioActionPerformed
 
     public static void main(String args[]) {
@@ -212,168 +213,10 @@ public class Menu extends javax.swing.JFrame {
             }
         });
     }
-/*
-    public void novoFuncionario(){
-        
-        funCodigo.setText("");
-        funNome.setText("");
-        funCpf.setText("");
-        funSexoMasculino.setSelected(false);
-        funSexoFeminino.setSelected(false);
-        funTelefone.setText("");
-        funRg.setText("");
-        funEmail.setText("");
-        funCidade.setText("");
-        funEndereco.setText("");
-        funDataAdm.setText("");
-        
-        funNome.setEnabled(true);
-        funCpf.setEnabled(true);
-        funSexoMasculino.setEnabled(true);
-        funSexoFeminino.setEnabled(true);
-        funTelefone.setEnabled(true);
-        funRg.setEnabled(true);
-        funEmail.setEnabled(true);
-        funCidade.setEnabled(true);
-        funEndereco.setEnabled(true);
-        funDataAdm.setEnabled(true);
-        
-        funNovo.setEnabled(false);
-        funSalvar.setEnabled(true);
-        funCancelar.setEnabled(true);        
-    }
+/*   
     
-    public void cancelarFuncionario(){
-        
-        funCodigo.setText("");
-        funNome.setText("");
-        funCpf.setText("");
-        funSexoMasculino.setSelected(false);
-        funSexoFeminino.setSelected(false);
-        funTelefone.setText("");
-        funRg.setText("");
-        funEmail.setText("");
-        funCidade.setText("");
-        funEndereco.setText("");
-        funDataAdm.setText("");
-        
-        funNome.setEnabled(false);
-        funCpf.setEnabled(false);
-        funSexoMasculino.setEnabled(false);
-        funSexoFeminino.setEnabled(false);
-        funTelefone.setEnabled(false);
-        funRg.setEnabled(false);
-        funEmail.setEnabled(false);
-        funCidade.setEnabled(false);
-        funEndereco.setEnabled(false);
-        funDataAdm.setEnabled(false);
-        
-        funNovo.setEnabled(true);
-        funSalvar.setEnabled(false);
-        funCancelar.setEnabled(false);
-    }
     
-    public void novoCliente(){
-        
-        cliCodigo.setText("");
-        cliNome.setText("");
-        cliCpf.setText("");
-        cliSexoMasculino.setSelected(false);
-        cliSexoFeminino.setSelected(false);
-        cliTelefone.setText("");
-        cliPlaca.setText("");
-        cliRg.setText("");
-        cliEmail.setText("");
-        cliCidade.setText("");
-        cliEndereco.setText("");
-        
-        cliNome.setEnabled(true);
-        cliCpf.setEnabled(true);
-        cliSexoMasculino.setEnabled(true);
-        cliSexoFeminino.setEnabled(true);
-        cliTelefone.setEnabled(true);
-        cliPlaca.setEnabled(true);
-        cliRg.setEnabled(true);
-        cliEmail.setEnabled(true);
-        cliCidade.setEnabled(true);
-        cliEndereco.setEnabled(true);
-        cliEstado.setEnabled(true);
-        
-        cliNovo.setEnabled(false);
-        cliSalvar.setEnabled(true);
-        cliCancelar.setEnabled(true);        
-    }
     
-    public void cancelarCliente(){
-        
-        cliCodigo.setText("");
-        cliNome.setText("");
-        cliCpf.setText("");
-        cliSexoMasculino.setSelected(false);
-        cliSexoFeminino.setSelected(false);
-        cliTelefone.setText("");
-        cliPlaca.setText("");
-        cliRg.setText("");
-        cliEmail.setText("");
-        cliCidade.setText("");
-        cliEndereco.setText("");
-        
-        cliNome.setEnabled(false);
-        cliCpf.setEnabled(false);
-        cliSexoMasculino.setEnabled(false);
-        cliSexoFeminino.setEnabled(false);
-        cliTelefone.setEnabled(false);
-        cliPlaca.setEnabled(false);
-        cliRg.setEnabled(false);
-        cliEmail.setEnabled(false);
-        cliCidade.setEnabled(false);
-        cliEndereco.setEnabled(false);
-        cliEstado.setEnabled(false);
-        
-        cliNovo.setEnabled(true);
-        cliSalvar.setEnabled(false);
-        cliCancelar.setEnabled(false);
-    }
-    
-    public void novoProduto(){
-        
-        proCodigo.setText("");
-        proDescricao.setText("");
-        proUnidade.setText("");
-        proFornecedor.setText("");
-        proPreco.setText("");
-        proDataCadastro.setText("");
-        
-        proDescricao.setEnabled(true);
-        proUnidade.setEnabled(true);
-        proFornecedor.setEnabled(true);
-        proPreco.setEnabled(true);
-        proDataCadastro.setEnabled(true);
-                
-        proNovo.setEnabled(false);
-        proSalvar.setEnabled(true);
-        proCancelar.setEnabled(true);        
-    }
-    
-    public void cancelarProduto(){
-        
-        proCodigo.setText("");
-        proDescricao.setText("");
-        proUnidade.setText("");
-        proFornecedor.setText("");
-        proPreco.setText("");
-        proDataCadastro.setText("");
-        
-        proDescricao.setEnabled(false);
-        proUnidade.setEnabled(false);
-        proFornecedor.setEnabled(false);
-        proPreco.setEnabled(false);
-        proDataCadastro.setEnabled(false);
-                
-        proNovo.setEnabled(true);
-        proSalvar.setEnabled(false);
-        proCancelar.setEnabled(false); 
-    }
     
     public void novoServico(){
         
@@ -394,7 +237,7 @@ public class Menu extends javax.swing.JFrame {
         serCancelar.setEnabled(true);        
     }*/
     
-    public void cancelarServico(){
+    /*public void cancelarServico(){
         
         serCliente.setText("");
         serProduto.setText("");
@@ -412,9 +255,9 @@ public class Menu extends javax.swing.JFrame {
         serSalvar.setEnabled(false);
         serCancelar.setEnabled(false);
     }
-     private void setIcon() {
+     /*private void setIcon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("postojpg.jpg")));
-    }
+    }*/
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu MenuCadastros;

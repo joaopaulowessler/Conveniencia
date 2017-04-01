@@ -16,7 +16,69 @@ public class FrameCliente extends javax.swing.JInternalFrame {
         cliCancelar.addActionListener(actCliente);
         cliNovo.addActionListener(actCliente);
     }
-
+    
+    public void novoCliente(){
+        
+        cliCodigo.setText("");
+        cliNome.setText("");
+        cliCpf.setText("");
+        cliSexoMasculino.setSelected(false);
+        cliSexoFeminino.setSelected(false);
+        cliTelefone.setText("");
+        cliPlaca.setText("");
+        cliRg.setText("");
+        cliEmail.setText("");
+        cliCidade.setText("");
+        cliEndereco.setText("");
+        
+        cliNome.setEnabled(true);
+        cliCpf.setEnabled(true);
+        cliSexoMasculino.setEnabled(true);
+        cliSexoFeminino.setEnabled(true);
+        cliTelefone.setEnabled(true);
+        cliPlaca.setEnabled(true);
+        cliRg.setEnabled(true);
+        cliEmail.setEnabled(true);
+        cliCidade.setEnabled(true);
+        cliEndereco.setEnabled(true);
+        cliEstado.setEnabled(true);
+        
+        cliNovo.setEnabled(false);
+        cliSalvar.setEnabled(true);
+        cliCancelar.setEnabled(true);        
+    }
+    
+    public void cancelarCliente(){
+        
+        cliCodigo.setText("");
+        cliNome.setText("");
+        cliCpf.setText("");
+        cliSexoMasculino.setSelected(false);
+        cliSexoFeminino.setSelected(false);
+        cliTelefone.setText("");
+        cliPlaca.setText("");
+        cliRg.setText("");
+        cliEmail.setText("");
+        cliCidade.setText("");
+        cliEndereco.setText("");
+        
+        cliNome.setEnabled(false);
+        cliCpf.setEnabled(false);
+        cliSexoMasculino.setEnabled(false);
+        cliSexoFeminino.setEnabled(false);
+        cliTelefone.setEnabled(false);
+        cliPlaca.setEnabled(false);
+        cliRg.setEnabled(false);
+        cliEmail.setEnabled(false);
+        cliCidade.setEnabled(false);
+        cliEndereco.setEnabled(false);
+        cliEstado.setEnabled(false);
+        
+        cliNovo.setEnabled(true);
+        cliSalvar.setEnabled(false);
+        cliCancelar.setEnabled(false);
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

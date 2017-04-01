@@ -18,7 +18,7 @@ public class ActionServicos implements ActionListener{
     public void actionPerformed(ActionEvent e) { 
         if (e.getActionCommand().equals("Novo")){            
             
-            menu.novoServico();
+            //menu.novoServico();
         }
         
         if (e.getActionCommand().equals("Salvar")){
@@ -35,7 +35,7 @@ public class ActionServicos implements ActionListener{
         
         if (e.getActionCommand().equals("Cancelar")){
             
-            menu.cancelarServico();
+            //menu.cancelarServico();
         }        
     } 
 }

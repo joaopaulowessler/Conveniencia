@@ -16,7 +16,47 @@ public class FrameProduto extends javax.swing.JInternalFrame {
         proCancelar.addActionListener(actProduto);
         proNovo.addActionListener(actProduto);
     }
-
+    
+    public void novoProduto(){
+        
+        proCodigo.setText("");
+        proDescricao.setText("");
+        proUnidade.setText("");
+        proFornecedor.setText("");
+        proPreco.setText("");
+        proDataCadastro.setText("");
+        
+        proDescricao.setEnabled(true);
+        proUnidade.setEnabled(true);
+        proFornecedor.setEnabled(true);
+        proPreco.setEnabled(true);
+        proDataCadastro.setEnabled(true);
+                
+        proNovo.setEnabled(false);
+        proSalvar.setEnabled(true);
+        proCancelar.setEnabled(true);        
+    }
+    
+    public void cancelarProduto(){
+        
+        proCodigo.setText("");
+        proDescricao.setText("");
+        proUnidade.setText("");
+        proFornecedor.setText("");
+        proPreco.setText("");
+        proDataCadastro.setText("");
+        
+        proDescricao.setEnabled(false);
+        proUnidade.setEnabled(false);
+        proFornecedor.setEnabled(false);
+        proPreco.setEnabled(false);
+        proDataCadastro.setEnabled(false);
+                
+        proNovo.setEnabled(true);
+        proSalvar.setEnabled(false);
+        proCancelar.setEnabled(false); 
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

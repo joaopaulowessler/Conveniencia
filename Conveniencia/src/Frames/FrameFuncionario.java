@@ -103,6 +103,12 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
 
         jLabel21.setText("Código:");
 
+        funCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                funCodigoActionPerformed(evt);
+            }
+        });
+
         jLabel15.setText("Data Admissão:");
 
         funDataAdm.setEnabled(false);
@@ -235,7 +241,70 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_funRgActionPerformed
 
+    private void funCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_funCodigoActionPerformed
 
+    public void novoFuncionario(){
+        
+        funCodigo.setText("");
+        funNome.setText("");
+        funCpf.setText("");
+        funSexoMasculino.setSelected(false);
+        funSexoFeminino.setSelected(false);
+        funTelefone.setText("");
+        funRg.setText("");
+        funEmail.setText("");
+        funCidade.setText("");
+        funEndereco.setText("");
+        funDataAdm.setText("");
+        
+        funNome.setEnabled(true);
+        funCpf.setEnabled(true);
+        funSexoMasculino.setEnabled(true);
+        funSexoFeminino.setEnabled(true);
+        funTelefone.setEnabled(true);
+        funRg.setEnabled(true);
+        funEmail.setEnabled(true);
+        funCidade.setEnabled(true);
+        funEndereco.setEnabled(true);
+        funDataAdm.setEnabled(true);
+        
+        funNovo.setEnabled(false);
+        funSalvar.setEnabled(true);
+        funCancelar.setEnabled(true);        
+    }
+    
+    public void cancelarFuncionario(){
+        
+        funCodigo.setText("");
+        funNome.setText("");
+        funCpf.setText("");
+        funSexoMasculino.setSelected(false);
+        funSexoFeminino.setSelected(false);
+        funTelefone.setText("");
+        funRg.setText("");
+        funEmail.setText("");
+        funCidade.setText("");
+        funEndereco.setText("");
+        funDataAdm.setText("");
+        
+        funNome.setEnabled(false);
+        funCpf.setEnabled(false);
+        funSexoMasculino.setEnabled(false);
+        funSexoFeminino.setEnabled(false);
+        funTelefone.setEnabled(false);
+        funRg.setEnabled(false);
+        funEmail.setEnabled(false);
+        funCidade.setEnabled(false);
+        funEndereco.setEnabled(false);
+        funDataAdm.setEnabled(false);
+        
+        funNovo.setEnabled(true);
+        funSalvar.setEnabled(false);
+        funCancelar.setEnabled(false);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton funCancelar;
     private javax.swing.JTextField funCidade;
