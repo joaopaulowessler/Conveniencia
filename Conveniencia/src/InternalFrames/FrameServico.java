@@ -1,4 +1,4 @@
-package Frames;
+package InternalFrames;
 
 import Actions.ActionServicos;
 import Classes.ClasseServicos;
@@ -6,15 +6,53 @@ import Classes.ClasseServicos;
 public class FrameServico extends javax.swing.JInternalFrame {
     
     private ClasseServicos servicos   = new ClasseServicos();
-    //private ActionServicos actServico = new ActionServicos(this, servicos);
+    private ActionServicos actServico = new ActionServicos(this, servicos);
     
     public FrameServico() {
         initComponents();
         
-        /*serSalvar.addActionListener(actServico);
+        serSalvar.addActionListener(actServico);
         serExcluir.addActionListener(actServico);
         serCancelar.addActionListener(actServico);
-        serNovo.addActionListener(actServico);*/
+        serNovo.addActionListener(actServico);
+    }
+    
+    public void novoServico(){
+        
+        serCliente.setText("");
+        serProduto.setText("");
+        serFuncionario.setText("");
+        serQuantidade.setText("");
+        serData.setText("");
+        
+        serCliente.setEnabled(true);
+        serProduto.setEnabled(true);
+        serFuncionario.setEnabled(true);
+        serQuantidade.setEnabled(true);
+        serData.setEnabled(true);
+                
+        serNovo.setEnabled(false);
+        serSalvar.setEnabled(true);
+        serCancelar.setEnabled(true);        
+    }
+    
+    public void cancelarServico(){
+        
+        serCliente.setText("");
+        serProduto.setText("");
+        serFuncionario.setText("");
+        serQuantidade.setText("");
+        serData.setText("");
+        
+        serCliente.setEnabled(false);
+        serProduto.setEnabled(false);
+        serFuncionario.setEnabled(false);
+        serQuantidade.setEnabled(false);
+        serData.setEnabled(false);
+                
+        serNovo.setEnabled(true);
+        serSalvar.setEnabled(false);
+        serCancelar.setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")

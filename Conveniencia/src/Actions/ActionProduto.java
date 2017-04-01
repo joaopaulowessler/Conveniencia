@@ -7,10 +7,10 @@ import java.awt.event.ActionListener;
 
 public class ActionProduto implements ActionListener{
 
-    private Frames.FrameProduto frameProduto;
+    private InternalFrames.FrameProduto frameProduto;
     private ClasseProduto       classeProduto;
     
-    public ActionProduto(Frames.FrameProduto fraPro, ClasseProduto claPro){
+    public ActionProduto(InternalFrames.FrameProduto fraPro, ClasseProduto claPro){
         this.frameProduto  = fraPro;
         this.classeProduto = claPro;
     }    

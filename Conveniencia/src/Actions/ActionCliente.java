@@ -7,10 +7,10 @@ import java.awt.event.ActionListener;
 
 public class ActionCliente implements ActionListener {
 
-    private Frames.FrameCliente frameCliente;
+    private InternalFrames.FrameCliente frameCliente;
     private ClasseCliente classeCliente;
 
-    public ActionCliente(Frames.FrameCliente fraCli, ClasseCliente claCli) {
+    public ActionCliente(InternalFrames.FrameCliente fraCli, ClasseCliente claCli) {
         this.frameCliente  = fraCli;
         this.classeCliente = claCli;
     }

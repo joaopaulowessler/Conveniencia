@@ -8,9 +8,9 @@ import java.awt.event.ActionListener;
 public class ActionFuncionario implements ActionListener {
 
     private ClasseFuncionario       classeFuncionario;
-    private Frames.FrameFuncionario frameFuncionario;
+    private InternalFrames.FrameFuncionario frameFuncionario;
     
-    public ActionFuncionario(Frames.FrameFuncionario fraFun, ClasseFuncionario claFun) {
+    public ActionFuncionario(InternalFrames.FrameFuncionario fraFun, ClasseFuncionario claFun) {
         
         this.frameFuncionario = fraFun;
         this.classeFuncionario = claFun;        

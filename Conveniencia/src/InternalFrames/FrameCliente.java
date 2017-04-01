@@ -1,4 +1,4 @@
-package Frames;
+package InternalFrames;
 
 import Actions.ActionCliente;
 import Classes.ClasseCliente;

@@ -1,4 +1,4 @@
-package Frames;
+package InternalFrames;
 
 import Actions.ActionProduto;
 import Classes.ClasseProduto;

@@ -1,5 +1,9 @@
 package Frames;
 
+import InternalFrames.FrameProduto;
+import InternalFrames.FrameCliente;
+import InternalFrames.FrameServico;
+import InternalFrames.FrameFuncionario;
 import Actions.ActionCliente;
 import Actions.ActionFuncionario;
 import Actions.ActionLogin;
@@ -169,18 +173,18 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuPrincialComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_menuPrincialComponentResized
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_menuPrincialComponentResized
 
     private void produtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_produtoActionPerformed
-        jDesktopPane.setVisible(true);
         FrameProduto fpro = new FrameProduto();
+        jDesktopPane.add(fpro);
         fpro.setVisible(true);        
     }//GEN-LAST:event_produtoActionPerformed
 
     private void servicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_servicosActionPerformed
-        jDesktopPane.setVisible(true);
         FrameServico fser = new FrameServico();
+        jDesktopPane.add(fser);
         fser.setVisible(true);        
     }//GEN-LAST:event_servicosActionPerformed
 
@@ -194,15 +198,15 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_sobreActionPerformed
 
     private void clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteActionPerformed
-        jDesktopPane.setVisible(true);
         FrameCliente fcli = new FrameCliente();
+        jDesktopPane.add(fcli);
         fcli.setVisible(true); 
     }//GEN-LAST:event_clienteActionPerformed
 
     private void funcionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funcionarioActionPerformed
-        FrameFuncionario fraFun = new FrameFuncionario();
-        jDesktopPane.add(fraFun);
-        fraFun.setVisible(true);
+        FrameFuncionario fFun = new FrameFuncionario();
+        jDesktopPane.add(fFun);
+        fFun.setVisible(true);
          
     }//GEN-LAST:event_funcionarioActionPerformed
 
@@ -215,46 +219,6 @@ public class Menu extends javax.swing.JFrame {
     }
 /*   
     
-    
-    
-    
-    public void novoServico(){
-        
-        serCliente.setText("");
-        serProduto.setText("");
-        serFuncionario.setText("");
-        serQuantidade.setText("");
-        serData.setText("");
-        
-        serCliente.setEnabled(true);
-        serProduto.setEnabled(true);
-        serFuncionario.setEnabled(true);
-        serQuantidade.setEnabled(true);
-        serData.setEnabled(true);
-                
-        serNovo.setEnabled(false);
-        serSalvar.setEnabled(true);
-        serCancelar.setEnabled(true);        
-    }*/
-    
-    /*public void cancelarServico(){
-        
-        serCliente.setText("");
-        serProduto.setText("");
-        serFuncionario.setText("");
-        serQuantidade.setText("");
-        serData.setText("");
-        
-        serCliente.setEnabled(false);
-        serProduto.setEnabled(false);
-        serFuncionario.setEnabled(false);
-        serQuantidade.setEnabled(false);
-        serData.setEnabled(false);
-                
-        serNovo.setEnabled(true);
-        serSalvar.setEnabled(false);
-        serCancelar.setEnabled(false);
-    }
      /*private void setIcon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("postojpg.jpg")));
     }*/
