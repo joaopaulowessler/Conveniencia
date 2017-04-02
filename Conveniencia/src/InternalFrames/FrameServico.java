@@ -77,6 +77,11 @@ public class FrameServico extends javax.swing.JInternalFrame {
         setTitle("Serviços");
 
         serProduto.setEnabled(false);
+        serProduto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                serProdutoKeyReleased(evt);
+            }
+        });
 
         jLabel35.setText("Produto");
 
@@ -94,10 +99,25 @@ public class FrameServico extends javax.swing.JInternalFrame {
         serNovo.setText("Novo");
 
         serData.setEnabled(false);
+        serData.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                serDataKeyReleased(evt);
+            }
+        });
 
         serCliente.setEnabled(false);
+        serCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                serClienteKeyReleased(evt);
+            }
+        });
 
         serQuantidade.setEnabled(false);
+        serQuantidade.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                serQuantidadeKeyReleased(evt);
+            }
+        });
 
         jLabel36.setText("Cliente:");
 
@@ -106,6 +126,11 @@ public class FrameServico extends javax.swing.JInternalFrame {
         jLabel34.setText("Funcionário:");
 
         serFuncionario.setEnabled(false);
+        serFuncionario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                serFuncionarioKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -172,6 +197,26 @@ public class FrameServico extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void serClienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_serClienteKeyReleased
+        servicos.setSerCliente(Integer.parseInt(serCliente.getText()));
+    }//GEN-LAST:event_serClienteKeyReleased
+
+    private void serProdutoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_serProdutoKeyReleased
+        servicos.setSerProduto(Integer.parseInt(serProduto.getText()));        
+    }//GEN-LAST:event_serProdutoKeyReleased
+
+    private void serFuncionarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_serFuncionarioKeyReleased
+        servicos.setSerFuncionario(Integer.parseInt(serFuncionario.getText()));
+    }//GEN-LAST:event_serFuncionarioKeyReleased
+
+    private void serQuantidadeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_serQuantidadeKeyReleased
+        servicos.setSerQuantidade(Float.parseFloat(serQuantidade.getText()));
+    }//GEN-LAST:event_serQuantidadeKeyReleased
+
+    private void serDataKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_serDataKeyReleased
+        servicos.setSerData(serData.getText());
+    }//GEN-LAST:event_serDataKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

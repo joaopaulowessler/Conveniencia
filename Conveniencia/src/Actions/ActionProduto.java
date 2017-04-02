@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 public class ActionProduto implements ActionListener{
 
     private InternalFrames.FrameProduto frameProduto;
-    private ClasseProduto       classeProduto;
+    private ClasseProduto               classeProduto;
     
     public ActionProduto(InternalFrames.FrameProduto fraPro, ClasseProduto claPro){
         this.frameProduto  = fraPro;
@@ -23,12 +23,12 @@ public class ActionProduto implements ActionListener{
         
         if (e.getActionCommand().equals("Salvar")){
             
-            System.out.println(classeProduto.getProdCodigo());
-            System.out.println(classeProduto.getProdDataCadastro());
-            System.out.println(classeProduto.getProdDesc());
-            System.out.println(classeProduto.getProdFronecedor());
-            System.out.println(classeProduto.getProdPreco());
-            System.out.println(classeProduto.getProdUM());
+            System.out.println(classeProduto.getProCodigo());
+            System.out.println(classeProduto.getProDataCadastro());
+            System.out.println(classeProduto.getProDesc());
+            System.out.println(classeProduto.getProFronecedor());
+            System.out.println(classeProduto.getProPreco());
+            System.out.println(classeProduto.getProUnidade());
         }
 
         if (e.getActionCommand().equals("Excluir")){

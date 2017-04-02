@@ -23,11 +23,11 @@ public class ActionServicos implements ActionListener{
         
         if (e.getActionCommand().equals("Salvar")){
                   
-            System.out.println(classeServico.getServCliente());
-            System.out.println(classeServico.getServData());
-            System.out.println(classeServico.getServFuncionario());
-            System.out.println(classeServico.getServProduto());
-            System.out.println(classeServico.getServQuantidade());
+            System.out.println(classeServico.getSerCliente());
+            System.out.println(classeServico.getSerData());
+            System.out.println(classeServico.getSerFuncionario());
+            System.out.println(classeServico.getSerProduto());
+            System.out.println(classeServico.getSerQuantidade());
         }
 
         if (e.getActionCommand().equals("Excluir")){

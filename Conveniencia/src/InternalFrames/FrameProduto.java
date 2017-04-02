@@ -26,12 +26,12 @@ public class FrameProduto extends javax.swing.JInternalFrame {
         proPreco.setText("");
         proDataCadastro.setText("");
         
+        proCodigo.setEnabled(true);
         proDescricao.setEnabled(true);
         proUnidade.setEnabled(true);
         proFornecedor.setEnabled(true);
         proPreco.setEnabled(true);
-        proDataCadastro.setEnabled(true);
-                
+        proDataCadastro.setEnabled(true);                
         proNovo.setEnabled(false);
         proSalvar.setEnabled(true);
         proCancelar.setEnabled(true);        
@@ -46,6 +46,7 @@ public class FrameProduto extends javax.swing.JInternalFrame {
         proPreco.setText("");
         proDataCadastro.setText("");
         
+        proCodigo.setEnabled(false);
         proDescricao.setEnabled(false);
         proUnidade.setEnabled(false);
         proFornecedor.setEnabled(false);
@@ -81,13 +82,28 @@ public class FrameProduto extends javax.swing.JInternalFrame {
         setTitle("Produto");
 
         proDataCadastro.setEnabled(false);
+        proDataCadastro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                proDataCadastroKeyReleased(evt);
+            }
+        });
 
         proPreco.setEnabled(false);
+        proPreco.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                proPrecoKeyReleased(evt);
+            }
+        });
 
         proSalvar.setText("Salvar");
         proSalvar.setEnabled(false);
 
         proFornecedor.setEnabled(false);
+        proFornecedor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                proFornecedorKeyReleased(evt);
+            }
+        });
 
         proExcluir.setText("Excluir");
         proExcluir.setEnabled(false);
@@ -107,12 +123,29 @@ public class FrameProduto extends javax.swing.JInternalFrame {
         });
 
         proUnidade.setEnabled(false);
+        proUnidade.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                proUnidadeKeyReleased(evt);
+            }
+        });
 
         proDescricao.setEnabled(false);
+        proDescricao.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                proDescricaoKeyReleased(evt);
+            }
+        });
 
         jLabel30.setText("Descrição");
 
         jLabel31.setText("Código:");
+
+        proCodigo.setEnabled(false);
+        proCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                proCodigoKeyReleased(evt);
+            }
+        });
 
         jLabel32.setText("Data Cadastro:");
 
@@ -193,6 +226,30 @@ public class FrameProduto extends javax.swing.JInternalFrame {
     private void proNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proNovoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_proNovoActionPerformed
+
+    private void proCodigoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_proCodigoKeyReleased
+        produto.setProCodigo(Integer.parseInt(proCodigo.getText()));
+    }//GEN-LAST:event_proCodigoKeyReleased
+
+    private void proDescricaoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_proDescricaoKeyReleased
+        produto.setProDesc(proDescricao.getText());
+    }//GEN-LAST:event_proDescricaoKeyReleased
+
+    private void proUnidadeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_proUnidadeKeyReleased
+        produto.setProUnidade(proUnidade.getText());
+    }//GEN-LAST:event_proUnidadeKeyReleased
+
+    private void proFornecedorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_proFornecedorKeyReleased
+        produto.setProFornecedor(proFornecedor.getText());
+    }//GEN-LAST:event_proFornecedorKeyReleased
+
+    private void proPrecoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_proPrecoKeyReleased
+        produto.setProPreco(Float.parseFloat(proPreco.getText()));
+    }//GEN-LAST:event_proPrecoKeyReleased
+
+    private void proDataCadastroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_proDataCadastroKeyReleased
+        produto.setProDataCadatro(proDataCadastro.getText());
+    }//GEN-LAST:event_proDataCadastroKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

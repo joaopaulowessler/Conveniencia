@@ -2,49 +2,49 @@ package Classes;
 
 public class ClasseServicos {
     
-    private String servCli;     //cliente
-    private String servProd;    //produto
-    private String servFunc;    //funcionário
-    private int    servQntd;    //quantidade
-    private String servData;    //data
+    private int    serCliente;     //cliente
+    private int    serProduto;     //produto
+    private int    serFuncionario; //funcionário
+    private float  serQuantidade;  //quantidade
+    private String serData;        //data
     
-    public void setServCliente(String servCli){
-        this.servCli = servCli;
+    public void setSerCliente(int serCli){
+        this.serCliente = serCli;
     }
     
-    public String getServCliente(){        
-        return this.servCli;
+    public int getSerCliente(){        
+        return this.serCliente;
     }
     
-    public void setServProduto(String servProd){
-        this.servProd = servProd;
+    public void setSerProduto(int serProd){
+        this.serProduto = serProd;
     }
             
-    public String getServProduto(){
-        return this.servProd;
+    public int getSerProduto(){
+        return this.serProduto;
     }
     
-    public void setServFuncionario(String servFunc){
-        this.servFunc = servFunc;
+    public void setSerFuncionario(int serFunc){
+        this.serFuncionario = serFunc;
     }
             
-    public String getServFuncionario(){
-        return this.servFunc;
+    public int getSerFuncionario(){
+        return this.serFuncionario;
     }
     
-    public void setServQuantidade(int servQntd){
-        this.servQntd = servQntd;
+    public void setSerQuantidade(float serQtd){
+        this.serQuantidade = serQtd;
     }
     
-    public int getServQuantidade(){
-        return this.servQntd;
+    public float getSerQuantidade(){
+        return this.serQuantidade;
     }
     
-    public void setServData(String servData){
-        this.servData = servData;
+    public void setSerData(String serData){
+        this.serData = serData;
     }
     
-    public String getServData(){
-        return this.servData;
+    public String getSerData(){
+        return this.serData;
     }
 }

@@ -2,58 +2,78 @@ package Classes;
 
 public class ClasseProduto {
     
-    private int    prodCodigo;      //codigo
-    private String prodDescricao;   //descrição
-    private int    prodUM;          //unidade de medida
-    private String prodForne;       //fornecedor
-    private int    prodPreco;       //preço
-    private int    prodDataCad;     //data de cadastramento/cadastro
+    private int    proCodigo;    //codigo
+    private String proDescricao; //descrição
+    private String proUnidade;   //unidade de medida
+    private String proForne;     //fornecedor
+    private float  proPreco;     //preço
+    private String proDataCad;   //data de cadastramento/cadastro
     
-    public void setProdCodigo(int prodCodigo){
-        this.prodCodigo = prodCodigo;
+    public ClasseProduto(){
+        
+        this.proCodigo    = 0; 
+        this.proDescricao = "";
+        this.proUnidade   = "";
+        this.proForne     = "";
+        this.proPreco     = 0; 
+        this.proDataCad   = "";
     }
     
-    public int getProdCodigo(){        
-        return this.prodCodigo;
+    public void setProCodigo(int prodCodigo){
+        this.proCodigo = prodCodigo;
     }
     
-    public void setProdDesc(String prodDescricao){
-        this.prodDescricao = prodDescricao;
+    public int getProCodigo(){        
+        return this.proCodigo;
+    }
+    
+    public void setProDesc(String prodDescricao){
+        this.proDescricao = prodDescricao;
     }
             
-    public String getProdDesc(){
-        return this.prodDescricao;
+    public String getProDesc(){
+        return this.proDescricao;
     }
     
-    public void setProdUM(int prodUM){
-        this.prodUM = prodUM;
+    public void setProUnidade(String prodUM){
+        this.proUnidade = prodUM;
     }
     
-    public int getProdUM(){
-        return this.prodUM;
+    public String getProUnidade(){
+        return this.proUnidade;
     }
     
-    public void setProdFornecedor(String prodForne){
-        this.prodForne = prodForne;
+    public void setProFornecedor(String prodForne){
+        this.proForne = prodForne;
     }
             
-    public String getProdFronecedor(){
-        return this.prodForne;
+    public String getProFronecedor(){
+        return this.proForne;
     }
     
-    public void setProdPreco(int prodPreco){
-        this.prodPreco = prodPreco;
+    public void setProPreco(float prodPreco){
+        this.proPreco = prodPreco;
     }
     
-    public int getProdPreco(){
-        return this.prodPreco;
+    public float getProPreco(){
+        return this.proPreco;
     }
     
-    public void setProdDataCadatro(int prodDataCad){
-        this.prodDataCad = prodDataCad;
+    public void setProDataCadatro(String prodDataCad){
+        this.proDataCad = prodDataCad;
     }
     
-    public int getProdDataCadastro(){
-        return this.prodDataCad;
+    public String getProDataCadastro(){
+        return this.proDataCad;
+    }
+    
+    public void cancelarProduto(){
+        
+        this.proCodigo    = 0; 
+        this.proDescricao = "";
+        this.proUnidade   = "";
+        this.proForne     = "";
+        this.proPreco     = 0; 
+        this.proDataCad   = "";
     }
 }
