@@ -8,6 +8,8 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
     private ClasseFuncionario funcionario    = new ClasseFuncionario();
     private ActionFuncionario actFuncionario = new ActionFuncionario(this, funcionario);
     
+    private String caracteres = "0987654321";
+    
     public FrameFuncionario() {
         initComponents();
         
@@ -314,7 +316,10 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_funCodigoActionPerformed
 
     private void funCodigoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_funCodigoKeyReleased
-        funcionario.setFunCodigo(Integer.parseInt(funCodigo.getText()));
+        if (validaInteiro(funCodigo.getText()))
+            funcionario.setFunCodigo(Integer.parseInt(funCodigo.getText()));
+        else
+            funCodigo.setText(funCodigo.getText().substring(0,funCodigo.getText().length()-1));
     }//GEN-LAST:event_funCodigoKeyReleased
 
     private void funNomeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_funNomeKeyReleased
@@ -429,6 +434,13 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
         funNovo.setEnabled(true);
         funSalvar.setEnabled(false);
         funCancelar.setEnabled(false);
+    }
+    
+    private boolean validaInteiro(String vtxt){        
+        if(caracteres.contains(vtxt.substring(vtxt.length()-1,vtxt.length())))
+            return true;
+        else
+            return false;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

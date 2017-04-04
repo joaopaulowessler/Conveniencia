@@ -7,6 +7,8 @@ public class FrameProduto extends javax.swing.JInternalFrame {
     
     private ClasseProduto produto    = new ClasseProduto();
     private ActionProduto actProduto = new ActionProduto(this,produto);
+    private String caracInt          = "0123456789";
+    private String caracFloat        = "0123456789.";
     
     public FrameProduto() {
         initComponents();
@@ -228,7 +230,10 @@ public class FrameProduto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_proNovoActionPerformed
 
     private void proCodigoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_proCodigoKeyReleased
-        produto.setProCodigo(Integer.parseInt(proCodigo.getText()));
+        if (validaInteiro(proCodigo.getText()))
+            produto.setProCodigo(Integer.parseInt(proCodigo.getText()));
+        else
+            proCodigo.setText(proCodigo.getText().substring(0,proCodigo.getText().length()-1));      
     }//GEN-LAST:event_proCodigoKeyReleased
 
     private void proDescricaoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_proDescricaoKeyReleased
@@ -244,13 +249,28 @@ public class FrameProduto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_proFornecedorKeyReleased
 
     private void proPrecoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_proPrecoKeyReleased
-        produto.setProPreco(Float.parseFloat(proPreco.getText()));
+        if (validaFloat(proPreco.getText()))
+            produto.setProPreco(Integer.parseInt(proPreco.getText()));
+        else
+            proPreco.setText(proPreco.getText().substring(0,proPreco.getText().length()-1));
     }//GEN-LAST:event_proPrecoKeyReleased
 
     private void proDataCadastroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_proDataCadastroKeyReleased
         produto.setProDataCadatro(proDataCadastro.getText());
     }//GEN-LAST:event_proDataCadastroKeyReleased
-
+    private boolean validaInteiro(String vtxt){        
+        if(caracInt.contains(vtxt.substring(vtxt.length()-1,vtxt.length())))
+            return true;
+        else
+            return false;
+    }
+    
+    private boolean validaFloat(String vtxt){        
+        if(caracFloat.contains(vtxt.substring(vtxt.length()-1,vtxt.length())))
+            return true;
+        else
+            return false;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel24;

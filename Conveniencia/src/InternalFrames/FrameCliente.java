@@ -8,8 +8,8 @@ public class FrameCliente extends javax.swing.JInternalFrame {
     
     private ClasseCliente cliente    = new ClasseCliente();
     private ActionCliente actCliente = new ActionCliente(this, cliente);
-    private String caracteres        = "0987654321.";
-        
+    
+    private String caracteres = "0987654321";        
     
     public FrameCliente() {
         initComponents();
