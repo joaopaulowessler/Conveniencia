@@ -8,6 +8,8 @@ public class FrameCliente extends javax.swing.JInternalFrame {
     
     private ClasseCliente cliente    = new ClasseCliente();
     private ActionCliente actCliente = new ActionCliente(this, cliente);
+    private String caracteres        = "0987654321.";
+        
     
     public FrameCliente() {
         initComponents();
@@ -82,6 +84,7 @@ public class FrameCliente extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         cliCodigo = new javax.swing.JTextField();
@@ -108,6 +111,10 @@ public class FrameCliente extends javax.swing.JInternalFrame {
         jLabel9 = new javax.swing.JLabel();
         cliEstado = new javax.swing.JTextField();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
         setTitle("Clientes");
 
         jLabel10.setText("Endereço:");
@@ -180,11 +187,17 @@ public class FrameCliente extends javax.swing.JInternalFrame {
             }
         });
 
+        buttonGroup1.add(cliSexoMasculino);
         cliSexoMasculino.setText("Masculino");
         cliSexoMasculino.setEnabled(false);
         cliSexoMasculino.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cliSexoMasculinoItemStateChanged(evt);
+            }
+        });
+        cliSexoMasculino.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cliSexoMasculinoMouseClicked(evt);
             }
         });
         cliSexoMasculino.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -193,11 +206,17 @@ public class FrameCliente extends javax.swing.JInternalFrame {
             }
         });
 
+        buttonGroup1.add(cliSexoFeminino);
         cliSexoFeminino.setText("Feminino");
         cliSexoFeminino.setEnabled(false);
         cliSexoFeminino.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cliSexoFemininoItemStateChanged(evt);
+            }
+        });
+        cliSexoFeminino.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cliSexoFemininoMouseClicked(evt);
             }
         });
         cliSexoFeminino.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -368,7 +387,12 @@ public class FrameCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cliNomeKeyReleased
 
     private void cliCodigoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cliCodigoKeyReleased
-        cliente.setCliCodigo(Integer.parseInt(cliCodigo.getText()));
+        
+        if (validaInteiro(cliCodigo.getText()))
+            cliente.setCliCodigo(Integer.parseInt(cliCodigo.getText()));             
+        else
+            cliCodigo.setText(cliCodigo.getText().substring(0,cliCodigo.getText().length()-1));            
+            
     }//GEN-LAST:event_cliCodigoKeyReleased
 
     private void cliCpfKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cliCpfKeyReleased
@@ -396,11 +420,11 @@ public class FrameCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cliEnderecoKeyReleased
 
     private void cliSexoMasculinoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cliSexoMasculinoKeyPressed
-        cliente.setCliSexo("M");
+        
     }//GEN-LAST:event_cliSexoMasculinoKeyPressed
 
     private void cliSexoFemininoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cliSexoFemininoKeyPressed
-        cliente.setCliSexo("F");
+        
     }//GEN-LAST:event_cliSexoFemininoKeyPressed
 
     private void cliEstadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cliEstadoKeyReleased
@@ -415,8 +439,23 @@ public class FrameCliente extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_cliSexoFemininoItemStateChanged
 
+    private void cliSexoMasculinoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cliSexoMasculinoMouseClicked
+        cliente.setCliSexo("M");
+    }//GEN-LAST:event_cliSexoMasculinoMouseClicked
+
+    private void cliSexoFemininoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cliSexoFemininoMouseClicked
+       cliente.setCliSexo("F");
+    }//GEN-LAST:event_cliSexoFemininoMouseClicked
+    
+    private boolean validaInteiro(String vtxt){        
+        if(caracteres.contains(vtxt.substring(vtxt.length()-1,vtxt.length())))
+            return true;
+        else
+            return false;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton cliCancelar;
     private javax.swing.JTextField cliCidade;
     private javax.swing.JTextField cliCodigo;
