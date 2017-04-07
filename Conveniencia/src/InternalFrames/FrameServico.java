@@ -4,55 +4,55 @@ import Actions.ActionServicos;
 import Classes.ClasseServicos;
 
 public class FrameServico extends javax.swing.JInternalFrame {
-    
-    private ClasseServicos servicos   = new ClasseServicos();
+
+    private ClasseServicos servicos = new ClasseServicos();
     private ActionServicos actServico = new ActionServicos(this, servicos);
-    
-    private String caracInt          = "0123456789";
-    private String caracFloat        = "0123456789.";
-    
+
+    private String caracInt = "0123456789";
+    private String caracFloat = "0123456789.";
+
     public FrameServico() {
         initComponents();
-        
+
         serSalvar.addActionListener(actServico);
         serExcluir.addActionListener(actServico);
         serCancelar.addActionListener(actServico);
         serNovo.addActionListener(actServico);
     }
-    
-    public void novoServico(){
-        
+
+    public void novoServico() {
+
         serCliente.setText("");
         serProduto.setText("");
         serFuncionario.setText("");
         serQuantidade.setText("");
         serData.setText("");
-        
+
         serCliente.setEnabled(true);
         serProduto.setEnabled(true);
         serFuncionario.setEnabled(true);
         serQuantidade.setEnabled(true);
         serData.setEnabled(true);
-                
+
         serNovo.setEnabled(false);
         serSalvar.setEnabled(true);
-        serCancelar.setEnabled(true);        
+        serCancelar.setEnabled(true);
     }
-    
-    public void cancelarServico(){
-        
+
+    public void cancelarServico() {
+
         serCliente.setText("");
         serProduto.setText("");
         serFuncionario.setText("");
         serQuantidade.setText("");
         serData.setText("");
-        
+
         serCliente.setEnabled(false);
         serProduto.setEnabled(false);
         serFuncionario.setEnabled(false);
         serQuantidade.setEnabled(false);
         serData.setEnabled(false);
-                
+
         serNovo.setEnabled(true);
         serSalvar.setEnabled(false);
         serCancelar.setEnabled(false);
@@ -77,9 +77,16 @@ public class FrameServico extends javax.swing.JInternalFrame {
         jLabel34 = new javax.swing.JLabel();
         serFuncionario = new javax.swing.JTextField();
 
+        setClosable(true);
+        setIconifiable(true);
         setTitle("Serviços");
 
         serProduto.setEnabled(false);
+        serProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                serProdutoActionPerformed(evt);
+            }
+        });
         serProduto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 serProdutoKeyReleased(evt);
@@ -109,6 +116,11 @@ public class FrameServico extends javax.swing.JInternalFrame {
         });
 
         serCliente.setEnabled(false);
+        serCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                serClienteActionPerformed(evt);
+            }
+        });
         serCliente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 serClienteKeyReleased(evt);
@@ -202,48 +214,63 @@ public class FrameServico extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void serClienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_serClienteKeyReleased
-        if (validaInteiro(serCliente.getText()))
+        if (validaInteiro(serCliente.getText())) {
             servicos.setSerCliente(Integer.parseInt(serCliente.getText()));
-        else
-            serCliente.setText(serCliente.getText().substring(0,serCliente.getText().length()-1));   
+        } else {
+            serCliente.setText(serCliente.getText().substring(0, serCliente.getText().length() - 1));
+        }
     }//GEN-LAST:event_serClienteKeyReleased
 
     private void serProdutoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_serProdutoKeyReleased
-        if (validaInteiro(serProduto.getText()))
-            servicos.setSerCliente(Integer.parseInt(serProduto.getText()));
-        else
-            serProduto.setText(serProduto.getText().substring(0,serProduto.getText().length()-1));   
+        if (validaInteiro(serProduto.getText())) {
+            servicos.setSerProduto(Integer.parseInt(serProduto.getText()));
+        } else {
+            serProduto.setText(serProduto.getText().substring(0, serProduto.getText().length() - 1));
+        }
     }//GEN-LAST:event_serProdutoKeyReleased
 
     private void serFuncionarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_serFuncionarioKeyReleased
-        if (validaInteiro(serFuncionario.getText()))
+        if (validaInteiro(serFuncionario.getText())) {
             servicos.setSerFuncionario(Integer.parseInt(serFuncionario.getText()));
-        else
-            serFuncionario.setText(serFuncionario.getText().substring(0,serFuncionario.getText().length()-1));   
+        } else {
+            serFuncionario.setText(serFuncionario.getText().substring(0, serFuncionario.getText().length() - 1));
+        }
     }//GEN-LAST:event_serFuncionarioKeyReleased
 
     private void serQuantidadeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_serQuantidadeKeyReleased
-        if (validaFloat(serQuantidade.getText()))
-            servicos.setSerQuantidade(Integer.parseInt(serQuantidade.getText()));
-        else
-            serQuantidade.setText(serQuantidade.getText().substring(0,serQuantidade.getText().length()-1));
+        if (validaFloat(serQuantidade.getText())) {
+            servicos.setSerQuantidade(Float.parseFloat(serQuantidade.getText()));
+        } else {
+            serQuantidade.setText(serQuantidade.getText().substring(0, serQuantidade.getText().length() - 1));
+        }
     }//GEN-LAST:event_serQuantidadeKeyReleased
 
     private void serDataKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_serDataKeyReleased
         servicos.setSerData(serData.getText());
     }//GEN-LAST:event_serDataKeyReleased
-    private boolean validaInteiro(String vtxt){        
-        if(caracInt.contains(vtxt.substring(vtxt.length()-1,vtxt.length())))
+
+    private void serProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serProdutoActionPerformed
+        
+    }//GEN-LAST:event_serProdutoActionPerformed
+
+    private void serClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serClienteActionPerformed
+        
+    }//GEN-LAST:event_serClienteActionPerformed
+
+    private boolean validaInteiro(String vtxt) {
+        if (caracInt.contains(vtxt.substring(vtxt.length() - 1, vtxt.length()))) {
             return true;
-        else
+        } else {
             return false;
+        }
     }
-    
-    private boolean validaFloat(String vtxt){        
-        if(caracFloat.contains(vtxt.substring(vtxt.length()-1,vtxt.length())))
+
+    private boolean validaFloat(String vtxt) {
+        if (caracFloat.contains(vtxt.substring(vtxt.length() - 1, vtxt.length()))) {
             return true;
-        else
+        } else {
             return false;
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

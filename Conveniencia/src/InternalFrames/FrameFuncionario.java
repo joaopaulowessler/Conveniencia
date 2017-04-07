@@ -52,6 +52,8 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
         funSalvar = new javax.swing.JButton();
         funEstado = new javax.swing.JTextField();
 
+        setClosable(true);
+        setIconifiable(true);
         setTitle("Funcionários");
 
         jLabel14.setText("Endereço:");

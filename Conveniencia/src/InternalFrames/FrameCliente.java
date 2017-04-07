@@ -113,8 +113,6 @@ public class FrameCliente extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
         setTitle("Clientes");
 
         jLabel10.setText("Endereço:");
