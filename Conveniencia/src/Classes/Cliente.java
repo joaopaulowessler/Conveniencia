@@ -1,6 +1,6 @@
 package Classes;
 
-public class ClasseCliente {
+public class Cliente {
     
     private int    cliCodigo;   //código
     private String cliNome;     //nome
@@ -13,7 +13,7 @@ public class ClasseCliente {
     private String cliEstado;   //estado
     private String cliEndereco; //endereço
     
-    public ClasseCliente(){
+    public Cliente(){
         this.cliCodigo   = 0;
         this.cliNome     = "";
         this.cliCpf      = "";

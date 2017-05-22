@@ -1,42 +1,82 @@
 package Actions;
 
-import Classes.ClasseProduto;
-import Frames.Menu;
+import Classes.Produto;
+import Exception.ExceptionConveniencia;
+import Log.Log;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import javax.swing.JOptionPane;
 
-public class ActionProduto implements ActionListener{
+public class ActionProduto implements ActionListener {
 
-    private InternalFrames.FrameProduto frameProduto;
-    private ClasseProduto               classeProduto;
-    
-    public ActionProduto(InternalFrames.FrameProduto fraPro, ClasseProduto claPro){
-        this.frameProduto  = fraPro;
-        this.classeProduto = claPro;
-    }    
-    
-    public void actionPerformed(ActionEvent e) { 
-        if (e.getActionCommand().equals("Novo")){            
-            
+    private final InternalFrames.FrameProduto frameProduto;
+
+    public ActionProduto(InternalFrames.FrameProduto fraPro, Produto claPro) {
+        this.frameProduto = fraPro;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        if (e.getActionCommand().equals("Novo")) {
+            try {
+                gerarLog("Novo");
+            } catch (IOException ex) {
+            }
+
             frameProduto.novoProduto();
         }
-        
-        if (e.getActionCommand().equals("Salvar")){
-            
-            System.out.println(classeProduto.getProCodigo());
-            System.out.println(classeProduto.getProDataCadastro());
-            System.out.println(classeProduto.getProDesc());
-            System.out.println(classeProduto.getProFronecedor());
-            System.out.println(classeProduto.getProPreco());
-            System.out.println(classeProduto.getProUnidade());
+
+        if (e.getActionCommand().equals("Salvar")) {
+
+            try {
+                gerarLog("Salvar");
+            } catch (IOException ex) {
+            }
+
+            try {
+                Produto produto = frameProduto.getProduto();
+
+                System.out.println(produto.getProCodigo());
+                System.out.println(produto.getProDesc());
+                System.out.println(produto.getProUnidade());
+                System.out.println(produto.getProFronecedor());
+                System.out.println(produto.getProPreco());
+                System.out.println(produto.getProDataCadastro());
+
+                frameProduto.cancelarProduto();
+
+            } catch (ExceptionConveniencia ex) {
+                try {
+                    gerarLog("Exception: " + ex.getMessage());
+                } catch (IOException exi) {
+                }
+
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
         }
 
-        if (e.getActionCommand().equals("Excluir")){
+        if (e.getActionCommand().equals("Excluir")) {
+            try {
+                gerarLog("Exclusão");
+            } catch (IOException ex) {
+            }
         }
-        
-        if (e.getActionCommand().equals("Cancelar")){
-            
+
+        if (e.getActionCommand().equals("Cancelar")) {
+            try {
+                gerarLog("Cancelamento");
+            } catch (IOException ex) {
+            }
+
             frameProduto.cancelarProduto();
-        }        
-    } 
+        }
+    }
+
+    public void gerarLog(String vmsg) throws IOException {
+
+        Log log = new Log();
+        log.escrever(vmsg, "log.txt");
+    }
 }

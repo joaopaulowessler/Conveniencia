@@ -1,6 +1,6 @@
 package Classes;
 
-public class ClasseServicos {
+public class Servicos {
     
     private int    serCliente;     //cliente
     private int    serProduto;     //produto

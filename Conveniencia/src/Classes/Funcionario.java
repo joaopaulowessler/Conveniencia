@@ -1,6 +1,6 @@
 package Classes;
 
-public class ClasseFuncionario {
+public class Funcionario {
     
     private int    funCodigo;       //codigo
     private String funNome;         //nome

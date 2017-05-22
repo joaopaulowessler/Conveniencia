@@ -1,18 +1,28 @@
 package Frames;
 
 import Actions.ActionLogin;
+import Exception.ExceptionConveniencia;
+import Classes.Login;
+import Log.Log;
 import java.awt.Toolkit;
+import java.io.IOException;
+import javax.swing.JOptionPane;
 
-public class Login extends javax.swing.JFrame{
+public class FrameLogin extends javax.swing.JFrame {
 
     private ActionLogin action = new ActionLogin(this);
-    
-    public Login() {
+
+    public FrameLogin() {
         initComponents();
-        
+
         entrar.addActionListener(action);
         cancelar.addActionListener(action);
-        //setIcon();
+        
+        try{
+            if (!retornaUsuario().trim().isEmpty())
+                usuario.setText(retornaUsuario());
+        } catch (IOException ex) {
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -23,10 +33,10 @@ public class Login extends javax.swing.JFrame{
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         usuario = new javax.swing.JTextField();
-        senha = new javax.swing.JTextField();
         entrar = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        senha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
@@ -42,12 +52,6 @@ public class Login extends javax.swing.JFrame{
         usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usuarioActionPerformed(evt);
-            }
-        });
-
-        senha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                senhaActionPerformed(evt);
             }
         });
 
@@ -69,6 +73,8 @@ public class Login extends javax.swing.JFrame{
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel3.setText("Login");
+
+        senha.setText("admin");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -92,8 +98,8 @@ public class Login extends javax.swing.JFrame{
                                     .addComponent(jLabel1))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(usuario)
-                                    .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                                    .addComponent(senha))))))
                 .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -109,7 +115,7 @@ public class Login extends javax.swing.JFrame{
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(entrar)
                     .addComponent(cancelar))
@@ -139,34 +145,19 @@ public class Login extends javax.swing.JFrame{
         // TODO add your handling code here:
     }//GEN-LAST:event_usuarioActionPerformed
 
-    private void senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_senhaActionPerformed
-
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cancelarActionPerformed
-    
-    public String getUsuario(){        
-        return usuario.getText();
-    }
-    
-    public String getSenha(){
-        return senha.getText();
-    }
-    
+
     public static void main(String args[]) {
-        
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new FrameLogin().setVisible(true);
             }
-        });        
-        
+        });
+
     }
-    //private void setIcon() {
-    //    setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("login.png")));
-    //}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelar;
@@ -175,8 +166,30 @@ public class Login extends javax.swing.JFrame{
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField senha;
+    private javax.swing.JPasswordField senha;
     private javax.swing.JTextField usuario;
     // End of variables declaration//GEN-END:variables
 
+    public Login getLogin() throws ExceptionConveniencia {
+
+        Login login = new Login();
+        
+        if (usuario.getText().trim().isEmpty()) {
+            throw new ExceptionConveniencia("Usuário deve ser informado!");
+        }
+
+        if (!senha.getText().trim().equals("admin")) {
+            throw new ExceptionConveniencia("Usuário e senha inválidos!");
+        }
+        
+        login.setLogin(usuario.getText());
+        login.setSenha(senha.getText());
+
+        return login;
+    }
+
+    public String retornaUsuario() throws IOException {
+        Log log = new Log();
+        return log.lerUsuario("usuario.txt");
+    }
 }

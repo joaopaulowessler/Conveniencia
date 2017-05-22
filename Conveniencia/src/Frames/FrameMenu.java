@@ -4,26 +4,18 @@ import InternalFrames.FrameProduto;
 import InternalFrames.FrameCliente;
 import InternalFrames.FrameServico;
 import InternalFrames.FrameFuncionario;
-import Actions.ActionCliente;
-import Actions.ActionFuncionario;
-import Actions.ActionLogin;
-import Actions.ActionProduto;
-import Actions.ActionServicos;
-import Classes.ClasseCliente;
-import Classes.ClasseFuncionario;
-import Classes.ClasseProduto;
-import Classes.ClasseServicos;
-import java.awt.Toolkit;
-import javax.swing.JInternalFrame;
+import Log.Log;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 
-public class Menu extends javax.swing.JFrame {
+public class FrameMenu extends javax.swing.JFrame {
     
-    public Menu() {
+    Log log = new Log();
+    
+    public FrameMenu() {
         initComponents();
         jDesktopPane.setVisible(true);
-        setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);        
-        //setIcon();
+        setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
     }    
 
     @SuppressWarnings("unchecked")
@@ -179,13 +171,23 @@ public class Menu extends javax.swing.JFrame {
     private void produtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_produtoActionPerformed
         FrameProduto fpro = new FrameProduto();
         jDesktopPane.add(fpro);
-        fpro.setVisible(true);        
+        fpro.setVisible(true);
+        
+        try{
+            log.escrever("Acessou Produto", "log.txt");
+        }catch (IOException ex) {
+        }
     }//GEN-LAST:event_produtoActionPerformed
 
     private void servicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_servicosActionPerformed
         FrameServico fser = new FrameServico();
         jDesktopPane.add(fser);
-        fser.setVisible(true);        
+        fser.setVisible(true);
+
+        try{
+            log.escrever("Acessou Serviços", "log.txt");
+        }catch (IOException ex) {
+        }
     }//GEN-LAST:event_servicosActionPerformed
 
     private void ajudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajudaActionPerformed
@@ -201,27 +203,31 @@ public class Menu extends javax.swing.JFrame {
         FrameCliente fcli = new FrameCliente();
         jDesktopPane.add(fcli);
         fcli.setVisible(true); 
+        
+        try{
+            log.escrever("Acessou Clientes", "log.txt");
+        }catch (IOException ex) {
+        }
     }//GEN-LAST:event_clienteActionPerformed
 
     private void funcionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funcionarioActionPerformed
         FrameFuncionario fFun = new FrameFuncionario();
         jDesktopPane.add(fFun);
         fFun.setVisible(true);
-         
+        
+        try{            
+            log.escrever("Acessou Funcionários", "log.txt");
+        }catch (IOException ex) {
+        }
     }//GEN-LAST:event_funcionarioActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Menu().setVisible(true);
+                new FrameMenu().setVisible(true);
             }
         });
     }
-/*   
-    
-     /*private void setIcon() {
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("postojpg.jpg")));
-    }*/
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu MenuCadastros;

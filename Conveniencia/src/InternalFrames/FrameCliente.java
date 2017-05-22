@@ -1,15 +1,12 @@
 package InternalFrames;
 
 import Actions.ActionCliente;
-import Classes.ClasseCliente;
-import javax.swing.JOptionPane;
+import Classes.Cliente;
+import Exception.ExceptionConveniencia;
 
 public class FrameCliente extends javax.swing.JInternalFrame {
     
-    private ClasseCliente cliente    = new ClasseCliente();
-    private ActionCliente actCliente = new ActionCliente(this, cliente);
-    
-    private String caracteres = "0987654321";        
+    private final ActionCliente actCliente = new ActionCliente(this);    
     
     public FrameCliente() {
         initComponents();
@@ -109,7 +106,7 @@ public class FrameCliente extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        cliEstado = new javax.swing.JTextField();
+        cliEstado = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setIconifiable(true);
@@ -255,12 +252,8 @@ public class FrameCliente extends javax.swing.JInternalFrame {
 
         jLabel9.setText("Cidade:");
 
+        cliEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP ", "AM ", "BA ", "CE ", "DF ", "ES ", "GO ", "MA ", "MT ", "MS ", "MG ", "PA ", "PB ", "PR ", "PE ", "PI ", "RJ ", "RN", "RS", "RO", "RR ", "SC ", "SP ", "SE ", "TO" }));
         cliEstado.setEnabled(false);
-        cliEstado.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                cliEstadoKeyReleased(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -304,10 +297,10 @@ public class FrameCliente extends javax.swing.JInternalFrame {
                                 .addComponent(cliEmail)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(cliCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel11)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(cliEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(cliEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(cliEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(cliSexoMasculino)
@@ -361,7 +354,7 @@ public class FrameCliente extends javax.swing.JInternalFrame {
                     .addComponent(cliSalvar)
                     .addComponent(cliExcluir)
                     .addComponent(cliCancelar))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -381,77 +374,75 @@ public class FrameCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cliCancelarActionPerformed
 
     private void cliNomeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cliNomeKeyReleased
-        cliente.setCliNome(cliNome.getText());
+        
     }//GEN-LAST:event_cliNomeKeyReleased
 
     private void cliCodigoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cliCodigoKeyReleased
-        
-        if (validaInteiro(cliCodigo.getText()))
-            cliente.setCliCodigo(Integer.parseInt(cliCodigo.getText()));             
-        else
-            cliCodigo.setText(cliCodigo.getText().substring(0,cliCodigo.getText().length()-1));            
-            
+        /*
+        if (validaInteiro(cliCodigo.getText())) {
+            cliente.setCliCodigo(Integer.parseInt(cliCodigo.getText()));
+        } else {
+            cliCodigo.setText(cliCodigo.getText().substring(0, cliCodigo.getText().length() - 1));
+        }*/
+
     }//GEN-LAST:event_cliCodigoKeyReleased
 
     private void cliCpfKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cliCpfKeyReleased
-        cliente.setCliCpf(cliCpf.getText());
+        
     }//GEN-LAST:event_cliCpfKeyReleased
 
     private void cliRgKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cliRgKeyReleased
-        cliente.setCliRg(cliRg.getText());
+        
     }//GEN-LAST:event_cliRgKeyReleased
 
     private void cliTelefoneKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cliTelefoneKeyReleased
-        cliente.setCliTelefone(cliTelefone.getText());
+        
     }//GEN-LAST:event_cliTelefoneKeyReleased
 
     private void cliEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cliEmailKeyReleased
-        cliente.setCliEmail(cliEmail.getText());
+        
     }//GEN-LAST:event_cliEmailKeyReleased
 
     private void cliCidadeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cliCidadeKeyReleased
-        cliente.setCliCidade(cliCidade.getText());
+        
     }//GEN-LAST:event_cliCidadeKeyReleased
 
     private void cliEnderecoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cliEnderecoKeyReleased
-        cliente.setCliEndereco(cliEndereco.getText());
+        
     }//GEN-LAST:event_cliEnderecoKeyReleased
 
     private void cliSexoMasculinoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cliSexoMasculinoKeyPressed
-        
+
     }//GEN-LAST:event_cliSexoMasculinoKeyPressed
 
     private void cliSexoFemininoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cliSexoFemininoKeyPressed
-        
+
     }//GEN-LAST:event_cliSexoFemininoKeyPressed
 
-    private void cliEstadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cliEstadoKeyReleased
-        cliente.setCliEstado(cliEstado.getText());
-    }//GEN-LAST:event_cliEstadoKeyReleased
-
     private void cliSexoMasculinoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cliSexoMasculinoItemStateChanged
-        
+
     }//GEN-LAST:event_cliSexoMasculinoItemStateChanged
 
     private void cliSexoFemininoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cliSexoFemininoItemStateChanged
-        
+
     }//GEN-LAST:event_cliSexoFemininoItemStateChanged
 
     private void cliSexoMasculinoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cliSexoMasculinoMouseClicked
-        cliente.setCliSexo("M");
+        
     }//GEN-LAST:event_cliSexoMasculinoMouseClicked
 
     private void cliSexoFemininoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cliSexoFemininoMouseClicked
-       cliente.setCliSexo("F");
+        
     }//GEN-LAST:event_cliSexoFemininoMouseClicked
-    
-    private boolean validaInteiro(String vtxt){        
-        if(caracteres.contains(vtxt.substring(vtxt.length()-1,vtxt.length())))
+    /*
+    private boolean validaInteiro(String vtxt) {
+        if (caracteres.contains(vtxt.substring(vtxt.length() - 1, vtxt.length()))) {
             return true;
-        else
+        } else {
             return false;
-    }
-
+        }
+    }*/
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton cliCancelar;
@@ -460,7 +451,7 @@ public class FrameCliente extends javax.swing.JInternalFrame {
     private javax.swing.JTextField cliCpf;
     private javax.swing.JTextField cliEmail;
     private javax.swing.JTextField cliEndereco;
-    private javax.swing.JTextField cliEstado;
+    private javax.swing.JComboBox<String> cliEstado;
     private javax.swing.JButton cliExcluir;
     private javax.swing.JTextField cliNome;
     private javax.swing.JButton cliNovo;
@@ -480,4 +471,33 @@ public class FrameCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
+     public Cliente getCliente() throws ExceptionConveniencia {
+        Cliente cli = new Cliente();
+
+        if (cliCodigo.getText().trim().isEmpty()) {
+            throw new ExceptionConveniencia("Código do cliente deve ser informado!");
+        }
+
+        if (cliNome.getText().trim().isEmpty()) {
+            throw new ExceptionConveniencia("Nome do cliente deve ser informado!");
+        }
+
+        cli.setCliCodigo(Integer.parseInt(cliCodigo.getText()));
+        cli.setCliNome(cliNome.getText());
+        cli.setCliCpf(cliCpf.getText());
+        cli.setCliTelefone(cliTelefone.getText());
+        cli.setCliRg(cliRg.getText());
+        cli.setCliEmail(cliEmail.getText());
+        cli.setCliCidade(cliCidade.getText());
+        cli.setCliEndereco(cliEndereco.getText());
+        cli.setCliEstado((String) cliEstado.getSelectedItem());
+
+        if (cliSexoFeminino.isSelected()) {
+            cli.setCliSexo("F");
+        } else {
+            cli.setCliSexo("M");
+        }
+
+        return cli;
+    }
 }

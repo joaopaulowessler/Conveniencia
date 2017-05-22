@@ -1,37 +1,64 @@
 package Actions;
 
-import Frames.Login;
-import Frames.Menu;
+import Exception.ExceptionConveniencia;
+import Classes.Login;
+import Frames.FrameLogin;
+import Frames.FrameMenu;
+import Log.Log;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import javax.swing.JOptionPane;
 
-public class ActionLogin implements ActionListener{
+public class ActionLogin implements ActionListener {
 
-    private Login log;
-    
-    public ActionLogin(Login log){
-        this.log = log;
-    }    
-    
-    public void actionPerformed(ActionEvent e) {        
-        if (e.getActionCommand().equals("Entrar")){            
-            /*if (!log.getUsuario().equals("admin")){
-                JOptionPane.showMessageDialog(null,"Usuário não cadastrado.");
-                return;
+    private final FrameLogin login;
+
+    public ActionLogin(FrameLogin login) {
+        this.login = login;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        if (e.getActionCommand().equals("Entrar")) {
+
+            try {
+                
+                Login claLogin = login.getLogin();
+                
+                try {
+                    
+                    gravarUsuario(claLogin.getLogin());
+                    gerarLog("Logou");                    
+                    
+                    FrameMenu menu = new FrameMenu();
+                    menu.setVisible(true);
+                    login.hide();
+
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                }
+            } catch (ExceptionConveniencia ex) {
+
+                JOptionPane.showMessageDialog(null, ex.getMessage());
             }
-            
-            if (!log.getSenha().equals("admin")){
-                JOptionPane.showMessageDialog(null,"Senha inválida.");
-                return;
-            }*/                
-            
-            Menu menu = new Menu();
-            menu.setVisible(true);
-            log.hide();
         }
-        
-        if (e.getActionCommand().equals("Cancelar")){            
+
+        if (e.getActionCommand().equals("Cancelar")) {
             System.exit(0);
-        }        
-    } 
+        }
+    }
+
+    public void gerarLog(String vmsg) throws ExceptionConveniencia, IOException {
+
+        Log log = new Log();
+        log.escrever(vmsg, "log.txt");
+    }
+    
+    public void gravarUsuario(String vmsg) throws ExceptionConveniencia, IOException {
+
+        Log log = new Log();
+        log.gravarUsuario(vmsg, "usuario.txt");
+    }
 }

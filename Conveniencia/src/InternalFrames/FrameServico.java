@@ -1,16 +1,12 @@
 package InternalFrames;
 
 import Actions.ActionServicos;
-import Classes.ClasseServicos;
-
+import Classes.Servicos;
+import Exception.ExceptionConveniencia;
 
 public class FrameServico extends javax.swing.JInternalFrame {
 
-    private ClasseServicos servicos = new ClasseServicos();
-    private ActionServicos actServico = new ActionServicos(this, servicos);
-
-    private String caracInt = "0123456789";
-    private String caracFloat = "0123456789.";
+    private final ActionServicos actServico = new ActionServicos(this);
 
     public FrameServico() {
         initComponents();
@@ -215,49 +211,33 @@ public class FrameServico extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void serClienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_serClienteKeyReleased
-        if (validaInteiro(serCliente.getText())) {
-            servicos.setSerCliente(Integer.parseInt(serCliente.getText()));
-        } else {
-            serCliente.setText(serCliente.getText().substring(0, serCliente.getText().length() - 1));
-        }
+
     }//GEN-LAST:event_serClienteKeyReleased
 
     private void serProdutoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_serProdutoKeyReleased
-        if (validaInteiro(serProduto.getText())) {
-            servicos.setSerProduto(Integer.parseInt(serProduto.getText()));
-        } else {
-            serProduto.setText(serProduto.getText().substring(0, serProduto.getText().length() - 1));
-        }
+
     }//GEN-LAST:event_serProdutoKeyReleased
 
     private void serFuncionarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_serFuncionarioKeyReleased
-        if (validaInteiro(serFuncionario.getText())) {
-            servicos.setSerFuncionario(Integer.parseInt(serFuncionario.getText()));
-        } else {
-            serFuncionario.setText(serFuncionario.getText().substring(0, serFuncionario.getText().length() - 1));
-        }
+
     }//GEN-LAST:event_serFuncionarioKeyReleased
 
     private void serQuantidadeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_serQuantidadeKeyReleased
-        if (validaFloat(serQuantidade.getText())) {
-            servicos.setSerQuantidade(Float.parseFloat(serQuantidade.getText()));
-        } else {
-            serQuantidade.setText(serQuantidade.getText().substring(0, serQuantidade.getText().length() - 1));
-        }
+
     }//GEN-LAST:event_serQuantidadeKeyReleased
 
     private void serDataKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_serDataKeyReleased
-        servicos.setSerData(serData.getText());
+
     }//GEN-LAST:event_serDataKeyReleased
 
     private void serProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serProdutoActionPerformed
-        
+
     }//GEN-LAST:event_serProdutoActionPerformed
 
     private void serClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serClienteActionPerformed
-        
-    }//GEN-LAST:event_serClienteActionPerformed
 
+    }//GEN-LAST:event_serClienteActionPerformed
+    /*
     private boolean validaInteiro(String vtxt) {
         if (caracInt.contains(vtxt.substring(vtxt.length() - 1, vtxt.length()))) {
             return true;
@@ -272,7 +252,7 @@ public class FrameServico extends javax.swing.JInternalFrame {
         } else {
             return false;
         }
-    }
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel25;
@@ -290,4 +270,28 @@ public class FrameServico extends javax.swing.JInternalFrame {
     private javax.swing.JTextField serQuantidade;
     private javax.swing.JButton serSalvar;
     // End of variables declaration//GEN-END:variables
+
+    public Servicos getServicos() throws ExceptionConveniencia {
+        Servicos ser = new Servicos();
+
+        if (serCliente.getText().trim().isEmpty()) {
+            throw new ExceptionConveniencia("Cliente deve ser informado!");
+        }
+
+        if (serProduto.getText().trim().isEmpty()) {
+            throw new ExceptionConveniencia("Produto deve ser informado!");
+        }
+
+        if (serFuncionario.getText().trim().isEmpty()) {
+            throw new ExceptionConveniencia("Funcionário deve ser informado!");
+        }
+
+        ser.setSerCliente(Integer.parseInt(serCliente.getText()));
+        ser.setSerProduto(Integer.parseInt(serProduto.getText()));
+        ser.setSerFuncionario(Integer.parseInt(serFuncionario.getText()));
+        ser.setSerQuantidade(Float.parseFloat(serQuantidade.getText()));
+        ser.setSerData(serData.getText());
+
+        return ser;
+    }
 }

@@ -1,6 +1,6 @@
 package Classes;
 
-public class ClasseProduto {
+public class Produto {
     
     private int    proCodigo;    //codigo
     private String proDescricao; //descrição
@@ -9,7 +9,7 @@ public class ClasseProduto {
     private float  proPreco;     //preço
     private String proDataCad;   //data de cadastramento/cadastro
     
-    public ClasseProduto(){
+    public Produto(){
         
         this.proCodigo    = 0; 
         this.proDescricao = "";
