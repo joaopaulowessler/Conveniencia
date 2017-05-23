@@ -1,23 +1,23 @@
 package InternalFrames;
 
-import Actions.ActionServicos;
-import Classes.Servicos;
+import Actions.ActionVendas;
+import Classes.Vendas;
 import Exception.ExceptionConveniencia;
 
-public class FrameServico extends javax.swing.JInternalFrame {
+public class FrameVendas extends javax.swing.JInternalFrame {
 
-    private final ActionServicos actServico = new ActionServicos(this);
+    private final ActionVendas actVendas = new ActionVendas(this);
 
-    public FrameServico() {
+    public FrameVendas() {
         initComponents();
 
-        serSalvar.addActionListener(actServico);
-        serExcluir.addActionListener(actServico);
-        serCancelar.addActionListener(actServico);
-        serNovo.addActionListener(actServico);
+        serSalvar.addActionListener(actVendas);
+        serExcluir.addActionListener(actVendas);
+        serCancelar.addActionListener(actVendas);
+        serNovo.addActionListener(actVendas);
     }
 
-    public void novoServico() {
+    public void novoVendas() {
 
         serCliente.setText("");
         serProduto.setText("");
@@ -36,7 +36,7 @@ public class FrameServico extends javax.swing.JInternalFrame {
         serCancelar.setEnabled(true);
     }
 
-    public void cancelarServico() {
+    public void cancelarVendas() {
 
         serCliente.setText("");
         serProduto.setText("");
@@ -271,8 +271,8 @@ public class FrameServico extends javax.swing.JInternalFrame {
     private javax.swing.JButton serSalvar;
     // End of variables declaration//GEN-END:variables
 
-    public Servicos getServicos() throws ExceptionConveniencia {
-        Servicos ser = new Servicos();
+    public Vendas getVendass() throws ExceptionConveniencia {
+        Vendas ser = new Vendas();
 
         if (serCliente.getText().trim().isEmpty()) {
             throw new ExceptionConveniencia("Cliente deve ser informado!");
@@ -286,11 +286,11 @@ public class FrameServico extends javax.swing.JInternalFrame {
             throw new ExceptionConveniencia("Funcionário deve ser informado!");
         }
 
-        ser.setSerCliente(Integer.parseInt(serCliente.getText()));
-        ser.setSerProduto(Integer.parseInt(serProduto.getText()));
-        ser.setSerFuncionario(Integer.parseInt(serFuncionario.getText()));
-        ser.setSerQuantidade(Float.parseFloat(serQuantidade.getText()));
-        ser.setSerData(serData.getText());
+        ser.setVenCliente(Integer.parseInt(serCliente.getText()));
+        ser.setVenProduto(Integer.parseInt(serProduto.getText()));
+        ser.setVenFuncionario(Integer.parseInt(serFuncionario.getText()));
+        ser.setVenQuantidade(Float.parseFloat(serQuantidade.getText()));
+        ser.setVenData(serData.getText());
 
         return ser;
     }

@@ -3,10 +3,11 @@ package InternalFrames;
 import Actions.ActionCliente;
 import Classes.Cliente;
 import Exception.ExceptionConveniencia;
+import javax.swing.JOptionPane;
 
 public class FrameCliente extends javax.swing.JInternalFrame {
     
-    private final ActionCliente actCliente = new ActionCliente(this);    
+    private final ActionCliente actCliente = new ActionCliente(this); 
     
     public FrameCliente() {
         initComponents();
@@ -378,13 +379,7 @@ public class FrameCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cliNomeKeyReleased
 
     private void cliCodigoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cliCodigoKeyReleased
-        /*
-        if (validaInteiro(cliCodigo.getText())) {
-            cliente.setCliCodigo(Integer.parseInt(cliCodigo.getText()));
-        } else {
-            cliCodigo.setText(cliCodigo.getText().substring(0, cliCodigo.getText().length() - 1));
-        }*/
-
+        
     }//GEN-LAST:event_cliCodigoKeyReleased
 
     private void cliCpfKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cliCpfKeyReleased
@@ -434,14 +429,7 @@ public class FrameCliente extends javax.swing.JInternalFrame {
     private void cliSexoFemininoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cliSexoFemininoMouseClicked
         
     }//GEN-LAST:event_cliSexoFemininoMouseClicked
-    /*
-    private boolean validaInteiro(String vtxt) {
-        if (caracteres.contains(vtxt.substring(vtxt.length() - 1, vtxt.length()))) {
-            return true;
-        } else {
-            return false;
-        }
-    }*/
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
@@ -477,11 +465,16 @@ public class FrameCliente extends javax.swing.JInternalFrame {
         if (cliCodigo.getText().trim().isEmpty()) {
             throw new ExceptionConveniencia("Código do cliente deve ser informado!");
         }
-
+        
+        if (!validaCaracteres(cliCodigo.getText())) {
+            throw new ExceptionConveniencia("Código do cliente inválido!");
+        }
+        
         if (cliNome.getText().trim().isEmpty()) {
             throw new ExceptionConveniencia("Nome do cliente deve ser informado!");
         }
-
+        
+        
         cli.setCliCodigo(Integer.parseInt(cliCodigo.getText()));
         cli.setCliNome(cliNome.getText());
         cli.setCliCpf(cliCpf.getText());
@@ -499,5 +492,15 @@ public class FrameCliente extends javax.swing.JInternalFrame {
         }
 
         return cli;
+    }
+     
+    public boolean validaCaracteres(String vtxt) {
+        String caracteres = "0123456789,";
+        
+        for (int i = 0; i < vtxt.length(); i++){
+            if (!caracteres.contains(vtxt.substring(i,i+1)))
+                return false;            
+        }            
+        return true;
     }
 }

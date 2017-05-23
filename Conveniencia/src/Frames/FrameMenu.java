@@ -2,7 +2,7 @@ package Frames;
 
 import InternalFrames.FrameProduto;
 import InternalFrames.FrameCliente;
-import InternalFrames.FrameServico;
+import InternalFrames.FrameVendas;
 import InternalFrames.FrameFuncionario;
 import Log.Log;
 import java.io.IOException;
@@ -81,7 +81,7 @@ public class FrameMenu extends javax.swing.JFrame {
         MenuCadastros.setText("Cadastros");
 
         cliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
-        cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frames/Icones/2.png"))); // NOI18N
+        cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frames/Icones/cliente.png"))); // NOI18N
         cliente.setText("Cliente");
         cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,7 +92,7 @@ public class FrameMenu extends javax.swing.JFrame {
         MenuCadastros.add(jSeparator1);
 
         funcionario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
-        funcionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frames/Icones/user_add.png"))); // NOI18N
+        funcionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frames/Icones/funcionário.png"))); // NOI18N
         funcionario.setText("Funcionário");
         funcionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,7 +103,7 @@ public class FrameMenu extends javax.swing.JFrame {
         MenuCadastros.add(jSeparator2);
 
         produto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
-        produto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frames/Icones/tag_blue_add.png"))); // NOI18N
+        produto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frames/Icones/produto.png"))); // NOI18N
         produto.setText("Produto");
         produto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,11 +114,11 @@ public class FrameMenu extends javax.swing.JFrame {
 
         menuPrincial.add(MenuCadastros);
 
-        MenuServicos.setText("Serviços");
+        MenuServicos.setText("Vendas");
 
         servicos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
-        servicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frames/Icones/cart.png"))); // NOI18N
-        servicos.setText("Serviços");
+        servicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frames/Icones/vendas.png"))); // NOI18N
+        servicos.setText("Vendas");
         servicos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 servicosActionPerformed(evt);
@@ -136,7 +136,7 @@ public class FrameMenu extends javax.swing.JFrame {
         });
 
         sobre.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
-        sobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frames/Icones/help.png"))); // NOI18N
+        sobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frames/Icones/ajuda.png"))); // NOI18N
         sobre.setText("Sobre");
         sobre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,7 +180,7 @@ public class FrameMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_produtoActionPerformed
 
     private void servicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_servicosActionPerformed
-        FrameServico fser = new FrameServico();
+        FrameVendas fser = new FrameVendas();
         jDesktopPane.add(fser);
         fser.setVisible(true);
 

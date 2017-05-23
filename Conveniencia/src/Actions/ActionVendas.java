@@ -1,6 +1,6 @@
 package Actions;
 
-import Classes.Servicos;
+import Classes.Vendas;
 import Exception.ExceptionConveniencia;
 import Log.Log;
 import java.awt.event.ActionEvent;
@@ -8,12 +8,12 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 
-public class ActionServicos implements ActionListener {
+public class ActionVendas implements ActionListener {
 
-    private final InternalFrames.FrameServico frameServico;
+    private final InternalFrames.FrameVendas frameVendas;
 
-    public ActionServicos(InternalFrames.FrameServico fraSer) {
-        this.frameServico = fraSer;
+    public ActionVendas(InternalFrames.FrameVendas fraVen) {
+        this.frameVendas = fraVen;
     }
 
     @Override
@@ -25,7 +25,7 @@ public class ActionServicos implements ActionListener {
             } catch (IOException ex) {
             }
 
-            frameServico.novoServico();
+            frameVendas.novoVendas();
         }
 
         if (e.getActionCommand().equals("Salvar")) {
@@ -37,15 +37,15 @@ public class ActionServicos implements ActionListener {
 
             try {
 
-                Servicos servicos = frameServico.getServicos();
+                Vendas servicos = frameVendas.getVendass();
 
-                System.out.println(servicos.getSerCliente());
-                System.out.println(servicos.getSerProduto());
-                System.out.println(servicos.getSerFuncionario());
-                System.out.println(servicos.getSerQuantidade());
-                System.out.println(servicos.getSerData());
+                System.out.println(servicos.getVenCliente());
+                System.out.println(servicos.getVenProduto());
+                System.out.println(servicos.getVenFuncionario());
+                System.out.println(servicos.getVenQuantidade());
+                System.out.println(servicos.getVenData());
 
-                frameServico.cancelarServico();
+                frameVendas.cancelarVendas();
 
             } catch (ExceptionConveniencia ex) {
                 try {
@@ -70,7 +70,7 @@ public class ActionServicos implements ActionListener {
             } catch (IOException ex) {
             }
 
-            frameServico.cancelarServico();
+            frameVendas.cancelarVendas();
         }
     }
 

@@ -20,7 +20,7 @@
                   <KeyStroke key="Ctrl+C"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Frames/Icones/2.png"/>
+                  <Image iconType="3" name="/Frames/Icones/cliente.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cliente"/>
               </Properties>
@@ -36,7 +36,7 @@
                   <KeyStroke key="Ctrl+F"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Frames/Icones/user_add.png"/>
+                  <Image iconType="3" name="/Frames/Icones/funcion&#xe1;rio.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Funcion&#xe1;rio"/>
               </Properties>
@@ -52,7 +52,7 @@
                   <KeyStroke key="Ctrl+P"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Frames/Icones/tag_blue_add.png"/>
+                  <Image iconType="3" name="/Frames/Icones/produto.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Produto"/>
               </Properties>
@@ -64,7 +64,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="MenuServicos">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Servi&#xe7;os"/>
+            <Property name="text" type="java.lang.String" value="Vendas"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="servicos">
@@ -73,9 +73,9 @@
                   <KeyStroke key="Ctrl+S"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Frames/Icones/cart.png"/>
+                  <Image iconType="3" name="/Frames/Icones/vendas.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Servi&#xe7;os"/>
+                <Property name="text" type="java.lang.String" value="Vendas"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="servicosActionPerformed"/>
@@ -97,7 +97,7 @@
                   <KeyStroke key="Ctrl+A"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Frames/Icones/help.png"/>
+                  <Image iconType="3" name="/Frames/Icones/ajuda.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Sobre"/>
               </Properties>
