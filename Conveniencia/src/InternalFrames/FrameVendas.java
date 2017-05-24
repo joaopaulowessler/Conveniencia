@@ -5,129 +5,117 @@ import Classes.Vendas;
 import Exception.ExceptionConveniencia;
 
 public class FrameVendas extends javax.swing.JInternalFrame {
-
-    private final ActionVendas actVendas = new ActionVendas(this);
-
+    
+    private ActionVendas actVendas = new ActionVendas(this);
+    
     public FrameVendas() {
         initComponents();
-
-        serSalvar.addActionListener(actVendas);
-        serExcluir.addActionListener(actVendas);
-        serCancelar.addActionListener(actVendas);
-        serNovo.addActionListener(actVendas);
+        
+        vendSalvar.addActionListener(actVendas);
+        vendExcluir.addActionListener(actVendas);
+        vendCancelar.addActionListener(actVendas);
+        vendNovo.addActionListener(actVendas);
     }
-
-    public void novoVendas() {
-
-        serCliente.setText("");
-        serProduto.setText("");
-        serFuncionario.setText("");
-        serQuantidade.setText("");
-        serData.setText("");
-
-        serCliente.setEnabled(true);
-        serProduto.setEnabled(true);
-        serFuncionario.setEnabled(true);
-        serQuantidade.setEnabled(true);
-        serData.setEnabled(true);
-
-        serNovo.setEnabled(false);
-        serSalvar.setEnabled(true);
-        serCancelar.setEnabled(true);
+    
+    public void novoVendas(){
+        
+        vendCliente.setText("");
+        vendProduto.setText("");
+        vendFuncionario.setText("");
+        vendQuantidade.setText("");
+        vendData.setText("");
+        
+        vendCliente.setEnabled(true);
+        vendProduto.setEnabled(true);
+        vendFuncionario.setEnabled(true);
+        vendQuantidade.setEnabled(true);
+        vendData.setEnabled(true);
+                
+        vendNovo.setEnabled(false);
+        vendSalvar.setEnabled(true);
+        vendCancelar.setEnabled(true);        
     }
-
-    public void cancelarVendas() {
-
-        serCliente.setText("");
-        serProduto.setText("");
-        serFuncionario.setText("");
-        serQuantidade.setText("");
-        serData.setText("");
-
-        serCliente.setEnabled(false);
-        serProduto.setEnabled(false);
-        serFuncionario.setEnabled(false);
-        serQuantidade.setEnabled(false);
-        serData.setEnabled(false);
-
-        serNovo.setEnabled(true);
-        serSalvar.setEnabled(false);
-        serCancelar.setEnabled(false);
+    
+    public void cancelarVendas(){
+        
+        vendCliente.setText("");
+        vendProduto.setText("");
+        vendFuncionario.setText("");
+        vendQuantidade.setText("");
+        vendData.setText("");
+        
+        vendCliente.setEnabled(false);
+        vendProduto.setEnabled(false);
+        vendFuncionario.setEnabled(false);
+        vendQuantidade.setEnabled(false);
+        vendData.setEnabled(false);
+                
+        vendNovo.setEnabled(true);
+        vendSalvar.setEnabled(false);
+        vendCancelar.setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        serProduto = new javax.swing.JTextField();
+        vendProduto = new javax.swing.JTextField();
         jLabel35 = new javax.swing.JLabel();
-        serSalvar = new javax.swing.JButton();
-        serExcluir = new javax.swing.JButton();
-        serCancelar = new javax.swing.JButton();
+        vendSalvar = new javax.swing.JButton();
+        vendExcluir = new javax.swing.JButton();
+        vendCancelar = new javax.swing.JButton();
         jLabel25 = new javax.swing.JLabel();
-        serNovo = new javax.swing.JButton();
-        serData = new javax.swing.JTextField();
-        serCliente = new javax.swing.JTextField();
-        serQuantidade = new javax.swing.JTextField();
+        vendNovo = new javax.swing.JButton();
+        vendData = new javax.swing.JTextField();
+        vendCliente = new javax.swing.JTextField();
+        vendQuantidade = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
-        serFuncionario = new javax.swing.JTextField();
+        vendFuncionario = new javax.swing.JTextField();
 
-        setClosable(true);
-        setIconifiable(true);
         setTitle("Serviços");
 
-        serProduto.setEnabled(false);
-        serProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                serProdutoActionPerformed(evt);
-            }
-        });
-        serProduto.addKeyListener(new java.awt.event.KeyAdapter() {
+        vendProduto.setEnabled(false);
+        vendProduto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                serProdutoKeyReleased(evt);
+                vendProdutoKeyReleased(evt);
             }
         });
 
         jLabel35.setText("Produto");
 
-        serSalvar.setText("Salvar");
-        serSalvar.setEnabled(false);
+        vendSalvar.setText("Salvar");
+        vendSalvar.setEnabled(false);
 
-        serExcluir.setText("Excluir");
-        serExcluir.setEnabled(false);
+        vendExcluir.setText("Excluir");
+        vendExcluir.setEnabled(false);
 
-        serCancelar.setText("Cancelar");
-        serCancelar.setEnabled(false);
+        vendCancelar.setText("Cancelar");
+        vendCancelar.setEnabled(false);
 
         jLabel25.setText("Data:");
 
-        serNovo.setText("Novo");
+        vendNovo.setText("Novo");
 
-        serData.setEnabled(false);
-        serData.addKeyListener(new java.awt.event.KeyAdapter() {
+        vendData.setEnabled(false);
+        vendData.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                serDataKeyReleased(evt);
+                vendDataKeyReleased(evt);
             }
         });
 
-        serCliente.setEnabled(false);
-        serCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                serClienteActionPerformed(evt);
-            }
-        });
-        serCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+        vendCliente.setEnabled(false);
+        vendCliente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                serClienteKeyReleased(evt);
+                vendClienteKeyReleased(evt);
             }
         });
 
-        serQuantidade.setEnabled(false);
-        serQuantidade.addKeyListener(new java.awt.event.KeyAdapter() {
+        vendQuantidade.setEnabled(false);
+        vendQuantidade.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                serQuantidadeKeyReleased(evt);
+                vendQuantidadeKeyReleased(evt);
             }
         });
 
@@ -137,10 +125,10 @@ public class FrameVendas extends javax.swing.JInternalFrame {
 
         jLabel34.setText("Funcionário:");
 
-        serFuncionario.setEnabled(false);
-        serFuncionario.addKeyListener(new java.awt.event.KeyAdapter() {
+        vendFuncionario.setEnabled(false);
+        vendFuncionario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                serFuncionarioKeyReleased(evt);
+                vendFuncionarioKeyReleased(evt);
             }
         });
 
@@ -160,19 +148,19 @@ public class FrameVendas extends javax.swing.JInternalFrame {
                             .addComponent(jLabel36))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(serFuncionario)
-                            .addComponent(serProduto)
-                            .addComponent(serCliente)
-                            .addComponent(serQuantidade)
-                            .addComponent(serData, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(vendFuncionario)
+                            .addComponent(vendProduto)
+                            .addComponent(vendCliente)
+                            .addComponent(vendQuantidade)
+                            .addComponent(vendData, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(serNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(vendNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(serSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(vendSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(serExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(vendExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(serCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(vendCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -181,78 +169,55 @@ public class FrameVendas extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel36)
-                    .addComponent(serCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(vendCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel35)
-                    .addComponent(serProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(vendProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel34)
-                    .addComponent(serFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(vendFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(serQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vendQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel33))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(serData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vendData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel25))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(serExcluir)
-                    .addComponent(serCancelar)
-                    .addComponent(serNovo)
-                    .addComponent(serSalvar))
+                    .addComponent(vendExcluir)
+                    .addComponent(vendCancelar)
+                    .addComponent(vendNovo)
+                    .addComponent(vendSalvar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void serClienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_serClienteKeyReleased
+    private void vendClienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vendClienteKeyReleased
+        
+    }//GEN-LAST:event_vendClienteKeyReleased
 
-    }//GEN-LAST:event_serClienteKeyReleased
+    private void vendProdutoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vendProdutoKeyReleased
+        
+    }//GEN-LAST:event_vendProdutoKeyReleased
 
-    private void serProdutoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_serProdutoKeyReleased
+    private void vendFuncionarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vendFuncionarioKeyReleased
+        
+    }//GEN-LAST:event_vendFuncionarioKeyReleased
 
-    }//GEN-LAST:event_serProdutoKeyReleased
+    private void vendQuantidadeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vendQuantidadeKeyReleased
+        
+    }//GEN-LAST:event_vendQuantidadeKeyReleased
 
-    private void serFuncionarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_serFuncionarioKeyReleased
+    private void vendDataKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vendDataKeyReleased
 
-    }//GEN-LAST:event_serFuncionarioKeyReleased
+    }//GEN-LAST:event_vendDataKeyReleased
 
-    private void serQuantidadeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_serQuantidadeKeyReleased
-
-    }//GEN-LAST:event_serQuantidadeKeyReleased
-
-    private void serDataKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_serDataKeyReleased
-
-    }//GEN-LAST:event_serDataKeyReleased
-
-    private void serProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serProdutoActionPerformed
-
-    }//GEN-LAST:event_serProdutoActionPerformed
-
-    private void serClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serClienteActionPerformed
-
-    }//GEN-LAST:event_serClienteActionPerformed
-    /*
-    private boolean validaInteiro(String vtxt) {
-        if (caracInt.contains(vtxt.substring(vtxt.length() - 1, vtxt.length()))) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private boolean validaFloat(String vtxt) {
-        if (caracFloat.contains(vtxt.substring(vtxt.length() - 1, vtxt.length()))) {
-            return true;
-        } else {
-            return false;
-        }
-    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel25;
@@ -260,38 +225,38 @@ public class FrameVendas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
-    private javax.swing.JButton serCancelar;
-    private javax.swing.JTextField serCliente;
-    private javax.swing.JTextField serData;
-    private javax.swing.JButton serExcluir;
-    private javax.swing.JTextField serFuncionario;
-    private javax.swing.JButton serNovo;
-    private javax.swing.JTextField serProduto;
-    private javax.swing.JTextField serQuantidade;
-    private javax.swing.JButton serSalvar;
+    private javax.swing.JButton vendCancelar;
+    private javax.swing.JTextField vendCliente;
+    private javax.swing.JTextField vendData;
+    private javax.swing.JButton vendExcluir;
+    private javax.swing.JTextField vendFuncionario;
+    private javax.swing.JButton vendNovo;
+    private javax.swing.JTextField vendProduto;
+    private javax.swing.JTextField vendQuantidade;
+    private javax.swing.JButton vendSalvar;
     // End of variables declaration//GEN-END:variables
 
-    public Vendas getVendass() throws ExceptionConveniencia {
-        Vendas ser = new Vendas();
-
-        if (serCliente.getText().trim().isEmpty()) {
+    public Vendas getVendas() throws ExceptionConveniencia{
+        Vendas vend = new Vendas();
+        
+        if (vendCliente.getText().trim().isEmpty()){
             throw new ExceptionConveniencia("Cliente deve ser informado!");
         }
-
-        if (serProduto.getText().trim().isEmpty()) {
+        
+        if (vendProduto.getText().trim().isEmpty()){
             throw new ExceptionConveniencia("Produto deve ser informado!");
         }
-
-        if (serFuncionario.getText().trim().isEmpty()) {
+        
+        if (vendFuncionario.getText().trim().isEmpty()){
             throw new ExceptionConveniencia("Funcionário deve ser informado!");
         }
-
-        ser.setVenCliente(Integer.parseInt(serCliente.getText()));
-        ser.setVenProduto(Integer.parseInt(serProduto.getText()));
-        ser.setVenFuncionario(Integer.parseInt(serFuncionario.getText()));
-        ser.setVenQuantidade(Float.parseFloat(serQuantidade.getText()));
-        ser.setVenData(serData.getText());
-
-        return ser;
-    }
+        
+        vend.setVenCliente(Integer.parseInt(vendCliente.getText()));
+        vend.setVenProduto(Integer.parseInt(vendProduto.getText()));
+        vend.setVenFuncionario(Integer.parseInt(vendFuncionario.getText()));
+        vend.setVenQuantidade(Float.parseFloat(vendQuantidade.getText()));
+        vend.setVenData(vendData.getText());
+        
+        return vend;
+    }        
 }

@@ -37,7 +37,7 @@ public class ActionVendas implements ActionListener {
 
             try {
 
-                Vendas servicos = frameVendas.getVendass();
+                Vendas servicos = frameVendas.getVendas();
 
                 System.out.println(servicos.getVenCliente());
                 System.out.println(servicos.getVenProduto());

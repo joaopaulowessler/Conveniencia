@@ -5,60 +5,60 @@ import Classes.Produto;
 import Exception.ExceptionConveniencia;
 
 public class FrameProduto extends javax.swing.JInternalFrame {
-
-    private final Produto produto = new Produto();
-    private final ActionProduto actProduto = new ActionProduto(this, produto);
-
+    
+    private Produto produto    = new Produto();
+    private ActionProduto actProduto = new ActionProduto(this,produto);
+    
     public FrameProduto() {
         initComponents();
-
+        
         proSalvar.addActionListener(actProduto);
         proExcluir.addActionListener(actProduto);
         proCancelar.addActionListener(actProduto);
         proNovo.addActionListener(actProduto);
     }
-
-    public void novoProduto() {
-
+    
+    public void novoProduto(){
+        
         proCodigo.setText("");
         proDescricao.setText("");
         proUnidade.setText("");
         proFornecedor.setText("");
         proPreco.setText("");
         proDataCadastro.setText("");
-
+        
         proCodigo.setEnabled(true);
         proDescricao.setEnabled(true);
         proUnidade.setEnabled(true);
         proFornecedor.setEnabled(true);
         proPreco.setEnabled(true);
-        proDataCadastro.setEnabled(true);
+        proDataCadastro.setEnabled(true);                
         proNovo.setEnabled(false);
         proSalvar.setEnabled(true);
-        proCancelar.setEnabled(true);
+        proCancelar.setEnabled(true);        
     }
-
-    public void cancelarProduto() {
-
+    
+    public void cancelarProduto(){
+        
         proCodigo.setText("");
         proDescricao.setText("");
         proUnidade.setText("");
         proFornecedor.setText("");
         proPreco.setText("");
         proDataCadastro.setText("");
-
+        
         proCodigo.setEnabled(false);
         proDescricao.setEnabled(false);
         proUnidade.setEnabled(false);
         proFornecedor.setEnabled(false);
         proPreco.setEnabled(false);
         proDataCadastro.setEnabled(false);
-
+                
         proNovo.setEnabled(true);
         proSalvar.setEnabled(false);
-        proCancelar.setEnabled(false);
+        proCancelar.setEnabled(false); 
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -80,8 +80,6 @@ public class FrameProduto extends javax.swing.JInternalFrame {
         jLabel32 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
 
-        setClosable(true);
-        setIconifiable(true);
         setTitle("Produto");
 
         proDataCadastro.setEnabled(false);
@@ -231,7 +229,7 @@ public class FrameProduto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_proNovoActionPerformed
 
     private void proCodigoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_proCodigoKeyReleased
-        
+        produto.setProCodigo(Integer.parseInt(proCodigo.getText()));
     }//GEN-LAST:event_proCodigoKeyReleased
 
     private void proDescricaoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_proDescricaoKeyReleased
@@ -247,13 +245,13 @@ public class FrameProduto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_proFornecedorKeyReleased
 
     private void proPrecoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_proPrecoKeyReleased
-        
+        produto.setProPreco(Float.parseFloat(proPreco.getText()));
     }//GEN-LAST:event_proPrecoKeyReleased
 
     private void proDataCadastroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_proDataCadastroKeyReleased
         produto.setProDataCadatro(proDataCadastro.getText());
     }//GEN-LAST:event_proDataCadastroKeyReleased
-  
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel24;
@@ -273,24 +271,25 @@ public class FrameProduto extends javax.swing.JInternalFrame {
     private javax.swing.JButton proSalvar;
     private javax.swing.JTextField proUnidade;
     // End of variables declaration//GEN-END:variables
-    public Produto getProduto() throws ExceptionConveniencia {
-        Produto pro = new Produto();
 
-        if (proCodigo.getText().trim().isEmpty()) {
+    public Produto getProduto()throws ExceptionConveniencia{
+        Produto pro = new Produto();
+        
+        if (proCodigo.getText().trim().isEmpty()){
             throw new ExceptionConveniencia("Código do produto deve ser informado!");
         }
-
-        if (proDescricao.getText().trim().isEmpty()) {
+        
+        if (proDescricao.getText().trim().isEmpty()){
             throw new ExceptionConveniencia("Descrição do produto deve ser informado!");
         }
-
+        
         pro.setProCodigo(Integer.parseInt(proCodigo.getText()));
         pro.setProDesc(proDescricao.getText());
         pro.setProUnidade(proUnidade.getText());
         pro.setProFornecedor(proFornecedor.getText());
         pro.setProPreco(Float.parseFloat(proPreco.getText()));
         pro.setProDataCadatro(proDataCadastro.getText());
-
+        
         return pro;
     }
 }

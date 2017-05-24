@@ -4,19 +4,26 @@ import InternalFrames.FrameProduto;
 import InternalFrames.FrameCliente;
 import InternalFrames.FrameVendas;
 import InternalFrames.FrameFuncionario;
+import InternalFrames.FrameListarCliente;
+import InternalFrames.FrameListarFuncionário;
+import InternalFrames.FrameListarProduto;
+import InternalFrames.FrameListarVendas;
 import Log.Log;
+import java.beans.PropertyVetoException;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class FrameMenu extends javax.swing.JFrame {
-    
+
     Log log = new Log();
-    
+
     public FrameMenu() {
         initComponents();
         jDesktopPane.setVisible(true);
         setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
-    }    
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -27,11 +34,19 @@ public class FrameMenu extends javax.swing.JFrame {
         jDesktopPane = new javax.swing.JDesktopPane();
         menuPrincial = new javax.swing.JMenuBar();
         MenuCadastros = new javax.swing.JMenu();
-        cliente = new javax.swing.JMenuItem();
+        cadClientes = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        funcionario = new javax.swing.JMenuItem();
+        cadFuncionarios = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
-        produto = new javax.swing.JMenuItem();
+        cadProdutos = new javax.swing.JMenuItem();
+        MenuListar = new javax.swing.JMenu();
+        listarClientes = new javax.swing.JMenuItem();
+        jSeparator3 = new javax.swing.JPopupMenu.Separator();
+        listarFuncionarios = new javax.swing.JMenuItem();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
+        listarProdutos = new javax.swing.JMenuItem();
+        jSeparator5 = new javax.swing.JPopupMenu.Separator();
+        listarVendas = new javax.swing.JMenuItem();
         MenuServicos = new javax.swing.JMenu();
         servicos = new javax.swing.JMenuItem();
         ajuda = new javax.swing.JMenu();
@@ -80,43 +95,90 @@ public class FrameMenu extends javax.swing.JFrame {
 
         MenuCadastros.setText("Cadastros");
 
-        cliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
-        cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frames/Icones/cliente.png"))); // NOI18N
-        cliente.setText("Cliente");
-        cliente.addActionListener(new java.awt.event.ActionListener() {
+        cadClientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        cadClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frames/Icones/cliente.png"))); // NOI18N
+        cadClientes.setText("Clientes");
+        cadClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clienteActionPerformed(evt);
+                cadClientesActionPerformed(evt);
             }
         });
-        MenuCadastros.add(cliente);
+        MenuCadastros.add(cadClientes);
         MenuCadastros.add(jSeparator1);
 
-        funcionario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
-        funcionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frames/Icones/funcionário.png"))); // NOI18N
-        funcionario.setText("Funcionário");
-        funcionario.addActionListener(new java.awt.event.ActionListener() {
+        cadFuncionarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
+        cadFuncionarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frames/Icones/funcionário.png"))); // NOI18N
+        cadFuncionarios.setText("Funcionários");
+        cadFuncionarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                funcionarioActionPerformed(evt);
+                cadFuncionariosActionPerformed(evt);
             }
         });
-        MenuCadastros.add(funcionario);
+        MenuCadastros.add(cadFuncionarios);
         MenuCadastros.add(jSeparator2);
 
-        produto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
-        produto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frames/Icones/produto.png"))); // NOI18N
-        produto.setText("Produto");
-        produto.addActionListener(new java.awt.event.ActionListener() {
+        cadProdutos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        cadProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frames/Icones/produto.png"))); // NOI18N
+        cadProdutos.setText("Produtos");
+        cadProdutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                produtoActionPerformed(evt);
+                cadProdutosActionPerformed(evt);
             }
         });
-        MenuCadastros.add(produto);
+        MenuCadastros.add(cadProdutos);
 
         menuPrincial.add(MenuCadastros);
 
+        MenuListar.setText("Listar");
+
+        listarClientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
+        listarClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frames/Icones/cliente.png"))); // NOI18N
+        listarClientes.setText("Clientes");
+        listarClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarClientesActionPerformed(evt);
+            }
+        });
+        MenuListar.add(listarClientes);
+        MenuListar.add(jSeparator3);
+
+        listarFuncionarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        listarFuncionarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frames/Icones/funcionário.png"))); // NOI18N
+        listarFuncionarios.setText("Funcionários");
+        listarFuncionarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarFuncionariosActionPerformed(evt);
+            }
+        });
+        MenuListar.add(listarFuncionarios);
+        MenuListar.add(jSeparator4);
+
+        listarProdutos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
+        listarProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frames/Icones/produto.png"))); // NOI18N
+        listarProdutos.setText("Produtos");
+        listarProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarProdutosActionPerformed(evt);
+            }
+        });
+        MenuListar.add(listarProdutos);
+        MenuListar.add(jSeparator5);
+
+        listarVendas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        listarVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frames/Icones/vendas.png"))); // NOI18N
+        listarVendas.setText("Vendas");
+        listarVendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarVendasActionPerformed(evt);
+            }
+        });
+        MenuListar.add(listarVendas);
+
+        menuPrincial.add(MenuListar);
+
         MenuServicos.setText("Vendas");
 
-        servicos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        servicos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_MASK));
         servicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frames/Icones/vendas.png"))); // NOI18N
         servicos.setText("Vendas");
         servicos.addActionListener(new java.awt.event.ActionListener() {
@@ -168,58 +230,119 @@ public class FrameMenu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_menuPrincialComponentResized
 
-    private void produtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_produtoActionPerformed
+    private void cadProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadProdutosActionPerformed
         FrameProduto fpro = new FrameProduto();
         jDesktopPane.add(fpro);
         fpro.setVisible(true);
-        
-        try{
+
+        try {
             log.escrever("Acessou Produto", "log.txt");
-        }catch (IOException ex) {
+        } catch (IOException ex) {
         }
-    }//GEN-LAST:event_produtoActionPerformed
+    }//GEN-LAST:event_cadProdutosActionPerformed
 
     private void servicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_servicosActionPerformed
-        FrameVendas fser = new FrameVendas();
-        jDesktopPane.add(fser);
-        fser.setVisible(true);
+        FrameVendas fvend = new FrameVendas();
+        jDesktopPane.add(fvend);
+        fvend.setVisible(true);
 
-        try{
-            log.escrever("Acessou Serviços", "log.txt");
-        }catch (IOException ex) {
+        try {
+            log.escrever("Acessou Vendas", "log.txt");
+        } catch (IOException ex) {
         }
     }//GEN-LAST:event_servicosActionPerformed
 
     private void ajudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajudaActionPerformed
-        
+
     }//GEN-LAST:event_ajudaActionPerformed
 
     private void sobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sobreActionPerformed
-        JOptionPane.showMessageDialog(null,"Software desenvolvido por:\nJoão Paulo Wessler\nSamuel Martins\nTiago dos Santos\n"+
-                " Desenvolvido aplicando o conhecimento da matéria de Tópicos I, lecionada por Gilberto Vieira da Silva");
+        JOptionPane.showMessageDialog(null, "Software desenvolvido por:\nJoão Paulo Wessler\nSamuel Martins\nTiago dos Santos\n"
+                + " Desenvolvido aplicando o conhecimento da matéria de Tópicos I, lecionada por Gilberto Vieira da Silva");
     }//GEN-LAST:event_sobreActionPerformed
 
-    private void clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteActionPerformed
+    private void cadClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadClientesActionPerformed
         FrameCliente fcli = new FrameCliente();
         jDesktopPane.add(fcli);
-        fcli.setVisible(true); 
-        
-        try{
-            log.escrever("Acessou Clientes", "log.txt");
-        }catch (IOException ex) {
-        }
-    }//GEN-LAST:event_clienteActionPerformed
+        fcli.setVisible(true);
 
-    private void funcionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funcionarioActionPerformed
+        try {
+            log.escrever("Acessou Clientes", "log.txt");
+        } catch (IOException ex) {
+        }
+    }//GEN-LAST:event_cadClientesActionPerformed
+
+    private void cadFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadFuncionariosActionPerformed
         FrameFuncionario fFun = new FrameFuncionario();
         jDesktopPane.add(fFun);
         fFun.setVisible(true);
-        
-        try{            
+
+        try {
             log.escrever("Acessou Funcionários", "log.txt");
-        }catch (IOException ex) {
+        } catch (IOException ex) {
         }
-    }//GEN-LAST:event_funcionarioActionPerformed
+    }//GEN-LAST:event_cadFuncionariosActionPerformed
+
+    private void listarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarClientesActionPerformed
+        FrameListarCliente lcli = new FrameListarCliente();
+        jDesktopPane.add(lcli);
+        lcli.setVisible(true);
+        try {
+            lcli.setMaximum(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            log.escrever("Acessou Listar Clientes", "log.txt");
+        } catch (IOException ex) {
+        }
+
+    }//GEN-LAST:event_listarClientesActionPerformed
+
+    private void listarFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarFuncionariosActionPerformed
+        FrameListarFuncionário lfun = new FrameListarFuncionário();
+        jDesktopPane.add(lfun);
+        lfun.setVisible(true);
+        try {
+            lfun.setMaximum(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            log.escrever("Acessou Listar Funcionário", "log.txt");
+        } catch (IOException ex) {
+        }
+    }//GEN-LAST:event_listarFuncionariosActionPerformed
+
+    private void listarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarProdutosActionPerformed
+        FrameListarProduto lprod = new FrameListarProduto();
+        jDesktopPane.add(lprod);
+        lprod.setVisible(true);
+        try {
+            lprod.setMaximum(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            log.escrever("Acessou Listar Produto", "log.txt");
+        } catch (IOException ex) {
+        }
+    }//GEN-LAST:event_listarProdutosActionPerformed
+
+    private void listarVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarVendasActionPerformed
+        FrameListarVendas lvendas = new FrameListarVendas();
+        jDesktopPane.add(lvendas);
+        lvendas.setVisible(true);
+        try {
+            lvendas.setMaximum(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            log.escrever("Acessou Listar Vendas", "log.txt");
+        } catch (IOException ex) {
+        }
+    }//GEN-LAST:event_listarVendasActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -228,20 +351,28 @@ public class FrameMenu extends javax.swing.JFrame {
             }
         });
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu MenuCadastros;
+    private javax.swing.JMenu MenuListar;
     private javax.swing.JMenu MenuServicos;
     private javax.swing.JMenu ajuda;
     private javax.swing.ButtonGroup buttonGroupSexo;
-    private javax.swing.JMenuItem cliente;
-    private javax.swing.JMenuItem funcionario;
+    private javax.swing.JMenuItem cadClientes;
+    private javax.swing.JMenuItem cadFuncionarios;
+    private javax.swing.JMenuItem cadProdutos;
     private javax.swing.JDesktopPane jDesktopPane;
     private javax.swing.JPanel jPanelPrincipal;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JPopupMenu.Separator jSeparator5;
+    private javax.swing.JMenuItem listarClientes;
+    private javax.swing.JMenuItem listarFuncionarios;
+    private javax.swing.JMenuItem listarProdutos;
+    private javax.swing.JMenuItem listarVendas;
     private javax.swing.JMenuBar menuPrincial;
-    private javax.swing.JMenuItem produto;
     private javax.swing.JMenuItem servicos;
     private javax.swing.JMenuItem sobre;
     // End of variables declaration//GEN-END:variables
