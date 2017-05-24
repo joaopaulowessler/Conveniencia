@@ -74,7 +74,7 @@ public class FrameVendas extends javax.swing.JInternalFrame {
         jLabel34 = new javax.swing.JLabel();
         vendFuncionario = new javax.swing.JTextField();
 
-        setTitle("Serviços");
+        setTitle("Vendas");
 
         vendProduto.setEnabled(false);
         vendProduto.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -243,12 +243,28 @@ public class FrameVendas extends javax.swing.JInternalFrame {
             throw new ExceptionConveniencia("Cliente deve ser informado!");
         }
         
+        if (!validaCaracteres(vendCliente.getText())) {
+            throw new ExceptionConveniencia("Código do cliente inválido!");
+        }
+        
         if (vendProduto.getText().trim().isEmpty()){
             throw new ExceptionConveniencia("Produto deve ser informado!");
         }
         
+        if (!validaCaracteres(vendProduto.getText())) {
+            throw new ExceptionConveniencia("Código do produto inválido!");
+        }
+        
         if (vendFuncionario.getText().trim().isEmpty()){
             throw new ExceptionConveniencia("Funcionário deve ser informado!");
+        }
+        
+        if (!validaCaracteres(vendFuncionario.getText())) {
+            throw new ExceptionConveniencia("Código do Funcionário inválido!");
+        }
+        
+        if (!validaCaracteres(vendQuantidade.getText())) {
+            throw new ExceptionConveniencia("Quantidade inválida!");
         }
         
         vend.setVenCliente(Integer.parseInt(vendCliente.getText()));
@@ -258,5 +274,15 @@ public class FrameVendas extends javax.swing.JInternalFrame {
         vend.setVenData(vendData.getText());
         
         return vend;
-    }        
+    }   
+    
+    public boolean validaCaracteres(String vtxt) {
+        String caracteres = "0123456789,";
+        
+        for (int i = 0; i < vtxt.length(); i++){
+            if (!caracteres.contains(vtxt.substring(i,i+1)))
+                return false;            
+        }            
+        return true;
+    }
 }

@@ -6,8 +6,7 @@ import Exception.ExceptionConveniencia;
 
 public class FrameProduto extends javax.swing.JInternalFrame {
     
-    private Produto produto    = new Produto();
-    private ActionProduto actProduto = new ActionProduto(this,produto);
+    private ActionProduto actProduto = new ActionProduto(this);
     
     public FrameProduto() {
         initComponents();
@@ -225,31 +224,31 @@ public class FrameProduto extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void proNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proNovoActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_proNovoActionPerformed
 
     private void proCodigoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_proCodigoKeyReleased
-        produto.setProCodigo(Integer.parseInt(proCodigo.getText()));
+        
     }//GEN-LAST:event_proCodigoKeyReleased
 
     private void proDescricaoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_proDescricaoKeyReleased
-        produto.setProDesc(proDescricao.getText());
+        
     }//GEN-LAST:event_proDescricaoKeyReleased
 
     private void proUnidadeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_proUnidadeKeyReleased
-        produto.setProUnidade(proUnidade.getText());
+        
     }//GEN-LAST:event_proUnidadeKeyReleased
 
     private void proFornecedorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_proFornecedorKeyReleased
-        produto.setProFornecedor(proFornecedor.getText());
+        
     }//GEN-LAST:event_proFornecedorKeyReleased
 
     private void proPrecoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_proPrecoKeyReleased
-        produto.setProPreco(Float.parseFloat(proPreco.getText()));
+        
     }//GEN-LAST:event_proPrecoKeyReleased
 
     private void proDataCadastroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_proDataCadastroKeyReleased
-        produto.setProDataCadatro(proDataCadastro.getText());
+        
     }//GEN-LAST:event_proDataCadastroKeyReleased
 
 
@@ -279,8 +278,16 @@ public class FrameProduto extends javax.swing.JInternalFrame {
             throw new ExceptionConveniencia("Código do produto deve ser informado!");
         }
         
+        if (!validaCaracteres(proCodigo.getText())) {
+            throw new ExceptionConveniencia("Código do produto inválido!");
+        }
+        
         if (proDescricao.getText().trim().isEmpty()){
             throw new ExceptionConveniencia("Descrição do produto deve ser informado!");
+        }
+        
+        if (!validaCaracteres(proPreco.getText())) {
+            throw new ExceptionConveniencia("Preço do produto inválido!");
         }
         
         pro.setProCodigo(Integer.parseInt(proCodigo.getText()));
@@ -291,5 +298,15 @@ public class FrameProduto extends javax.swing.JInternalFrame {
         pro.setProDataCadatro(proDataCadastro.getText());
         
         return pro;
+    }
+    
+    public boolean validaCaracteres(String vtxt) {
+        String caracteres = "0123456789,";
+        
+        for (int i = 0; i < vtxt.length(); i++){
+            if (!caracteres.contains(vtxt.substring(i,i+1)))
+                return false;            
+        }            
+        return true;
     }
 }

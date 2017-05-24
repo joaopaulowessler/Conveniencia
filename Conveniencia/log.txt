@@ -185,3 +185,56 @@ Tiago - Tue May 23 20:09:01 BRT 2017 : Acessou Listar Vendas
 Tiago - Tue May 23 20:09:46 BRT 2017 : Logou
 Tiago - Tue May 23 20:09:48 BRT 2017 : Acessou Listar Vendas
 Tiago - Tue May 23 20:09:55 BRT 2017 : Acessou Listar Vendas
+Tiago - Wed May 24 19:05:17 BRT 2017 : Logou
+Tiago - Wed May 24 19:05:23 BRT 2017 : Acessou Clientes
+Tiago - Wed May 24 19:05:26 BRT 2017 : Novo
+Tiago - Wed May 24 19:07:12 BRT 2017 : Salvar
+Tiago - Wed May 24 19:07:12 BRT 2017 : Exception: Código do cliente inválido!
+Tiago - Wed May 24 19:07:19 BRT 2017 : Salvar
+Tiago - Wed May 24 19:07:19 BRT 2017 : Exception: Código do cliente inválido!
+Tiago - Wed May 24 19:07:26 BRT 2017 : Salvar
+Tiago - Wed May 24 19:07:59 BRT 2017 : Acessou Funcionários
+Tiago - Wed May 24 19:08:01 BRT 2017 : Novo
+Tiago - Wed May 24 19:08:52 BRT 2017 : Salvar
+Tiago - Wed May 24 19:08:52 BRT 2017 : Exception: Código do funcionário inválido!
+Tiago - Wed May 24 19:09:02 BRT 2017 : Salvar
+Tiago - Wed May 24 19:10:02 BRT 2017 : Acessou Produto
+Tiago - Wed May 24 19:10:04 BRT 2017 : Novo
+Tiago - Wed May 24 19:15:36 BRT 2017 : Logou
+Tiago - Wed May 24 19:15:49 BRT 2017 : Acessou Produto
+Tiago - Wed May 24 19:15:51 BRT 2017 : Novo
+Tiago - Wed May 24 19:16:08 BRT 2017 : Salvar
+Tiago - Wed May 24 19:25:07 BRT 2017 : Logou
+Tiago - Wed May 24 19:25:10 BRT 2017 : Acessou Produto
+Tiago - Wed May 24 19:25:12 BRT 2017 : Novo
+Tiago - Wed May 24 19:25:22 BRT 2017 : Salvar
+Tiago - Wed May 24 19:25:22 BRT 2017 : Exception: Código do produto inválido!
+Tiago - Wed May 24 19:25:52 BRT 2017 : Salvar
+Tiago - Wed May 24 19:25:52 BRT 2017 : Exception: Código do produto inválido!
+Tiago - Wed May 24 19:25:58 BRT 2017 : Salvar
+Tiago - Wed May 24 19:25:58 BRT 2017 : Exception: Preço do produto inválido!
+Tiago - Wed May 24 19:26:04 BRT 2017 : Salvar
+Tiago - Wed May 24 19:26:04 BRT 2017 : Exception: Preço do produto inválido!
+Tiago - Wed May 24 19:26:11 BRT 2017 : Salvar
+Tiago - Wed May 24 19:27:29 BRT 2017 : Acessou Vendas
+Tiago - Wed May 24 19:27:33 BRT 2017 : Novo
+Tiago - Wed May 24 19:27:44 BRT 2017 : Salvar
+Tiago - Wed May 24 19:28:35 BRT 2017 : Cancelamento
+Tiago - Wed May 24 19:34:22 BRT 2017 : Logou
+Tiago - Wed May 24 19:34:29 BRT 2017 : Acessou Vendas
+Tiago - Wed May 24 19:34:36 BRT 2017 : Novo
+Tiago - Wed May 24 19:34:48 BRT 2017 : Salvar
+Tiago - Wed May 24 19:34:48 BRT 2017 : Exception: Código do cliente inválido!
+Tiago - Wed May 24 19:34:55 BRT 2017 : Salvar
+Tiago - Wed May 24 19:34:55 BRT 2017 : Exception: Código do produto inválido!
+Tiago - Wed May 24 19:35:00 BRT 2017 : Salvar
+Tiago - Wed May 24 19:35:00 BRT 2017 : Exception: Código do Funcionário inválido!
+Tiago - Wed May 24 19:35:07 BRT 2017 : Salvar
+Tiago - Wed May 24 19:35:07 BRT 2017 : Exception: Quantidade inválida!
+Tiago - Wed May 24 19:35:14 BRT 2017 : Salvar
+Tiago - Wed May 24 19:36:03 BRT 2017 : Acessou Listar Clientes
+Tiago - Wed May 24 19:36:11 BRT 2017 : Acessou Listar Funcionário
+Tiago - Wed May 24 19:36:20 BRT 2017 : Acessou Listar Produto
+Tiago - Wed May 24 19:36:27 BRT 2017 : Acessou Listar Vendas
+Tiago - Wed May 24 19:36:35 BRT 2017 : Acessou Clientes
+Tiago - Wed May 24 19:36:53 BRT 2017 : Acessou Listar Vendas

@@ -12,7 +12,7 @@ public class ActionProduto implements ActionListener {
 
     private final InternalFrames.FrameProduto frameProduto;
 
-    public ActionProduto(InternalFrames.FrameProduto fraPro, Produto claPro) {
+    public ActionProduto(InternalFrames.FrameProduto fraPro) {
         this.frameProduto = fraPro;
     }
 
