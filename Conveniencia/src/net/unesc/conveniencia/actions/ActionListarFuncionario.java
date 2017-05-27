@@ -10,9 +10,9 @@ import javax.swing.JOptionPane;
 
 public class ActionListarFuncionario implements ActionListener {
 
-    private final net.unesc.conveniencia.internalframes.FrameListarFuncionário framListFunci;
+    private final net.unesc.conveniencia.internalframes.FrameListarFuncionario framListFunci;
 
-    public ActionListarFuncionario(net.unesc.conveniencia.internalframes.FrameListarFuncionário fraFun) {
+    public ActionListarFuncionario(net.unesc.conveniencia.internalframes.FrameListarFuncionario fraFun) {
         this.framListFunci = fraFun;
     }
 

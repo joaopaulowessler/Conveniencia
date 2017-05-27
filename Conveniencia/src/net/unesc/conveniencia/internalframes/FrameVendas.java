@@ -1,12 +1,16 @@
 package net.unesc.conveniencia.internalframes;
 
+import java.io.IOException;
 import net.unesc.conveniencia.actions.ActionVendas;
 import net.unesc.conveniencia.classes.Vendas;
 import net.unesc.conveniencia.exception.ExceptionConveniencia;
+import net.unesc.conveniencia.log.Log;
 
 public class FrameVendas extends javax.swing.JInternalFrame {
     
     private ActionVendas actVendas = new ActionVendas(this);
+    
+    Log log = new Log();
     
     public FrameVendas() {
         initComponents();
@@ -74,7 +78,26 @@ public class FrameVendas extends javax.swing.JInternalFrame {
         jLabel34 = new javax.swing.JLabel();
         vendFuncionario = new javax.swing.JTextField();
 
+        setClosable(true);
+        setIconifiable(true);
         setTitle("Vendas");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         vendProduto.setEnabled(false);
         vendProduto.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -217,6 +240,13 @@ public class FrameVendas extends javax.swing.JInternalFrame {
     private void vendDataKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vendDataKeyReleased
 
     }//GEN-LAST:event_vendDataKeyReleased
+
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+        try {
+            log.escrever("Saiu do cadastro de vendas", "log.txt");
+        } catch (IOException ex) {
+        }
+    }//GEN-LAST:event_formInternalFrameClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

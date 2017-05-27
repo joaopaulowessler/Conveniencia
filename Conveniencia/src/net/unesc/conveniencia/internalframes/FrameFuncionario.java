@@ -1,13 +1,18 @@
 package net.unesc.conveniencia.internalframes;
 
+import java.io.IOException;
+import javax.swing.JOptionPane;
 import net.unesc.conveniencia.actions.ActionFuncionario;
 import net.unesc.conveniencia.classes.Funcionario;
 import net.unesc.conveniencia.exception.ExceptionConveniencia;
+import net.unesc.conveniencia.log.Log;
 
 public class FrameFuncionario extends javax.swing.JInternalFrame {
 
     private final ActionFuncionario actFuncionario = new ActionFuncionario(this);
-
+    
+    Log log = new Log();
+    
     public FrameFuncionario() {
         initComponents();
 
@@ -53,6 +58,23 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setTitle("Funcionários");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jLabel14.setText("Endereço:");
 
@@ -404,6 +426,13 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
     private void funDataAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funDataAdmActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_funDataAdmActionPerformed
+
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+        try {
+            log.escrever("Saiu do cadastro de funcionário", "log.txt");
+        } catch (IOException ex) {
+        }
+    }//GEN-LAST:event_formInternalFrameClosed
 
     public void novoFuncionario() {
 

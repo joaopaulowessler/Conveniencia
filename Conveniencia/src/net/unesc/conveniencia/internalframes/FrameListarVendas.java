@@ -1,8 +1,10 @@
 package net.unesc.conveniencia.internalframes;
 
+import java.io.IOException;
 import net.unesc.conveniencia.actions.ActionListarVendas;
 import net.unesc.conveniencia.classes.Vendas;
 import net.unesc.conveniencia.exception.ExceptionConveniencia;
+import net.unesc.conveniencia.log.Log;
 
 public class FrameListarVendas extends javax.swing.JInternalFrame {
 
@@ -12,7 +14,9 @@ public class FrameListarVendas extends javax.swing.JInternalFrame {
     public FrameListarVendas() {
         initComponents();
     }
-
+    
+    Log log = new Log();
+    
     public void novaBusca() {
 
         vendProduto.setText("");
@@ -47,6 +51,23 @@ public class FrameListarVendas extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setTitle("Lista de Produtos");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -161,6 +182,13 @@ public class FrameListarVendas extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+        try {
+            log.escrever("Saiu da consulta de vendas", "log.txt");
+        } catch (IOException ex) {
+        }
+    }//GEN-LAST:event_formInternalFrameClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

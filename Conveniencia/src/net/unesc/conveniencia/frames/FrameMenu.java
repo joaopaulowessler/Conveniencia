@@ -5,7 +5,7 @@ import net.unesc.conveniencia.internalframes.FrameCliente;
 import net.unesc.conveniencia.internalframes.FrameVendas;
 import net.unesc.conveniencia.internalframes.FrameFuncionario;
 import net.unesc.conveniencia.internalframes.FrameListarCliente;
-import net.unesc.conveniencia.internalframes.FrameListarFuncionário;
+import net.unesc.conveniencia.internalframes.FrameListarFuncionario;
 import net.unesc.conveniencia.internalframes.FrameListarProduto;
 import net.unesc.conveniencia.internalframes.FrameListarVendas;
 import net.unesc.conveniencia.log.Log;
@@ -13,12 +13,22 @@ import java.beans.PropertyVetoException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
 public class FrameMenu extends javax.swing.JFrame {
 
     Log log = new Log();
-
+    
+    FrameProduto       fPro    = null;
+    FrameCliente       fCli    = null;
+    FrameFuncionario   fFun    = null;
+    FrameVendas        fVen    = null;
+    FrameListarProduto flisPro = null;
+    FrameListarCliente flisCli = null;
+    FrameListarFuncionario flisFun = null;
+    FrameListarVendas flisVen = null;
+  
     public FrameMenu() {
         initComponents();
         jDesktopPane.setVisible(true);
@@ -229,12 +239,20 @@ public class FrameMenu extends javax.swing.JFrame {
     private void menuPrincialComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_menuPrincialComponentResized
 
     }//GEN-LAST:event_menuPrincialComponentResized
-
+    
+    public void Janela(JInternalFrame frame){
+    }
+    
     private void cadProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadProdutosActionPerformed
-        FrameProduto fpro = new FrameProduto();
-        jDesktopPane.add(fpro);
-        fpro.setVisible(true);
-
+        
+        if (fPro == null || fPro.isClosed()){
+            fPro = new FrameProduto();
+            jDesktopPane.add(fPro);
+            fPro.setVisible(true);
+        } else {
+            jDesktopPane.moveToFront(fPro);
+        }
+        
         try {
             log.escrever("Acessou Produto", "log.txt");
         } catch (IOException ex) {
@@ -242,9 +260,13 @@ public class FrameMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_cadProdutosActionPerformed
 
     private void servicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_servicosActionPerformed
-        FrameVendas fvend = new FrameVendas();
-        jDesktopPane.add(fvend);
-        fvend.setVisible(true);
+        if (fVen == null || fVen.isClosed()){
+            fVen = new FrameVendas();
+            jDesktopPane.add(fVen);
+            fVen.setVisible(true);
+        } else {
+            jDesktopPane.moveToFront(fVen);
+        }        
 
         try {
             log.escrever("Acessou Vendas", "log.txt");
@@ -262,10 +284,14 @@ public class FrameMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_sobreActionPerformed
 
     private void cadClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadClientesActionPerformed
-        FrameCliente fcli = new FrameCliente();
-        jDesktopPane.add(fcli);
-        fcli.setVisible(true);
-
+        if (fCli == null || fCli.isClosed()){
+            fCli = new FrameCliente();
+            jDesktopPane.add(fCli);
+            fCli.setVisible(true);
+        } else {
+            jDesktopPane.moveToFront(fCli);
+        }
+        
         try {
             log.escrever("Acessou Clientes", "log.txt");
         } catch (IOException ex) {
@@ -273,9 +299,13 @@ public class FrameMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_cadClientesActionPerformed
 
     private void cadFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadFuncionariosActionPerformed
-        FrameFuncionario fFun = new FrameFuncionario();
-        jDesktopPane.add(fFun);
-        fFun.setVisible(true);
+        if (fFun == null || fFun.isClosed()){
+            fFun = new FrameFuncionario();
+            jDesktopPane.add(fFun);
+            fFun.setVisible(true);
+        } else {
+            jDesktopPane.moveToFront(fFun);
+        }
 
         try {
             log.escrever("Acessou Funcionários", "log.txt");
@@ -284,14 +314,20 @@ public class FrameMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_cadFuncionariosActionPerformed
 
     private void listarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarClientesActionPerformed
-        FrameListarCliente lcli = new FrameListarCliente();
-        jDesktopPane.add(lcli);
-        lcli.setVisible(true);
+        if (flisCli == null || flisCli.isClosed()){
+            flisCli = new FrameListarCliente();
+            jDesktopPane.add(flisCli);
+            flisCli.setVisible(true);
+        } else {
+            jDesktopPane.moveToFront(flisCli);
+        }
+        
         try {
-            lcli.setMaximum(true);
+            flisCli.setMaximum(true);
         } catch (PropertyVetoException ex) {
             Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         try {
             log.escrever("Acessou Listar Clientes", "log.txt");
         } catch (IOException ex) {
@@ -300,14 +336,20 @@ public class FrameMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_listarClientesActionPerformed
 
     private void listarFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarFuncionariosActionPerformed
-        FrameListarFuncionário lfun = new FrameListarFuncionário();
-        jDesktopPane.add(lfun);
-        lfun.setVisible(true);
+        if (flisFun == null || flisFun.isClosed()){
+            flisFun = new FrameListarFuncionario();
+            jDesktopPane.add(flisFun);
+            flisFun.setVisible(true);
+        } else {
+            jDesktopPane.moveToFront(flisFun);
+        }
+        
         try {
-            lfun.setMaximum(true);
+            flisFun.setMaximum(true);
         } catch (PropertyVetoException ex) {
             Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         try {
             log.escrever("Acessou Listar Funcionário", "log.txt");
         } catch (IOException ex) {
@@ -315,14 +357,20 @@ public class FrameMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_listarFuncionariosActionPerformed
 
     private void listarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarProdutosActionPerformed
-        FrameListarProduto lprod = new FrameListarProduto();
-        jDesktopPane.add(lprod);
-        lprod.setVisible(true);
+        if (flisPro == null || flisPro.isClosed()){
+            flisPro = new FrameListarProduto();
+            jDesktopPane.add(flisPro);
+            flisPro.setVisible(true);
+        } else {
+            jDesktopPane.moveToFront(flisPro);
+        }
+        
         try {
-            lprod.setMaximum(true);
+            flisPro.setMaximum(true);
         } catch (PropertyVetoException ex) {
             Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         try {
             log.escrever("Acessou Listar Produto", "log.txt");
         } catch (IOException ex) {
@@ -330,14 +378,20 @@ public class FrameMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_listarProdutosActionPerformed
 
     private void listarVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarVendasActionPerformed
-        FrameListarVendas lvendas = new FrameListarVendas();
-        jDesktopPane.add(lvendas);
-        lvendas.setVisible(true);
+        if (flisVen == null || flisVen.isClosed()){
+            flisVen = new FrameListarVendas();
+            jDesktopPane.add(flisVen);
+            flisVen.setVisible(true);
+        } else {
+            jDesktopPane.moveToFront(flisVen);
+        }
+        
         try {
-            lvendas.setMaximum(true);
+            flisVen.setMaximum(true);
         } catch (PropertyVetoException ex) {
             Logger.getLogger(FrameMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         try {
             log.escrever("Acessou Listar Vendas", "log.txt");
         } catch (IOException ex) {

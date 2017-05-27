@@ -1,12 +1,16 @@
 package net.unesc.conveniencia.internalframes;
 
+import java.io.IOException;
 import net.unesc.conveniencia.actions.ActionProduto;
 import net.unesc.conveniencia.classes.Produto;
 import net.unesc.conveniencia.exception.ExceptionConveniencia;
+import net.unesc.conveniencia.log.Log;
 
 public class FrameProduto extends javax.swing.JInternalFrame {
     
     private ActionProduto actProduto = new ActionProduto(this);
+    
+    Log log = new Log();
     
     public FrameProduto() {
         initComponents();
@@ -79,7 +83,26 @@ public class FrameProduto extends javax.swing.JInternalFrame {
         jLabel32 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
 
+        setClosable(true);
+        setIconifiable(true);
         setTitle("Produto");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         proDataCadastro.setEnabled(false);
         proDataCadastro.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -250,6 +273,13 @@ public class FrameProduto extends javax.swing.JInternalFrame {
     private void proDataCadastroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_proDataCadastroKeyReleased
         
     }//GEN-LAST:event_proDataCadastroKeyReleased
+
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+        try {
+            log.escrever("Saiu do cadastro de produtos", "log.txt");
+        } catch (IOException ex) {
+        }
+    }//GEN-LAST:event_formInternalFrameClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

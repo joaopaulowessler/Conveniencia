@@ -241,3 +241,30 @@ Tiago - Wed May 24 19:36:53 BRT 2017 : Acessou Listar Vendas
 Tiago - Fri May 26 19:55:40 BRT 2017 : Logou
 Tiago - Fri May 26 19:57:39 BRT 2017 : Logou
 Tiago - Fri May 26 19:57:53 BRT 2017 : Acessou Clientes
+Tiago - Fri May 26 20:08:02 BRT 2017 : Logou
+Tiago - Fri May 26 20:08:05 BRT 2017 : Acessou Produto
+Tiago - Fri May 26 20:08:07 BRT 2017 : Novo
+Tiago - Fri May 26 20:08:10 BRT 2017 : Acessou Listar Clientes
+Tiago - Fri May 26 20:08:14 BRT 2017 : Acessou Produto
+Tiago - Fri May 26 20:08:16 BRT 2017 : Novo
+Tiago - Fri May 26 20:08:17 BRT 2017 : Cancelamento
+Tiago - Fri May 26 20:12:24 BRT 2017 : Logou
+Tiago - Fri May 26 20:13:02 BRT 2017 : Logou
+Tiago - Fri May 26 20:13:05 BRT 2017 : Acessou Produto
+Tiago - Fri May 26 20:13:06 BRT 2017 : Novo
+Tiago - Fri May 26 20:13:08 BRT 2017 : Acessou Listar Clientes
+Tiago - Fri May 26 20:13:11 BRT 2017 : Acessou Produto
+Tiago - Fri May 26 20:13:15 BRT 2017 : Cancelamento
+Tiago - Fri May 26 20:15:05 BRT 2017 : Logou
+Tiago - Fri May 26 20:15:07 BRT 2017 : Acessou Produto
+Tiago - Fri May 26 20:15:10 BRT 2017 : Acessou Produto
+Tiago - Fri May 26 20:15:58 BRT 2017 : Logou
+Tiago - Fri May 26 20:16:00 BRT 2017 : Acessou Produto
+Tiago - Fri May 26 20:16:03 BRT 2017 : Acessou Produto
+Tiago - Fri May 26 20:26:22 BRT 2017 : Logou
+Tiago - Fri May 26 20:26:24 BRT 2017 : Acessou Vendas
+Tiago - Fri May 26 20:26:32 BRT 2017 : Acessou Listar Clientes
+Tiago - Fri May 26 20:26:49 BRT 2017 : Acessou Listar Clientes
+Tiago - Fri May 26 20:32:57 BRT 2017 : Logou
+Tiago - Fri May 26 20:32:59 BRT 2017 : Acessou Funcionários
+Tiago - Fri May 26 20:33:01 BRT 2017 : Acessou Listar Funcionário
