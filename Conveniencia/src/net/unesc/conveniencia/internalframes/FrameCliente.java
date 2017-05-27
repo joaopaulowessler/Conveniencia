@@ -1,13 +1,17 @@
 package net.unesc.conveniencia.internalframes;
 
+import java.io.IOException;
 import net.unesc.conveniencia.actions.ActionCliente;
 import net.unesc.conveniencia.classes.Cliente;
 import net.unesc.conveniencia.exception.ExceptionConveniencia;
 import javax.swing.JOptionPane;
+import net.unesc.conveniencia.log.Log;
 
 public class FrameCliente extends javax.swing.JInternalFrame {
     
     private final ActionCliente actCliente = new ActionCliente(this); 
+    
+    Log log = new Log();
     
     public FrameCliente() {
         initComponents();
@@ -112,6 +116,23 @@ public class FrameCliente extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setTitle("Clientes");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jLabel10.setText("Endereço:");
 
@@ -478,6 +499,13 @@ public class FrameCliente extends javax.swing.JInternalFrame {
     private void cliNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cliNovoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cliNovoActionPerformed
+
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+        try {
+            log.escrever("Saiu do cadastro de produto", "log.txt");
+        } catch (IOException ex) {
+        }
+    }//GEN-LAST:event_formInternalFrameClosed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
