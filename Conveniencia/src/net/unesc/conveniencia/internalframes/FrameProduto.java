@@ -118,6 +118,7 @@ public class FrameProduto extends javax.swing.JInternalFrame {
             }
         });
 
+        proSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/net/unesc/conveniencia/icones/salvar.png"))); // NOI18N
         proSalvar.setText("Salvar");
         proSalvar.setEnabled(false);
 
@@ -128,16 +129,19 @@ public class FrameProduto extends javax.swing.JInternalFrame {
             }
         });
 
+        proExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/net/unesc/conveniencia/icones/excluir.png"))); // NOI18N
         proExcluir.setText("Excluir");
         proExcluir.setEnabled(false);
 
         jLabel28.setText("Fornecedor:");
 
+        proCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/net/unesc/conveniencia/icones/cancelar.png"))); // NOI18N
         proCancelar.setText("Cancelar");
         proCancelar.setEnabled(false);
 
         jLabel29.setText("Unidade Medida:");
 
+        proNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/net/unesc/conveniencia/icones/novo.png"))); // NOI18N
         proNovo.setText("Novo");
         proNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -240,7 +244,7 @@ public class FrameProduto extends javax.swing.JInternalFrame {
                     .addComponent(proExcluir)
                     .addComponent(proCancelar)
                     .addComponent(proNovo))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();

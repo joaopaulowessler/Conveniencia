@@ -92,6 +92,7 @@ public class FrameListarProduto extends javax.swing.JInternalFrame {
 
         nome.setText("Descrição:");
 
+        funBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/net/unesc/conveniencia/icones/buscar.png"))); // NOI18N
         funBuscar.setText("Buscar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

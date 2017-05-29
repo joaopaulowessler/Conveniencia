@@ -105,6 +105,7 @@ public class FrameListarFuncionario extends javax.swing.JInternalFrame {
 
         rg.setText("RG:");
 
+        funBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/net/unesc/conveniencia/icones/buscar.png"))); // NOI18N
         funBuscar.setText("Buscar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

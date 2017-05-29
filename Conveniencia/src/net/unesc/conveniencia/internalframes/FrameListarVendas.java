@@ -96,6 +96,7 @@ public class FrameListarVendas extends javax.swing.JInternalFrame {
 
         nome.setText("Data:");
 
+        vendBusca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/net/unesc/conveniencia/icones/buscar.png"))); // NOI18N
         vendBusca.setText("Buscar");
 
         jLabel1.setText("Cliente:");

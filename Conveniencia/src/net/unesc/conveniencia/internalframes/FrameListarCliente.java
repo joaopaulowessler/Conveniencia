@@ -105,6 +105,7 @@ public class FrameListarCliente extends javax.swing.JInternalFrame {
 
         rg.setText("RG:");
 
+        cliBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/net/unesc/conveniencia/icones/buscar.png"))); // NOI18N
         cliBuscar.setText("Buscar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

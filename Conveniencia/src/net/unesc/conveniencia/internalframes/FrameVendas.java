@@ -108,17 +108,21 @@ public class FrameVendas extends javax.swing.JInternalFrame {
 
         jLabel35.setText("Produto");
 
+        vendSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/net/unesc/conveniencia/icones/salvar.png"))); // NOI18N
         vendSalvar.setText("Salvar");
         vendSalvar.setEnabled(false);
 
+        vendExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/net/unesc/conveniencia/icones/excluir.png"))); // NOI18N
         vendExcluir.setText("Excluir");
         vendExcluir.setEnabled(false);
 
+        vendCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/net/unesc/conveniencia/icones/cancelar.png"))); // NOI18N
         vendCancelar.setText("Cancelar");
         vendCancelar.setEnabled(false);
 
         jLabel25.setText("Data:");
 
+        vendNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/net/unesc/conveniencia/icones/novo.png"))); // NOI18N
         vendNovo.setText("Novo");
 
         vendData.setEnabled(false);

@@ -268,3 +268,22 @@ Tiago - Fri May 26 20:26:49 BRT 2017 : Acessou Listar Clientes
 Tiago - Fri May 26 20:32:57 BRT 2017 : Logou
 Tiago - Fri May 26 20:32:59 BRT 2017 : Acessou Funcionários
 Tiago - Fri May 26 20:33:01 BRT 2017 : Acessou Listar Funcionário
+Tiago - Sun May 28 21:53:03 BRT 2017 : Logou
+Tiago - Sun May 28 21:53:22 BRT 2017 : Acessou Funcionários
+Tiago - Sun May 28 21:53:26 BRT 2017 : Novo
+Tiago - Sun May 28 21:53:32 BRT 2017 : Acessou Funcionários
+Tiago - Sun May 28 21:53:35 BRT 2017 : Acessou Clientes
+Tiago - Sun May 28 21:53:38 BRT 2017 : Novo
+Tiago - Sun May 28 21:53:58 BRT 2017 : Salvar
+Tiago - Sun May 28 21:54:30 BRT 2017 : Novo
+Tiago - Sun May 28 21:54:45 BRT 2017 : Salvar
+Tiago - Sun May 28 21:54:45 BRT 2017 : Exception: Código do cliente deve ser informado!
+Tiago - Sun May 28 21:54:54 BRT 2017 : Salvar
+Tiago - Sun May 28 21:54:54 BRT 2017 : Exception: Nome do cliente deve ser informado!
+Tiago - Sun May 28 21:55:00 BRT 2017 : Saiu do cadastro de produto
+Tiago - Sun May 28 21:55:03 BRT 2017 : Acessou Clientes
+Joao - Sun May 28 22:03:30 BRT 2017 : Logou
+Joao - Sun May 28 22:03:34 BRT 2017 : Acessou Clientes
+Joao - Sun May 28 22:03:36 BRT 2017 : Novo
+Joao - Sun May 28 22:04:43 BRT 2017 : Cancelamento
+Joao - Sun May 28 22:04:45 BRT 2017 : Saiu do cadastro de produto

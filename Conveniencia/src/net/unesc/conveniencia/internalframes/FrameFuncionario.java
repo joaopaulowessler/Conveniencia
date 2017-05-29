@@ -133,12 +133,15 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
 
         jLabel18.setText("Telefone:");
 
+        funExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/net/unesc/conveniencia/icones/excluir.png"))); // NOI18N
         funExcluir.setText("Excluir");
         funExcluir.setEnabled(false);
 
+        funCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/net/unesc/conveniencia/icones/cancelar.png"))); // NOI18N
         funCancelar.setText("Cancelar");
         funCancelar.setEnabled(false);
 
+        funNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/net/unesc/conveniencia/icones/novo.png"))); // NOI18N
         funNovo.setText("Novo");
 
         funCidade.setEnabled(false);
@@ -207,6 +210,7 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
 
         jLabel22.setText("Estado:");
 
+        funSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/net/unesc/conveniencia/icones/salvar.png"))); // NOI18N
         funSalvar.setText("Salvar");
         funSalvar.setEnabled(false);
 
