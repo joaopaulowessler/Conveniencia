@@ -1,5 +1,6 @@
 package net.unesc.conveniencia.frames;
 
+import java.awt.Dimension;
 import net.unesc.conveniencia.internalframes.FrameProduto;
 import net.unesc.conveniencia.internalframes.FrameCliente;
 import net.unesc.conveniencia.internalframes.FrameVendas;
@@ -13,6 +14,7 @@ import java.beans.PropertyVetoException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
@@ -247,6 +249,7 @@ public class FrameMenu extends javax.swing.JFrame {
         
         if (fPro == null || fPro.isClosed()){
             fPro = new FrameProduto();
+            CentralizaJInternalFrame(fPro);
             jDesktopPane.add(fPro);
             fPro.setVisible(true);
         } else {
@@ -262,6 +265,7 @@ public class FrameMenu extends javax.swing.JFrame {
     private void servicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_servicosActionPerformed
         if (fVen == null || fVen.isClosed()){
             fVen = new FrameVendas();
+            CentralizaJInternalFrame(fVen);
             jDesktopPane.add(fVen);
             fVen.setVisible(true);
         } else {
@@ -286,6 +290,7 @@ public class FrameMenu extends javax.swing.JFrame {
     private void cadClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadClientesActionPerformed
         if (fCli == null || fCli.isClosed()){
             fCli = new FrameCliente();
+            CentralizaJInternalFrame(fCli);
             jDesktopPane.add(fCli);
             fCli.setVisible(true);
         } else {
@@ -301,6 +306,7 @@ public class FrameMenu extends javax.swing.JFrame {
     private void cadFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadFuncionariosActionPerformed
         if (fFun == null || fFun.isClosed()){
             fFun = new FrameFuncionario();
+            CentralizaJInternalFrame(fFun);
             jDesktopPane.add(fFun);
             fFun.setVisible(true);
         } else {
@@ -316,6 +322,7 @@ public class FrameMenu extends javax.swing.JFrame {
     private void listarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarClientesActionPerformed
         if (flisCli == null || flisCli.isClosed()){
             flisCli = new FrameListarCliente();
+            CentralizaJInternalFrame(flisCli);
             jDesktopPane.add(flisCli);
             flisCli.setVisible(true);
         } else {
@@ -338,6 +345,7 @@ public class FrameMenu extends javax.swing.JFrame {
     private void listarFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarFuncionariosActionPerformed
         if (flisFun == null || flisFun.isClosed()){
             flisFun = new FrameListarFuncionario();
+            CentralizaJInternalFrame(flisFun);
             jDesktopPane.add(flisFun);
             flisFun.setVisible(true);
         } else {
@@ -359,6 +367,7 @@ public class FrameMenu extends javax.swing.JFrame {
     private void listarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarProdutosActionPerformed
         if (flisPro == null || flisPro.isClosed()){
             flisPro = new FrameListarProduto();
+            CentralizaJInternalFrame(flisPro);
             jDesktopPane.add(flisPro);
             flisPro.setVisible(true);
         } else {
@@ -380,6 +389,7 @@ public class FrameMenu extends javax.swing.JFrame {
     private void listarVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarVendasActionPerformed
         if (flisVen == null || flisVen.isClosed()){
             flisVen = new FrameListarVendas();
+            CentralizaJInternalFrame(flisVen);
             jDesktopPane.add(flisVen);
             flisVen.setVisible(true);
         } else {
@@ -405,7 +415,14 @@ public class FrameMenu extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    public void CentralizaJInternalFrame(JInternalFrame frame) {
+        Dimension desktopSize = jDesktopPane.getSize();
+        Dimension jInternalFrameSize = frame.getSize();
+        frame.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
+                (desktopSize.height - jInternalFrameSize.height) / 2);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu MenuCadastros;
     private javax.swing.JMenu MenuListar;
