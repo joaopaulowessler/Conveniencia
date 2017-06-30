@@ -7,11 +7,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import javax.swing.JOptionPane;
+import net.unesc.conveniencia.conexao.ProdutoDao;
 
 public class ActionListarProduto implements ActionListener {
 
     private final net.unesc.conveniencia.internalframes.FrameListarProduto framListProd;
-
+    
     public ActionListarProduto(net.unesc.conveniencia.internalframes.FrameListarProduto framProd) {
         this.framListProd = framProd;
     }
@@ -34,7 +35,6 @@ public class ActionListarProduto implements ActionListener {
 
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
-
     }
 
     public void gerarLog(String vmsg) throws IOException {

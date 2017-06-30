@@ -344,3 +344,8 @@ Joao - Mon May 29 22:36:47 BRT 2017 : Logou
 Joao - Mon May 29 22:36:50 BRT 2017 : Acessou Funcionários
 Joao - Mon May 29 22:36:56 BRT 2017 : Novo
 Joao - Mon May 29 22:36:59 BRT 2017 : Saiu do cadastro de funcionário
+Joao - Fri Jun 30 19:38:46 BRT 2017 : Logou
+Joao - Fri Jun 30 19:38:48 BRT 2017 : Acessou Produto
+Joao - Fri Jun 30 19:38:49 BRT 2017 : Novo
+Joao - Fri Jun 30 19:40:18 BRT 2017 : Cancelamento
+Joao - Fri Jun 30 19:40:20 BRT 2017 : Saiu do cadastro de produtos

@@ -47,7 +47,7 @@ public class Produto {
         this.proForne = prodForne;
     }
             
-    public String getProFronecedor(){
+    public String getProFornecedor(){
         return this.proForne;
     }
     

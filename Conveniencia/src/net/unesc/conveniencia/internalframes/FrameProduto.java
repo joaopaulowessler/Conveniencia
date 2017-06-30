@@ -1,8 +1,10 @@
 package net.unesc.conveniencia.internalframes;
 
 import java.io.IOException;
+import javax.swing.JOptionPane;
 import net.unesc.conveniencia.actions.ActionProduto;
 import net.unesc.conveniencia.classes.Produto;
+import net.unesc.conveniencia.conexao.ProdutoDao;
 import net.unesc.conveniencia.exception.ExceptionConveniencia;
 import net.unesc.conveniencia.log.Log;
 
@@ -176,6 +178,11 @@ public class FrameProduto extends javax.swing.JInternalFrame {
         jLabel31.setText("Código:");
 
         proCodigo.setEnabled(false);
+        proCodigo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                proCodigoFocusLost(evt);
+            }
+        });
         proCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 proCodigoKeyReleased(evt);
@@ -334,6 +341,30 @@ public class FrameProduto extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_formInternalFrameClosed
 
+    private void proCodigoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_proCodigoFocusLost
+        String codTxt = proCodigo.getText().trim();
+        
+        if(codTxt.length() > 0){
+            Integer codigoProduto = null;
+            
+            try{
+                codigoProduto = Integer.parseInt(codTxt);
+            }catch(NumberFormatException e){                
+                return;
+            }
+            
+            Produto pro = ProdutoDao.getProduto(codigoProduto);
+            
+            if(pro == null){
+                JOptionPane.showMessageDialog(this, "Produto não encontrado!");
+                //limpar();
+                proDescricao.setText("");
+            }else{
+                setProduto(pro);
+            }
+        }
+    }//GEN-LAST:event_proCodigoFocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel24;
@@ -393,5 +424,10 @@ public class FrameProduto extends javax.swing.JInternalFrame {
                 return false;            
         }            
         return true;
+    }
+    
+    private void setProduto(Produto pro) {
+        proCodigo.setText(String.valueOf(pro.getProCodigo()));
+        proDescricao.setText(pro.getProDesc());        
     }
 }

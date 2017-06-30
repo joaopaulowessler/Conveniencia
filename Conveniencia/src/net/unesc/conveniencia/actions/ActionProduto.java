@@ -7,11 +7,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import javax.swing.JOptionPane;
+import net.unesc.conveniencia.conexao.ProdutoDao;
 
 public class ActionProduto implements ActionListener {
 
     private final net.unesc.conveniencia.internalframes.FrameProduto frameProduto;
-
+    
+    private ProdutoDao produtoDao = new ProdutoDao();
+    
     public ActionProduto(net.unesc.conveniencia.internalframes.FrameProduto fraPro) {
         this.frameProduto = fraPro;
     }
@@ -41,10 +44,11 @@ public class ActionProduto implements ActionListener {
                 System.out.println(produto.getProCodigo());
                 System.out.println(produto.getProDesc());
                 System.out.println(produto.getProUnidade());
-                System.out.println(produto.getProFronecedor());
+                System.out.println(produto.getProFornecedor());
                 System.out.println(produto.getProPreco());
                 System.out.println(produto.getProDataCadastro());
-
+                
+                produtoDao.insert(produto);                
                 frameProduto.cancelarProduto();
 
             } catch (ExceptionConveniencia ex) {
