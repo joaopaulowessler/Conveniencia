@@ -1,16 +1,13 @@
 package net.unesc.conveniencia.internalframes;
 
 import java.io.IOException;
-import net.unesc.conveniencia.actions.ActionListarProduto;
+import javax.swing.JOptionPane;
 import net.unesc.conveniencia.classes.Produto;
 import net.unesc.conveniencia.exception.ExceptionConveniencia;
 import net.unesc.conveniencia.log.Log;
 
 public class FrameListarProduto extends javax.swing.JInternalFrame {
 
-    private final Produto prod = new Produto();
-    private final ActionListarProduto actListProduto = new ActionListarProduto(this);
-    
     Log log = new Log();
     
     public FrameListarProduto() {
@@ -18,13 +15,11 @@ public class FrameListarProduto extends javax.swing.JInternalFrame {
     }
 
     public void novaBusca() {
-
         proCodigo.setText("");
         proDescricao.setText("");
 
         proCodigo.setEnabled(true);
         proDescricao.setEnabled(true);
-
     }
 
     public void buscar() {
@@ -73,7 +68,7 @@ public class FrameListarProduto extends javax.swing.JInternalFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Código", "Descrição", "UN", "Fornecedor", "Preço", "Data Cadastro"
+                "Código", "Descrição", "Unidade Medida", "Fornecedor", "Preço", "Data Cadastro"
             }
         ) {
             Class[] types = new Class [] {
@@ -94,6 +89,11 @@ public class FrameListarProduto extends javax.swing.JInternalFrame {
 
         funBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/net/unesc/conveniencia/icones/buscar.png"))); // NOI18N
         funBuscar.setText("Buscar");
+        funBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                funBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -107,9 +107,9 @@ public class FrameListarProduto extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(48, 48, 48)
                         .addComponent(codigo)
-                        .addGap(4, 4, 4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(proCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(484, 484, 484)
+                        .addGap(478, 478, 478)
                         .addComponent(nome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(proDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 589, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -120,13 +120,14 @@ public class FrameListarProduto extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(11, 11, 11)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(proCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(proDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(nome))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
-                        .addComponent(codigo)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(codigo)
+                            .addComponent(proCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(funBuscar)
                 .addContainerGap())
@@ -158,10 +159,14 @@ public class FrameListarProduto extends javax.swing.JInternalFrame {
 
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
         try {
-            log.escrever("Saiu da consulta de listar produtos", "log.txt");
+            log.escrever("Saiu da consulta de produtos", "log.txt");
         } catch (IOException ex) {
         }
     }//GEN-LAST:event_formInternalFrameClosed
+
+    private void funBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funBuscarActionPerformed
+        
+    }//GEN-LAST:event_funBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -197,7 +202,7 @@ public class FrameListarProduto extends javax.swing.JInternalFrame {
     }
 
     public boolean validaCaracteres(String vtxt) {
-        String caracteres = "0123456789,";
+        String caracteres = "0123456789";
 
         for (int i = 0; i < vtxt.length(); i++) {
             if (!caracteres.contains(vtxt.substring(i, i + 1))) {

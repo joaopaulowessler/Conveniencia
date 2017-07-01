@@ -15,7 +15,7 @@ public class ProdutoDao {
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "delete from produto where pro_codigo = ?";
+            String sql = "delete from produto where produto.pro_codigo = ?";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, produto.getProCodigo());
             ps.execute();
@@ -31,8 +31,6 @@ public class ProdutoDao {
                     System.out.println("ERRO: " + ex.getMessage());
                 }
             }
-
-
         } finally {
             if( ps != null) {
                 try {
@@ -100,14 +98,21 @@ public class ProdutoDao {
     }
 
     public void update(Produto produto) {
-        /*Connection conn = null;
+        Connection conn = null;
         PreparedStatement ps = null;
+        
         try {
             conn = Conexao.getConnection();
-            String sql = "update produtos set descricao = ? where codigo = ?";
+            String sql = "update produto set produto.pro_descricao = ?, produto.pro_unidade = ?, " +
+                         "produto.pro_fornecedor = ?, produto.pro_preco = ?, produto.pro_datacad = ? " +
+                         "where produto.pro_codigo = ?";
             ps = conn.prepareStatement(sql);
-            ps.setString(1, produto.getDescricao());
-            ps.setInt(2, produto.getCodigo());
+            ps.setString(1, produto.getProDesc());
+            ps.setString(2, produto.getProUnidade());
+            ps.setString(3, produto.getProFornecedor());
+            ps.setFloat(4,  produto.getProPreco());
+            ps.setString(5, produto.getProDataCadastro());
+            ps.setInt(6,    produto.getProCodigo());
             ps.execute();
 
             conn.commit();
@@ -121,8 +126,6 @@ public class ProdutoDao {
                     System.out.println("ERRO: " + ex.getMessage());
                 }
             }
-
-
         } finally {
             if( ps != null) {
                 try {
@@ -138,10 +141,8 @@ public class ProdutoDao {
                     System.out.println("ERRO: " + ex.getMessage());
                 }
             }
-        }*/
+        }
     }
-
-
 
     public List<Produto> getAll() {
         List<Produto> lista = new ArrayList<Produto>();
@@ -187,7 +188,9 @@ public class ProdutoDao {
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "select produto.pro_codigo, produto.pro_descricao from produto where pro_codigo = ?";
+            String sql = "select produto.pro_codigo, produto.pro_descricao, produto.pro_unidade, " +
+                         "produto.pro_fornecedor, produto.pro_preco, produto.pro_datacad " + 
+                         "from produto where pro_codigo = ?";
             ps = conn.prepareStatement(sql);
             ps.setInt(1, codigo);
             ResultSet rs = ps.executeQuery();
@@ -195,10 +198,19 @@ public class ProdutoDao {
             if(rs.next()) {
                 Integer cod = rs.getInt(1);
                 String descricao = rs.getString(2);
+                String unidade = rs.getString(3);
+                String fornecedor = rs.getString(4);
+                float preco = rs.getFloat(5);
+                String dataCad = rs.getString(6);
                 
                 Produto p = new Produto();
                 p.setProCodigo(cod);
                 p.setProDesc(descricao);
+                p.setProUnidade(unidade);
+                p.setProFornecedor(fornecedor);
+                p.setProPreco(preco);
+                p.setProDataCadatro(dataCad);
+                
                 return p;
             }
         } catch(SQLException e) {

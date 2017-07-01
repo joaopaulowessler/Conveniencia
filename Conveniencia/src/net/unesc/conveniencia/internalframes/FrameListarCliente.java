@@ -1,16 +1,12 @@
 package net.unesc.conveniencia.internalframes;
 
 import java.io.IOException;
-import net.unesc.conveniencia.actions.ActionListarCliente;
 import net.unesc.conveniencia.classes.Cliente;
 import net.unesc.conveniencia.exception.ExceptionConveniencia;
 import net.unesc.conveniencia.log.Log;
 
 public class FrameListarCliente extends javax.swing.JInternalFrame {
 
-    private final Cliente cli = new Cliente();
-    private final ActionListarCliente actListCliente = new ActionListarCliente(this);
-    
     Log log = new Log();
     
     public FrameListarCliente() {

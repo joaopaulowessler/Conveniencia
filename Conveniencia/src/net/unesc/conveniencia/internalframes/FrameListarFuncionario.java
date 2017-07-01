@@ -1,16 +1,12 @@
 package net.unesc.conveniencia.internalframes;
 
 import java.io.IOException;
-import net.unesc.conveniencia.actions.ActionListarFuncionario;
 import net.unesc.conveniencia.classes.Funcionario;
 import net.unesc.conveniencia.exception.ExceptionConveniencia;
 import net.unesc.conveniencia.log.Log;
 
 public class FrameListarFuncionario extends javax.swing.JInternalFrame {
 
-    private final Funcionario fun = new Funcionario();
-    private final ActionListarFuncionario actListFuncionario = new ActionListarFuncionario(this);
-    
     Log log = new Log();
     
     public FrameListarFuncionario() {

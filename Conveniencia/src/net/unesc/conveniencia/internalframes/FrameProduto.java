@@ -52,7 +52,6 @@ public class FrameProduto extends javax.swing.JInternalFrame {
         proPreco.setText("");
         proDataCadastro.setText("");
         
-        proCodigo.setEnabled(false);
         proDescricao.setEnabled(false);
         proUnidade.setEnabled(false);
         proFornecedor.setEnabled(false);
@@ -62,6 +61,27 @@ public class FrameProduto extends javax.swing.JInternalFrame {
         proNovo.setEnabled(true);
         proSalvar.setEnabled(false);
         proCancelar.setEnabled(false); 
+        proExcluir.setEnabled(false);
+    }
+    
+    public void limpaProduto(){
+        
+        proDescricao.setText("");
+        proUnidade.setText("");
+        proFornecedor.setText("");
+        proPreco.setText("");
+        proDataCadastro.setText("");        
+        
+        proDescricao.setEnabled(true);
+        proUnidade.setEnabled(true);
+        proFornecedor.setEnabled(true);
+        proPreco.setEnabled(true);
+        proDataCadastro.setEnabled(true);
+        
+        proNovo.setEnabled(false);
+        proSalvar.setEnabled(true);
+        proCancelar.setEnabled(true);
+        proExcluir.setEnabled(false);
     }
     
     @SuppressWarnings("unchecked")
@@ -125,6 +145,11 @@ public class FrameProduto extends javax.swing.JInternalFrame {
         proSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/net/unesc/conveniencia/icones/salvar.png"))); // NOI18N
         proSalvar.setText("Salvar");
         proSalvar.setEnabled(false);
+        proSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                proSalvarActionPerformed(evt);
+            }
+        });
 
         proNovo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         proNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/net/unesc/conveniencia/icones/novo.png"))); // NOI18N
@@ -177,7 +202,6 @@ public class FrameProduto extends javax.swing.JInternalFrame {
         jLabel31.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel31.setText("Código:");
 
-        proCodigo.setEnabled(false);
         proCodigo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 proCodigoFocusLost(evt);
@@ -355,15 +379,19 @@ public class FrameProduto extends javax.swing.JInternalFrame {
             
             Produto pro = ProdutoDao.getProduto(codigoProduto);
             
-            if(pro == null){
-                JOptionPane.showMessageDialog(this, "Produto não encontrado!");
-                //limpar();
-                proDescricao.setText("");
-            }else{
+            if(pro != null){
+                novoProduto();
+                proExcluir.setEnabled(true);
                 setProduto(pro);
             }
+            else 
+                limpaProduto();
         }
     }//GEN-LAST:event_proCodigoFocusLost
+
+    private void proSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proSalvarActionPerformed
+        
+    }//GEN-LAST:event_proSalvarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -417,7 +445,7 @@ public class FrameProduto extends javax.swing.JInternalFrame {
     }
     
     public boolean validaCaracteres(String vtxt) {
-        String caracteres = "0123456789,";
+        String caracteres = "0123456789.";
         
         for (int i = 0; i < vtxt.length(); i++){
             if (!caracteres.contains(vtxt.substring(i,i+1)))
@@ -428,6 +456,10 @@ public class FrameProduto extends javax.swing.JInternalFrame {
     
     private void setProduto(Produto pro) {
         proCodigo.setText(String.valueOf(pro.getProCodigo()));
-        proDescricao.setText(pro.getProDesc());        
+        proDescricao.setText(pro.getProDesc());
+        proUnidade.setText(pro.getProUnidade());
+        proFornecedor.setText(pro.getProFornecedor());
+        proPreco.setText(String.valueOf(pro.getProPreco()));
+        proDataCadastro.setText(pro.getProDataCadastro());        
     }
 }

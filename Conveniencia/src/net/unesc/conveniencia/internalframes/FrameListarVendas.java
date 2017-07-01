@@ -1,15 +1,11 @@
 package net.unesc.conveniencia.internalframes;
 
 import java.io.IOException;
-import net.unesc.conveniencia.actions.ActionListarVendas;
 import net.unesc.conveniencia.classes.Vendas;
 import net.unesc.conveniencia.exception.ExceptionConveniencia;
 import net.unesc.conveniencia.log.Log;
 
 public class FrameListarVendas extends javax.swing.JInternalFrame {
-
-    private final Vendas vend = new Vendas();
-    private final ActionListarVendas actListProduto = new ActionListarVendas(this);
 
     public FrameListarVendas() {
         initComponents();

@@ -40,15 +40,13 @@ public class ActionProduto implements ActionListener {
 
             try {
                 Produto produto = frameProduto.getProduto();
-
-                System.out.println(produto.getProCodigo());
-                System.out.println(produto.getProDesc());
-                System.out.println(produto.getProUnidade());
-                System.out.println(produto.getProFornecedor());
-                System.out.println(produto.getProPreco());
-                System.out.println(produto.getProDataCadastro());
+                Produto pro = ProdutoDao.getProduto(produto.getProCodigo());
                 
-                produtoDao.insert(produto);                
+                if(pro != null)
+                    produtoDao.update(produto);
+                else 
+                    produtoDao.insert(produto);
+                                
                 frameProduto.cancelarProduto();
 
             } catch (ExceptionConveniencia ex) {
@@ -65,6 +63,24 @@ public class ActionProduto implements ActionListener {
             try {
                 gerarLog("Exclusão");
             } catch (IOException ex) {
+            }
+            
+            try {
+                Produto produto = frameProduto.getProduto();
+                ProdutoDao pro = new ProdutoDao();
+                
+                if(produto != null)
+                    pro.delete(produto);                
+                                
+                frameProduto.cancelarProduto();
+
+            } catch (ExceptionConveniencia ex) {
+                try {
+                    gerarLog("Exception: " + ex.getMessage());
+                } catch (IOException exi) {
+                }
+
+                JOptionPane.showMessageDialog(null, ex.getMessage());
             }
         }
 
