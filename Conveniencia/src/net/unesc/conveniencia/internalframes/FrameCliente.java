@@ -5,6 +5,9 @@ import net.unesc.conveniencia.actions.ActionCliente;
 import net.unesc.conveniencia.classes.Cliente;
 import net.unesc.conveniencia.exception.ExceptionConveniencia;
 import javax.swing.JOptionPane;
+import net.unesc.conveniencia.classes.Produto;
+import net.unesc.conveniencia.conexao.ClienteDao;
+import net.unesc.conveniencia.conexao.ProdutoDao;
 import net.unesc.conveniencia.log.Log;
 
 public class FrameCliente extends javax.swing.JInternalFrame {
@@ -24,7 +27,6 @@ public class FrameCliente extends javax.swing.JInternalFrame {
     
     public void novoCliente(){
         
-        cliCodigo.setText("");
         cliNome.setText("");
         cliCpf.setText("");
         cliSexoMasculino.setSelected(false);
@@ -35,7 +37,7 @@ public class FrameCliente extends javax.swing.JInternalFrame {
         cliCidade.setText("");
         cliEndereco.setText("");
         
-        cliCodigo.setEnabled(true);
+        cliCodigo.setEnabled(false);
         cliNome.setEnabled(true);
         cliCpf.setEnabled(true);
         cliSexoMasculino.setEnabled(true);
@@ -49,7 +51,8 @@ public class FrameCliente extends javax.swing.JInternalFrame {
         
         cliNovo.setEnabled(false);
         cliSalvar.setEnabled(true);
-        cliCancelar.setEnabled(true);        
+        cliExcluir.setEnabled(false);
+        cliCancelar.setEnabled(true);       
     }
     
     public void cancelarCliente(){
@@ -65,7 +68,7 @@ public class FrameCliente extends javax.swing.JInternalFrame {
         cliCidade.setText("");
         cliEndereco.setText("");
         
-        cliCodigo.setEnabled(false);
+        cliCodigo.setEnabled(true);
         cliNome.setEnabled(false);
         cliCpf.setEnabled(false);
         cliSexoMasculino.setEnabled(false);
@@ -79,7 +82,40 @@ public class FrameCliente extends javax.swing.JInternalFrame {
         
         cliNovo.setEnabled(true);
         cliSalvar.setEnabled(false);
+        cliCancelar.setEnabled(false); 
+        cliExcluir.setEnabled(false);
+        
+        cliCodigo.requestFocus();
+    }
+    
+    public void limpaCliente(){
+        
+        cliNome.setText("");
+        cliCpf.setText("");
+        cliRg.setText("");
+        cliSexoFeminino.setSelected(false);
+        cliSexoMasculino.setSelected(false);
+        cliTelefone.setText("");
+        cliEmail.setText("");
+        cliCidade.setText("");
+        cliEstado.setSelectedItem("");
+        cliEndereco.setText("");        
+        
+        cliNome.setEnabled(false);
+        cliCpf.setEnabled(false);
+        cliRg.setEnabled(false);
+        cliSexoFeminino.setEnabled(false);
+        cliSexoMasculino.setEnabled(false);
+        cliTelefone.setEnabled(false);
+        cliEmail.setEnabled(false);
+        cliCidade.setEnabled(false);
+        cliEstado.setEnabled(false);
+        cliEndereco.setEnabled(false);
+        
+        cliNovo.setEnabled(true);
+        cliSalvar.setEnabled(false);
         cliCancelar.setEnabled(false);
+        cliExcluir.setEnabled(false);
     }
     
     @SuppressWarnings("unchecked")
@@ -324,7 +360,11 @@ public class FrameCliente extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setText("Código:");
 
-        cliCodigo.setEnabled(false);
+        cliCodigo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cliCodigoFocusLost(evt);
+            }
+        });
         cliCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cliCodigoActionPerformed(evt);
@@ -522,11 +562,41 @@ public class FrameCliente extends javax.swing.JInternalFrame {
 
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
         try {
-            log.escrever("Saiu do cadastro de produto", "log.txt");
+            log.escrever("Saiu do cadastro de cliente", "log.txt");
         } catch (IOException ex) {
         }
     }//GEN-LAST:event_formInternalFrameClosed
 
+    private void cliCodigoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cliCodigoFocusLost
+        String codTxt = cliCodigo.getText().trim();
+        
+        if(codTxt.length() > 0){
+            Integer codigoCliente = null;
+            
+            try{
+                codigoCliente = Integer.parseInt(codTxt);
+            }catch(NumberFormatException e){                
+                return;
+            }
+            
+            Cliente cli = ClienteDao.getCliente(codigoCliente);
+            
+            if(cli != null){
+                novoCliente();
+                cliExcluir.setEnabled(true);
+                setCliente(cli);
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"Cliente Não Encontrado!");
+                cliCodigo.requestFocus();
+                limpaCliente();
+            }
+        }
+    }//GEN-LAST:event_cliCodigoFocusLost
+
+    public void setCodigo(int codigo){
+        cliCodigo.setText(String.valueOf(codigo));
+    } 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
@@ -601,5 +671,24 @@ public class FrameCliente extends javax.swing.JInternalFrame {
                 return false;            
         }            
         return true;
+    }
+    
+    private void setCliente(Cliente cli) {
+        cliCodigo.setText(String.valueOf(cli.getCliCodigo()));
+        cliNome.setText(cli.getCliNome());
+        cliCpf.setText(cli.getCliCpf());
+        cliRg.setText(cli.getCliRg());
+        cliTelefone.setText(cli.getCliTelefone());
+        cliEmail.setText(cli.getCliEmail());
+        cliCidade.setText(cli.getCliCidade());
+        cliEstado.setSelectedItem(cli.getCliEstado());
+        cliEndereco.setText(cli.getCliEndereco());
+        
+        if (cli.getCliSexo().trim().equals("M")){
+            cliSexoMasculino.setSelected(true);
+        }
+        
+        if (cli.getCliSexo().trim().equals("F"))
+            cliSexoFeminino.setSelected(true);
     }
 }

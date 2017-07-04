@@ -7,11 +7,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import javax.swing.JOptionPane;
+import net.unesc.conveniencia.conexao.ClienteDao;
 
 public class ActionCliente implements ActionListener {
 
     private final net.unesc.conveniencia.internalframes.FrameCliente frameCliente;
-
+    
+    private ClienteDao clienteDao = new ClienteDao();
+    
     public ActionCliente(net.unesc.conveniencia.internalframes.FrameCliente fraCli) {
         this.frameCliente = fraCli;
     }
@@ -25,7 +28,9 @@ public class ActionCliente implements ActionListener {
                 gerarLog("Novo");
             } catch (IOException ex) {
             }
-
+            
+            int codigo = clienteDao.getMax();
+            frameCliente.setCodigo(codigo + 1);
             frameCliente.novoCliente();
         }
 
@@ -38,22 +43,16 @@ public class ActionCliente implements ActionListener {
 
             try {
                 Cliente cliente = frameCliente.getCliente();
-
-                System.out.println(cliente.getCliCodigo());
-                System.out.println(cliente.getCliNome());
-                System.out.println(cliente.getCliCpf());
-                System.out.println(cliente.getCliRg());
-                System.out.println(cliente.getCliSexo());
-                System.out.println(cliente.getCliTelefone());
-                System.out.println(cliente.getcCliEmail());
-                System.out.println(cliente.getCliCidade());
-                System.out.println(cliente.getCliEstado());
-                System.out.println(cliente.getCliEndereco());
-
+                Cliente cli = clienteDao.getCliente(cliente.getCliCodigo());
+                
+                if(cli != null)
+                    clienteDao.update(cliente);
+                else 
+                    clienteDao.insert(cliente);
+                                
                 frameCliente.cancelarCliente();
 
             } catch (ExceptionConveniencia ex) {
-
                 try {
                     gerarLog("Exception: " + ex.getMessage());
                 } catch (IOException exi) {
@@ -67,6 +66,24 @@ public class ActionCliente implements ActionListener {
             try {
                 gerarLog("Exclusão");
             } catch (IOException ex) {
+            }
+            
+            try {
+                Cliente cliente = frameCliente.getCliente();
+                ClienteDao cli = new ClienteDao();
+                
+                if(cliente != null)
+                    clienteDao.delete(cliente);                
+                                
+                frameCliente.cancelarCliente();
+
+            } catch (ExceptionConveniencia ex) {
+                try {
+                    gerarLog("Exception: " + ex.getMessage());
+                } catch (IOException exi) {
+                }
+
+                JOptionPane.showMessageDialog(null, ex.getMessage());
             }
         }
 

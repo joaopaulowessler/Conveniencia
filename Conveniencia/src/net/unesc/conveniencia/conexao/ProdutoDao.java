@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import net.unesc.conveniencia.classes.Produto;
 
 public class ProdutoDao {
@@ -232,5 +233,42 @@ public class ProdutoDao {
             }
         }
         return null;
+    }
+    
+    public int getMax() {
+        int codigo = 0;
+        
+        Connection conn = null;
+        PreparedStatement ps = null;
+        
+        try {
+            conn = Conexao.getConnection();
+            String sql = "select max(produto.pro_codigo) from produto";
+            ps = conn.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                codigo = rs.getInt(1);                
+            }
+        } catch(SQLException e) {
+            System.out.println("ERRO: " + e.getMessage());
+        } finally {
+            if( ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    System.out.println("ERRO: " + ex.getMessage());
+                }
+            }
+            if(conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    System.out.println("ERRO: " + ex.getMessage());
+                }
+            }
+        }
+        
+        return codigo;
     }
 }

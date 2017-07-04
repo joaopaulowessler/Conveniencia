@@ -23,24 +23,31 @@ public class FrameProduto extends javax.swing.JInternalFrame {
         proNovo.addActionListener(actProduto);
     }
     
+    public void setCodigo(int codigo){
+        proCodigo.setText(String.valueOf(codigo));
+    }
+    
     public void novoProduto(){
         
-        proCodigo.setText("");
         proDescricao.setText("");
         proUnidade.setText("");
         proFornecedor.setText("");
         proPreco.setText("");
         proDataCadastro.setText("");
         
-        proCodigo.setEnabled(true);
+        proCodigo.setEnabled(false);
         proDescricao.setEnabled(true);
         proUnidade.setEnabled(true);
         proFornecedor.setEnabled(true);
         proPreco.setEnabled(true);
         proDataCadastro.setEnabled(true);                
+        
         proNovo.setEnabled(false);
         proSalvar.setEnabled(true);
-        proCancelar.setEnabled(true);        
+        proExcluir.setEnabled(false);
+        proCancelar.setEnabled(true);
+        
+        proDescricao.requestFocus();
     }
     
     public void cancelarProduto(){
@@ -52,6 +59,7 @@ public class FrameProduto extends javax.swing.JInternalFrame {
         proPreco.setText("");
         proDataCadastro.setText("");
         
+        proCodigo.setEnabled(true);
         proDescricao.setEnabled(false);
         proUnidade.setEnabled(false);
         proFornecedor.setEnabled(false);
@@ -62,6 +70,8 @@ public class FrameProduto extends javax.swing.JInternalFrame {
         proSalvar.setEnabled(false);
         proCancelar.setEnabled(false); 
         proExcluir.setEnabled(false);
+        
+        proCodigo.requestFocus();
     }
     
     public void limpaProduto(){
@@ -72,15 +82,15 @@ public class FrameProduto extends javax.swing.JInternalFrame {
         proPreco.setText("");
         proDataCadastro.setText("");        
         
-        proDescricao.setEnabled(true);
-        proUnidade.setEnabled(true);
-        proFornecedor.setEnabled(true);
-        proPreco.setEnabled(true);
-        proDataCadastro.setEnabled(true);
+        proDescricao.setEnabled(false);
+        proUnidade.setEnabled(false);
+        proFornecedor.setEnabled(false);
+        proPreco.setEnabled(false);
+        proDataCadastro.setEnabled(false);
         
-        proNovo.setEnabled(false);
-        proSalvar.setEnabled(true);
-        proCancelar.setEnabled(true);
+        proNovo.setEnabled(true);
+        proSalvar.setEnabled(false);
+        proCancelar.setEnabled(false);
         proExcluir.setEnabled(false);
     }
     
@@ -384,8 +394,11 @@ public class FrameProduto extends javax.swing.JInternalFrame {
                 proExcluir.setEnabled(true);
                 setProduto(pro);
             }
-            else 
+            else{
+                JOptionPane.showMessageDialog(null,"Produto Não Encontrado!");
+                proCodigo.requestFocus();
                 limpaProduto();
+            }
         }
     }//GEN-LAST:event_proCodigoFocusLost
 
@@ -419,7 +432,7 @@ public class FrameProduto extends javax.swing.JInternalFrame {
         Produto pro = new Produto();
         
         if (proCodigo.getText().trim().isEmpty()){
-            throw new ExceptionConveniencia("Código do produto deve ser informado!");
+            throw new ExceptionConveniencia("Código do produto deve ser informado!");       
         }
         
         if (!validaCaracteres(proCodigo.getText())) {
@@ -427,10 +440,17 @@ public class FrameProduto extends javax.swing.JInternalFrame {
         }
         
         if (proDescricao.getText().trim().isEmpty()){
-            throw new ExceptionConveniencia("Descrição do produto deve ser informado!");
+            proDescricao.requestFocus();
+            throw new ExceptionConveniencia("Descrição do produto deve ser informada!");
+        }
+        
+        if (proPreco.getText().trim().isEmpty()){
+            proPreco.requestFocus();
+            throw new ExceptionConveniencia("Preço do produto deve ser informado!");
         }
         
         if (!validaCaracteres(proPreco.getText())) {
+            proPreco.requestFocus();
             throw new ExceptionConveniencia("Preço do produto inválido!");
         }
         

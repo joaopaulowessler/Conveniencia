@@ -78,7 +78,7 @@ public class Cliente {
         this.cliEmail = cliEmail;
     }
     
-    public String getcCliEmail(){
+    public String getCliEmail(){
         return this.cliEmail;
     }
     

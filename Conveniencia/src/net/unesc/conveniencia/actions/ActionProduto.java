@@ -23,11 +23,14 @@ public class ActionProduto implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getActionCommand().equals("Novo")) {
+            
             try {
                 gerarLog("Novo");
             } catch (IOException ex) {
             }
 
+            int codigo = produtoDao.getMax();
+            frameProduto.setCodigo(codigo + 1);
             frameProduto.novoProduto();
         }
 
