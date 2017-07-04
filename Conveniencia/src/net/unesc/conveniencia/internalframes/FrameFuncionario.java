@@ -4,6 +4,7 @@ import java.io.IOException;
 import javax.swing.JOptionPane;
 import net.unesc.conveniencia.actions.ActionFuncionario;
 import net.unesc.conveniencia.classes.Funcionario;
+import net.unesc.conveniencia.conexao.FuncionarioDao;
 import net.unesc.conveniencia.exception.ExceptionConveniencia;
 import net.unesc.conveniencia.log.Log;
 
@@ -21,7 +22,105 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
         funCancelar.addActionListener(actFuncionario);
         funNovo.addActionListener(actFuncionario);
     }
-
+    
+    public void setCodigo(int codigo){
+        funCodigo.setText(String.valueOf(codigo));
+    }
+    
+    public void novoFuncionario(){
+        
+        funNome.setText("");
+        funCpf.setText("");
+        funRg.setText("");
+        funTelefone.setText("");
+        funDataAdm.setText("");
+        funEmail.setText("");
+        funCidade.setText("");
+        funEndereco.setText("");
+        
+        funCodigo.setEnabled(false);
+        funNome.setEnabled(true);
+        funCpf.setEnabled(true);
+        funRg.setEnabled(true);
+        funSexoMasculino.setEnabled(true);
+        funSexoFeminino.setEnabled(true);
+        funTelefone.setEnabled(true);
+        funDataAdm.setEnabled(true);
+        funEmail.setEnabled(true);
+        funCidade.setEnabled(true);
+        funEstado.setEnabled(true);
+        funEndereco.setEnabled(true);               
+        
+        funNovo.setEnabled(false);
+        funSalvar.setEnabled(true);
+        funExcluir.setEnabled(false);
+        funCancelar.setEnabled(true);
+        
+        funNome.requestFocus();
+    }
+    
+    public void cancelarFuncionario(){
+        
+        funCodigo.setText("");
+        funNome.setText("");
+        funCpf.setText("");
+        funRg.setText("");
+        funTelefone.setText("");
+        funDataAdm.setText("");
+        funEmail.setText("");
+        funCidade.setText("");
+        funEndereco.setText("");
+        
+        funCodigo.setEnabled(true);
+        funNome.setEnabled(false);
+        funCpf.setEnabled(false);
+        funRg.setEnabled(false);
+        funSexoMasculino.setEnabled(false);
+        funSexoFeminino.setEnabled(false);
+        funTelefone.setEnabled(false);
+        funDataAdm.setEnabled(false);
+        funEmail.setEnabled(false);
+        funCidade.setEnabled(false);
+        funEstado.setEnabled(false);
+        funEndereco.setEnabled(false);
+                
+        funNovo.setEnabled(true);
+        funSalvar.setEnabled(false);
+        funCancelar.setEnabled(false); 
+        funExcluir.setEnabled(false);
+        
+        funCodigo.requestFocus();
+    }
+    
+    public void limpaFuncionario(){
+        
+        funNome.setText("");
+        funCpf.setText("");
+        funRg.setText("");
+        funTelefone.setText("");
+        funDataAdm.setText("");
+        funEmail.setText("");
+        funCidade.setText("");
+        funEndereco.setText("");       
+        
+        funNome.setEnabled(false);
+        funCpf.setEnabled(false);
+        funRg.setEnabled(false);
+        funSexoMasculino.setEnabled(false);
+        funSexoFeminino.setEnabled(false);
+        funTelefone.setEnabled(false);
+        funDataAdm.setEnabled(false);
+        funEmail.setEnabled(false);
+        funCidade.setEnabled(false);
+        funEstado.setEnabled(false);
+        funEndereco.setEnabled(false);
+        
+        funNovo.setEnabled(true);
+        funSalvar.setEnabled(false);
+        funCancelar.setEnabled(false);
+        funExcluir.setEnabled(false);
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -84,6 +183,11 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
         funNovo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         funNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/net/unesc/conveniencia/icones/novo.png"))); // NOI18N
         funNovo.setText("Novo");
+        funNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                funNovoActionPerformed(evt);
+            }
+        });
 
         funSalvar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         funSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/net/unesc/conveniencia/icones/salvar.png"))); // NOI18N
@@ -256,7 +360,11 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
         jLabel21.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel21.setText("Código:");
 
-        funCodigo.setEnabled(false);
+        funCodigo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                funCodigoFocusLost(evt);
+            }
+        });
         funCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 funCodigoActionPerformed(evt);
@@ -403,12 +511,7 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_funCodigoActionPerformed
 
     private void funCodigoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_funCodigoKeyReleased
-        /*
-        if (validaInteiro(funCodigo.getText())) {
-            funcionario.setFunCodigo(Integer.parseInt(funCodigo.getText()));
-        } else {
-            funCodigo.setText(funCodigo.getText().substring(0, funCodigo.getText().length() - 1));
-        }*/
+
     }//GEN-LAST:event_funCodigoKeyReleased
 
     private void funNomeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_funNomeKeyReleased
@@ -466,75 +569,36 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_formInternalFrameClosed
 
-    public void novoFuncionario() {
+    private void funNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funNovoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_funNovoActionPerformed
 
-        funCodigo.setText("");
-        funNome.setText("");
-        funCpf.setText("");
-        funSexoMasculino.setSelected(false);
-        funSexoFeminino.setSelected(false);
-        funTelefone.setText("");
-        funRg.setText("");
-        funEmail.setText("");
-        funCidade.setText("");
-        funEndereco.setText("");
-        funDataAdm.setText("");
-
-        funCodigo.setEnabled(true);
-        funNome.setEnabled(true);
-        funCpf.setEnabled(true);
-        funSexoMasculino.setEnabled(true);
-        funSexoFeminino.setEnabled(true);
-        funTelefone.setEnabled(true);
-        funRg.setEnabled(true);
-        funEmail.setEnabled(true);
-        funCidade.setEnabled(true);
-        funEndereco.setEnabled(true);
-        funDataAdm.setEnabled(true);
-        funEstado.setEnabled(true);
-
-        funNovo.setEnabled(false);
-        funSalvar.setEnabled(true);
-        funCancelar.setEnabled(true);
-    }
-
-    public void cancelarFuncionario() {
-
-        funCodigo.setText("");
-        funNome.setText("");
-        funCpf.setText("");
-        funSexoMasculino.setSelected(false);
-        funSexoFeminino.setSelected(false);
-        funTelefone.setText("");
-        funRg.setText("");
-        funEmail.setText("");
-        funCidade.setText("");
-        funEndereco.setText("");
-        funDataAdm.setText("");
-
-        funCodigo.setEnabled(false);
-        funNome.setEnabled(false);
-        funCpf.setEnabled(false);
-        funSexoMasculino.setEnabled(false);
-        funSexoFeminino.setEnabled(false);
-        funTelefone.setEnabled(false);
-        funRg.setEnabled(false);
-        funEmail.setEnabled(false);
-        funCidade.setEnabled(false);
-        funEndereco.setEnabled(false);
-        funDataAdm.setEnabled(false);
-        funEstado.setEnabled(false);
-        funNovo.setEnabled(true);
-        funSalvar.setEnabled(false);
-        funCancelar.setEnabled(false);
-    }
-    /*
-    private boolean validaInteiro(String vtxt){        
-        if(caracteres.contains(vtxt.substring(vtxt.length()-1,vtxt.length())))
-            return true;
-        else
-            return false;
-    }*/
+    private void funCodigoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_funCodigoFocusLost
+        String codTxt = funCodigo.getText().trim();
+        
+        if(codTxt.length() > 0){
+            Integer codigoFuncionario = null;
+            
+            try{
+                codigoFuncionario = Integer.parseInt(codTxt);
+            }catch(NumberFormatException e){                
+                return;
+            }
+            
+            Funcionario fun = FuncionarioDao.getFuncionario(codigoFuncionario);
+            
+            if(fun != null){
+                novoFuncionario();
+                funExcluir.setEnabled(true);
+                setFuncionario(fun);
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"Funcionario Não Encontrado!");
+                funCodigo.requestFocus();
+                limpaFuncionario();
+            }
+        }
+    }//GEN-LAST:event_funCodigoFocusLost
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
@@ -612,5 +676,26 @@ public class FrameFuncionario extends javax.swing.JInternalFrame {
             }
         }
         return true;
+    }
+    
+    private void setFuncionario(Funcionario fun) {
+        funCodigo.setText(String.valueOf(fun.getFunCodigo()));
+        funNome.setText(fun.getFunNome());
+        
+        funCpf.setText(fun.getFunCpf());
+        funRg.setText(fun.getFunRg());
+        
+        if (fun.getFunSexo().equals("M"))
+            funSexoMasculino.setSelected(true);
+        
+        if (fun.getFunSexo().equals("F"))
+            funSexoFeminino.setSelected(true);
+        
+        funTelefone.setText(fun.getFunTelefone());
+        funDataAdm.setText(fun.getFunDataAdm());
+        funEmail.setText(fun.getFunEmail());
+        funCidade.setText(fun.getFunCidade());
+        funEstado.setSelectedItem(fun.getFunEstado());
+        funEndereco.setText(fun.getFunEndereco());        
     }
 }

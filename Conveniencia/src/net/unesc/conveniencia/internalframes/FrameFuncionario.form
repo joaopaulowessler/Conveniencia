@@ -113,6 +113,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Novo"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="funNovoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="funSalvar">
           <Properties>
@@ -511,10 +514,8 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="funCodigo">
-          <Properties>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
           <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="funCodigoFocusLost"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="funCodigoActionPerformed"/>
             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="funCodigoKeyReleased"/>
           </Events>

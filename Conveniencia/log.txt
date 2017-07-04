@@ -668,3 +668,64 @@ Joao - Mon Jul 03 21:05:31 BRT 2017 : Cancelamento
 Joao - Mon Jul 03 21:05:34 BRT 2017 : Novo
 Joao - Mon Jul 03 21:05:47 BRT 2017 : Cancelamento
 Joao - Mon Jul 03 21:05:48 BRT 2017 : Saiu do cadastro de cliente
+Joao - Mon Jul 03 22:20:53 BRT 2017 : Logou
+Joao - Mon Jul 03 22:20:56 BRT 2017 : Acessou Funcionários
+Joao - Mon Jul 03 22:21:03 BRT 2017 : Novo
+Joao - Mon Jul 03 22:21:16 BRT 2017 : Cancelamento
+Joao - Mon Jul 03 22:21:17 BRT 2017 : Saiu do cadastro de funcionário
+Joao - Mon Jul 03 22:22:27 BRT 2017 : Logou
+Joao - Mon Jul 03 22:22:29 BRT 2017 : Acessou Funcionários
+Joao - Mon Jul 03 22:22:31 BRT 2017 : Novo
+Joao - Mon Jul 03 22:22:52 BRT 2017 : Cancelamento
+Joao - Mon Jul 03 22:22:53 BRT 2017 : Saiu do cadastro de funcionário
+Joao - Mon Jul 03 22:23:33 BRT 2017 : Logou
+Joao - Mon Jul 03 22:23:35 BRT 2017 : Acessou Funcionários
+Joao - Mon Jul 03 22:23:37 BRT 2017 : Novo
+Joao - Mon Jul 03 22:23:55 BRT 2017 : Salvar
+Joao - Mon Jul 03 22:24:00 BRT 2017 : Saiu do cadastro de funcionário
+Joao - Mon Jul 03 22:24:35 BRT 2017 : Logou
+Joao - Mon Jul 03 22:24:36 BRT 2017 : Acessou Funcionários
+Joao - Mon Jul 03 22:24:37 BRT 2017 : Novo
+Joao - Mon Jul 03 22:24:38 BRT 2017 : Salvar
+Joao - Mon Jul 03 22:24:44 BRT 2017 : Saiu do cadastro de funcionário
+Joao - Mon Jul 03 22:33:16 BRT 2017 : Logou
+Joao - Mon Jul 03 22:33:18 BRT 2017 : Acessou Funcionários
+Joao - Mon Jul 03 22:33:19 BRT 2017 : Novo
+Joao - Mon Jul 03 22:33:30 BRT 2017 : Salvar
+Joao - Mon Jul 03 22:33:30 BRT 2017 : Novo
+Joao - Mon Jul 03 22:33:33 BRT 2017 : Cancelamento
+Joao - Mon Jul 03 22:36:44 BRT 2017 : Logou
+Joao - Mon Jul 03 22:36:45 BRT 2017 : Acessou Funcionários
+Joao - Mon Jul 03 22:36:50 BRT 2017 : Salvar
+Joao - Mon Jul 03 22:36:57 BRT 2017 : Salvar
+Joao - Mon Jul 03 22:37:01 BRT 2017 : Cancelamento
+Joao - Mon Jul 03 22:37:09 BRT 2017 : Novo
+Joao - Mon Jul 03 22:37:11 BRT 2017 : Novo
+Joao - Mon Jul 03 22:37:11 BRT 2017 : Cancelamento
+Joao - Mon Jul 03 22:37:14 BRT 2017 : Novo
+Joao - Mon Jul 03 22:37:16 BRT 2017 : Cancelamento
+Joao - Mon Jul 03 22:38:02 BRT 2017 : Novo
+Joao - Mon Jul 03 22:38:04 BRT 2017 : Cancelamento
+Joao - Mon Jul 03 22:38:07 BRT 2017 : Saiu do cadastro de funcionário
+Joao - Mon Jul 03 22:38:12 BRT 2017 : Cancelamento
+Joao - Mon Jul 03 22:38:16 BRT 2017 : Salvar
+Joao - Mon Jul 03 22:38:32 BRT 2017 : Saiu do cadastro de funcionário
+Joao - Mon Jul 03 22:41:59 BRT 2017 : Logou
+Joao - Mon Jul 03 22:42:01 BRT 2017 : Acessou Funcionários
+Joao - Mon Jul 03 22:42:29 BRT 2017 : Salvar
+Joao - Mon Jul 03 22:42:39 BRT 2017 : Cancelamento
+Joao - Mon Jul 03 22:42:41 BRT 2017 : Saiu do cadastro de funcionário
+Joao - Mon Jul 03 22:42:42 BRT 2017 : Acessou Funcionários
+Joao - Mon Jul 03 22:42:45 BRT 2017 : Saiu do cadastro de funcionário
+Joao - Mon Jul 03 22:44:00 BRT 2017 : Logou
+Joao - Mon Jul 03 22:44:03 BRT 2017 : Acessou Funcionários
+Joao - Mon Jul 03 22:44:09 BRT 2017 : Cancelamento
+Joao - Mon Jul 03 22:44:10 BRT 2017 : Saiu do cadastro de funcionário
+Joao - Mon Jul 03 22:44:24 BRT 2017 : Logou
+Joao - Mon Jul 03 22:44:27 BRT 2017 : Acessou Funcionários
+Joao - Mon Jul 03 22:44:31 BRT 2017 : Exclusão
+Joao - Mon Jul 03 22:44:32 BRT 2017 : Novo
+Joao - Mon Jul 03 22:44:34 BRT 2017 : Salvar
+Joao - Mon Jul 03 22:44:34 BRT 2017 : Exception: Nome do funcionário deve ser informado!
+Joao - Mon Jul 03 22:44:40 BRT 2017 : Cancelamento
+Joao - Mon Jul 03 22:44:42 BRT 2017 : Saiu do cadastro de funcionário

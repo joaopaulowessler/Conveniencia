@@ -66,7 +66,7 @@ public class Funcionario {
         this.funEmail = funEmail;
     }
     
-    public String getcFunEmail(){
+    public String getFunEmail(){
         return this.funEmail;
     }
     

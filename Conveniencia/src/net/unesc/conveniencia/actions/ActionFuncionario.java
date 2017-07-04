@@ -7,13 +7,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import javax.swing.JOptionPane;
+import net.unesc.conveniencia.conexao.FuncionarioDao;
 
 public class ActionFuncionario implements ActionListener {
 
     private final net.unesc.conveniencia.internalframes.FrameFuncionario frameFuncionario;
-
+   
+    FuncionarioDao funcionarioDao = new FuncionarioDao();
+    
     public ActionFuncionario(net.unesc.conveniencia.internalframes.FrameFuncionario fraFun) {
-
+        
         this.frameFuncionario = fraFun;
     }
 
@@ -26,6 +29,8 @@ public class ActionFuncionario implements ActionListener {
             } catch (IOException ex) {
             }
 
+            int codigo = funcionarioDao.getMax();
+            frameFuncionario.setCodigo(codigo + 1);
             frameFuncionario.novoFuncionario();
         }
 
@@ -35,23 +40,18 @@ public class ActionFuncionario implements ActionListener {
                 gerarLog("Salvar");
             } catch (IOException ex) {
             }
-
+            
             try {
                 Funcionario funcionario = frameFuncionario.getFuncionario();
-
-                System.out.println(funcionario.getFunCodigo());
-                System.out.println(funcionario.getFunNome());
-                System.out.println(funcionario.getFunCpf());
-                System.out.println(funcionario.getFunRg());
-                System.out.println(funcionario.getFunSexo());
-                System.out.println(funcionario.getFunTelefone());
-                System.out.println(funcionario.getcFunEmail());
-                System.out.println(funcionario.getFunCidade());
-                System.out.println(funcionario.getFunEstado());
-                System.out.println(funcionario.getFunEndereco());
-                System.out.println(funcionario.getFunDataAdm());
-
+                Funcionario fun         = FuncionarioDao.getFuncionario(funcionario.getFunCodigo());
+                
+                if(fun != null)
+                    funcionarioDao.update(funcionario);
+                else 
+                    funcionarioDao.insert(funcionario);
+                                
                 frameFuncionario.cancelarFuncionario();
+
             } catch (ExceptionConveniencia ex) {
                 try {
                     gerarLog("Exception: " + ex.getMessage());
@@ -66,6 +66,24 @@ public class ActionFuncionario implements ActionListener {
             try {
                 gerarLog("Exclusão");
             } catch (IOException ex) {
+            }
+            
+            try {
+                Funcionario funcionario = frameFuncionario.getFuncionario();
+                FuncionarioDao fun = new FuncionarioDao();
+                
+                if(funcionario != null)
+                    fun.delete(funcionario);                
+                                
+                frameFuncionario.cancelarFuncionario();
+
+            } catch (ExceptionConveniencia ex) {
+                try {
+                    gerarLog("Exception: " + ex.getMessage());
+                } catch (IOException exi) {
+                }
+
+                JOptionPane.showMessageDialog(null, ex.getMessage());
             }
         }
 
