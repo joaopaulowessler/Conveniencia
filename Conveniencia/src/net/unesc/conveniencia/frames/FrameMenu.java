@@ -17,19 +17,22 @@ import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import net.unesc.conveniencia.internalframes.FrameUsuario;
 
 public class FrameMenu extends javax.swing.JFrame {
 
     Log log = new Log();
     
-    FrameProduto       fPro    = null;
-    FrameCliente       fCli    = null;
-    FrameFuncionario   fFun    = null;
-    FrameVendas        fVen    = null;
-    FrameListarProduto flisPro = null;
-    FrameListarCliente flisCli = null;
+    FrameProduto           fPro    = null;
+    FrameCliente           fCli    = null;
+    FrameFuncionario       fFun    = null;
+    FrameUsuario           fUsu    = null;
+    FrameVendas            fVen    = null;
+    
+    FrameListarProduto     flisPro = null;
+    FrameListarCliente     flisCli = null;
     FrameListarFuncionario flisFun = null;
-    FrameListarVendas flisVen = null;
+    FrameListarVendas      flisVen = null;
   
     public FrameMenu() {
         initComponents();
@@ -51,6 +54,8 @@ public class FrameMenu extends javax.swing.JFrame {
         cadFuncionarios = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         cadProdutos = new javax.swing.JMenuItem();
+        jSeparator6 = new javax.swing.JPopupMenu.Separator();
+        cadUsuarios = new javax.swing.JMenuItem();
         MenuListar = new javax.swing.JMenu();
         listarClientes = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
@@ -138,6 +143,17 @@ public class FrameMenu extends javax.swing.JFrame {
             }
         });
         MenuCadastros.add(cadProdutos);
+        MenuCadastros.add(jSeparator6);
+
+        cadUsuarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        cadUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/net/unesc/conveniencia/icones/user.gif"))); // NOI18N
+        cadUsuarios.setText("Usuários");
+        cadUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadUsuariosActionPerformed(evt);
+            }
+        });
+        MenuCadastros.add(cadUsuarios);
 
         menuPrincial.add(MenuCadastros);
 
@@ -408,6 +424,22 @@ public class FrameMenu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_listarVendasActionPerformed
 
+    private void cadUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadUsuariosActionPerformed
+        if (fUsu == null || fUsu.isClosed()){
+            fUsu = new FrameUsuario();
+            CentralizaJInternalFrame(fUsu);
+            jDesktopPane.add(fUsu);
+            fUsu.setVisible(true);
+        } else {
+            jDesktopPane.moveToFront(fUsu);
+        }
+        
+        try {
+            log.escrever("Acessou Cadastro de Usuário", "log.txt");
+        } catch (IOException ex) {
+        }
+    }//GEN-LAST:event_cadUsuariosActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -432,6 +464,7 @@ public class FrameMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem cadClientes;
     private javax.swing.JMenuItem cadFuncionarios;
     private javax.swing.JMenuItem cadProdutos;
+    private javax.swing.JMenuItem cadUsuarios;
     private javax.swing.JDesktopPane jDesktopPane;
     private javax.swing.JPanel jPanelPrincipal;
     private javax.swing.JPopupMenu.Separator jSeparator1;
@@ -439,6 +472,7 @@ public class FrameMenu extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JPopupMenu.Separator jSeparator5;
+    private javax.swing.JPopupMenu.Separator jSeparator6;
     private javax.swing.JMenuItem listarClientes;
     private javax.swing.JMenuItem listarFuncionarios;
     private javax.swing.JMenuItem listarProdutos;
