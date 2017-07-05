@@ -285,6 +285,8 @@ public class UsuarioDao {
             usu.setUsuNome(nome);
             usu.setUsuUsuario(usua);
             usu.setUsuSenha(sen);
+            
+            return usu;
         }
             
         return null;

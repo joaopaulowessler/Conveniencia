@@ -53,11 +53,14 @@ public class FrameLogin extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("Usuário:");
 
+        usuario.setText("admin");
         usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usuarioActionPerformed(evt);
             }
         });
+
+        senha.setText("admin");
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel2.setText("Senha:");
@@ -217,6 +220,10 @@ public class FrameLogin extends javax.swing.JFrame {
         
         if (usuario.getText().trim().isEmpty()) {
             throw new ExceptionConveniencia("Usuário deve ser informado!");
+        }
+        
+        if (senha.getText().trim().isEmpty()) {
+            throw new ExceptionConveniencia("Senha deve ser informada!");
         }
         
         usu.setUsuUsuario(usuario.getText());

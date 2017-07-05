@@ -31,6 +31,7 @@ public class ActionLogin implements ActionListener {
             
             try {
                 Usuario usuario = frameLogin.getUsuario();
+                
                 Usuario usu = UsuarioDao.getUsuario(usuario.getUsuUsuario(),usuario.getUsuSenha());
                 
                 if(usu == null){
