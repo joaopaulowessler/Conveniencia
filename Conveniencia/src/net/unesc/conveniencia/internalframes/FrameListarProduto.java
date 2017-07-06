@@ -1,8 +1,12 @@
 package net.unesc.conveniencia.internalframes;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import net.unesc.conveniencia.classes.Produto;
+import net.unesc.conveniencia.conexao.ProdutoDao;
 import net.unesc.conveniencia.exception.ExceptionConveniencia;
 import net.unesc.conveniencia.log.Log;
 
@@ -10,20 +14,26 @@ public class FrameListarProduto extends javax.swing.JInternalFrame {
 
     Log log = new Log();
     
+    List<Produto> lista = new ArrayList<Produto>();
+    
+    ProdutoDao produtoDao = new ProdutoDao();
+    DefaultTableModel modelo = new javax.swing.table.DefaultTableModel();
+    
     public FrameListarProduto() {
         initComponents();
-    }
-
-    public void novaBusca() {
-        proCodigo.setText("");
-        proDescricao.setText("");
-
-        proCodigo.setEnabled(true);
-        proDescricao.setEnabled(true);
-    }
-
-    public void buscar() {
-
+        
+        this.lista = produtoDao.getAll();
+        
+        for (int i = 0; i < lista.size(); i ++){
+            jTcliente.setValueAt(lista.get(i).getProCodigo(), i, 0);
+            jTcliente.setValueAt(lista.get(i).getProDesc(), i, 1);
+            jTcliente.setValueAt(lista.get(i).getProUnidade(), i, 2);
+            jTcliente.setValueAt(lista.get(i).getProFornecedor(), i, 3);
+            jTcliente.setValueAt(lista.get(i).getProPreco(), i, 4);
+            jTcliente.setValueAt(lista.get(i).getProDataCadastro(), i, 5);
+        }
+        
+        jTcliente.setVisible(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -31,13 +41,7 @@ public class FrameListarProduto extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
-        codigo = new javax.swing.JLabel();
-        nome = new javax.swing.JLabel();
-        proCodigo = new javax.swing.JTextField();
-        proDescricao = new javax.swing.JTextField();
-        funBuscar = new javax.swing.JButton();
+        jTcliente = new javax.swing.JTable();
 
         setClosable(true);
         setIconifiable(true);
@@ -60,7 +64,8 @@ public class FrameListarProduto extends javax.swing.JInternalFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTcliente.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTcliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -74,84 +79,32 @@ public class FrameListarProduto extends javax.swing.JInternalFrame {
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
-        });
-        jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        codigo.setText("Código:");
-
-        nome.setText("Descrição:");
-
-        funBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/net/unesc/conveniencia/icones/buscar.png"))); // NOI18N
-        funBuscar.setText("Buscar");
-        funBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                funBuscarActionPerformed(evt);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(318, 318, 318)
-                        .addComponent(funBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 643, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(codigo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(proCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(478, 478, 478)
-                        .addComponent(nome)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(proDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 589, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(proDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(nome))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(codigo)
-                            .addComponent(proCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(funBuscar)
-                .addContainerGap())
-        );
+        jScrollPane1.setViewportView(jTcliente);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1327, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -164,51 +117,9 @@ public class FrameListarProduto extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_formInternalFrameClosed
 
-    private void funBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funBuscarActionPerformed
-        
-    }//GEN-LAST:event_funBuscarActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel codigo;
-    private javax.swing.JButton funBuscar;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JLabel nome;
-    private javax.swing.JTextField proCodigo;
-    private javax.swing.JTextField proDescricao;
+    private javax.swing.JTable jTcliente;
     // End of variables declaration//GEN-END:variables
-
-    public Produto getProduto() throws ExceptionConveniencia {
-        Produto prod = new Produto();
-
-        if (proCodigo.getText().trim().isEmpty()) {
-            throw new ExceptionConveniencia("Código do produto deve ser informado!");
-        }
-
-        if (!validaCaracteres(proCodigo.getText())) {
-            throw new ExceptionConveniencia("Código do produto inválido!");
-        }
-
-        if (proDescricao.getText().trim().isEmpty()) {
-            throw new ExceptionConveniencia("Nome do produto deve ser informado!");
-        }
-
-        prod.setProCodigo(Integer.parseInt(proCodigo.getText()));
-        prod.setProDesc(proDescricao.getText());
-
-        return prod;
-    }
-
-    public boolean validaCaracteres(String vtxt) {
-        String caracteres = "0123456789";
-
-        for (int i = 0; i < vtxt.length(); i++) {
-            if (!caracteres.contains(vtxt.substring(i, i + 1))) {
-                return false;
-            }
-        }
-        return true;
-    }
 }

@@ -7,6 +7,24 @@ public class Vendas {
     private int    venFuncionario; //funcionário
     private float  venQuantidade;  //quantidade
     private String venData;        //data
+    private int    venCodigo;
+    private String venObserva;
+    
+    public void setVenObserva(String venObs){
+        this.venObserva = venObs;
+    }
+    
+    public String getVenObserva(){
+        return this.venObserva;
+    }
+    
+    public void setVenCodigo(int venCodigo){
+        this.venCodigo = venCodigo;
+    }
+    
+    public int getVenCodigo(){
+        return this.venCodigo;
+    }
     
     public void setVenCliente(int venCli){
         this.venCliente = venCli;

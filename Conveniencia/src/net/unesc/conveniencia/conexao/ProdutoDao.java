@@ -147,21 +147,32 @@ public class ProdutoDao {
 
     public List<Produto> getAll() {
         List<Produto> lista = new ArrayList<Produto>();
-        /*Connection conn = null;
+        Connection conn = null;
         PreparedStatement ps = null;
+        
         try {
             conn = Conexao.getConnection();
-            String sql = "select codigo, descricao from produtos";
+            String sql = "select pro_codigo, pro_descricao, pro_unidade, " +
+                         "pro_fornecedor, pro_preco, pro_datacad from produto";
             ps = conn.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
             while(rs.next()) {
-                Integer codigo = rs.getInt(1);
-                String descricao = rs.getString(2);
-                Produto p = new Produto();
-                p.setCodigo(codigo);
-                p.setDescricao(descricao);
-                lista.add(p);
+                Integer codigo    = rs.getInt(1);
+                String  descricao = rs.getString(2);
+                String  um        = rs.getString(3);
+                String  forn      = rs.getString(4);
+                float   preco     = rs.getFloat(5);
+                String  data      = rs.getString(6);
+                
+                Produto pro = new Produto();
+                pro.setProCodigo(codigo);
+                pro.setProDesc(descricao);
+                pro.setProUnidade(um);
+                pro.setProFornecedor(forn);
+                pro.setProPreco(preco);
+                pro.setProDataCadatro(data);
+                lista.add(pro);
             }
         } catch(SQLException e) {
             System.out.println("ERRO: " + e.getMessage());
@@ -180,7 +191,7 @@ public class ProdutoDao {
                     System.out.println("ERRO: " + ex.getMessage());
                 }
             }
-        }*/
+        }
         return lista;
     }
 
