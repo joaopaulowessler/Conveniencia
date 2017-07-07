@@ -1,30 +1,74 @@
 package net.unesc.conveniencia.internalframes;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import net.unesc.conveniencia.classes.Cliente;
+import net.unesc.conveniencia.classes.Funcionario;
+import net.unesc.conveniencia.classes.Produto;
 import net.unesc.conveniencia.classes.Vendas;
+import net.unesc.conveniencia.conexao.ClienteDao;
+import net.unesc.conveniencia.conexao.FuncionarioDao;
+import net.unesc.conveniencia.conexao.ProdutoDao;
+import net.unesc.conveniencia.conexao.VendasDao;
 import net.unesc.conveniencia.exception.ExceptionConveniencia;
 import net.unesc.conveniencia.log.Log;
 
 public class FrameListarVendas extends javax.swing.JInternalFrame {
-
-    public FrameListarVendas() {
-        initComponents();
-    }
     
     Log log = new Log();
+    int vi = 0;
+    String cliente;
+    String func;
+    String prod;
     
-    public void novaBusca() {
-
-        vendProduto.setText("");
-        vendData.setText("");
-
-        vendProduto.setEnabled(true);
-        vendData.setEnabled(true);
-
-    }
-
-    public void buscar() {
-
+    List<Vendas> lista = new ArrayList<Vendas>();
+    VendasDao vendasDao = new VendasDao();
+    
+    Cliente cli;
+    Funcionario fun;
+    Produto pro;
+    
+    public FrameListarVendas() {
+        initComponents();
+        
+        this.lista = vendasDao.getAll();
+        
+        for (int i = 0; i < lista.size(); i ++){
+            
+            cli = ClienteDao.getCliente(lista.get(i).getVenCliente());            
+            if(cli != null)
+                cliente = cli.getCliNome();
+            else
+                cliente = "";
+            
+            fun = FuncionarioDao.getFuncionario(lista.get(i).getVenFuncionario());            
+            if(fun != null)
+                func = fun.getFunNome();
+            else
+                func = "";
+            
+            pro = ProdutoDao.getProduto(lista.get(i).getVenProduto());
+            if(pro != null)
+                prod = pro.getProDesc();
+            else
+                prod = "";            
+            
+            vi ++;
+            jTvenda.setValueAt(lista.get(i).getVenCodigo(), i, 0);
+            jTvenda.setValueAt(lista.get(i).getVenData(), i, 1);
+            jTvenda.setValueAt(lista.get(i).getVenCliente(), i, 2);
+            jTvenda.setValueAt(cliente, i, 3);
+            jTvenda.setValueAt(lista.get(i).getVenFuncionario(), i, 4);
+            jTvenda.setValueAt(func, i, 5);
+            jTvenda.setValueAt(lista.get(i).getVenProduto(), i, 6);
+            jTvenda.setValueAt(prod, i, 7);
+            jTvenda.setValueAt(lista.get(i).getVenQuantidade(), i, 8);
+        }
+        
+        total.setText(String.valueOf(vi));
+        jTvenda.setVisible(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -32,17 +76,11 @@ public class FrameListarVendas extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTvenda = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        codigo = new javax.swing.JLabel();
-        nome = new javax.swing.JLabel();
-        vendProduto = new javax.swing.JTextField();
-        vendData = new javax.swing.JTextField();
-        vendBusca = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        vendCliente = new javax.swing.JTextField();
-        vendFuncionario = new javax.swing.JTextField();
+        total = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -65,96 +103,53 @@ public class FrameListarVendas extends javax.swing.JInternalFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTvenda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Código", "Descrição", "UN", "Fornecedor", "Preço", "Data Cadastro"
+                "Código", "Data", "Cliente", "Descrição", "Funcionário", "Descrição", "Produto", "Descrição", "Quantidade"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Float.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTvenda);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        codigo.setText("Produto:");
-
-        nome.setText("Data:");
-
-        vendBusca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/net/unesc/conveniencia/icones/buscar.png"))); // NOI18N
-        vendBusca.setText("Buscar");
-
-        jLabel1.setText("Cliente:");
-
-        jLabel2.setText("Funcionário:");
+        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        jLabel1.setText("Vendas Cadastrados");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(vendCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(codigo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(vendProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(vendFuncionario))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(nome)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(vendData, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(31, 31, 31))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(vendBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 853, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(181, 181, 181))
+                .addGap(517, 517, 517)
+                .addComponent(jLabel1)
+                .addContainerGap(515, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(codigo)
-                    .addComponent(nome)
-                    .addComponent(vendProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(vendData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(vendCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addGap(16, 16, 16))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(vendFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addComponent(vendBusca)
-                .addGap(6, 6, 6))
+                .addGap(23, 23, 23)
+                .addComponent(jLabel1)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
+
+        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jLabel2.setText("Total de Vendas:");
+
+        total.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -166,6 +161,12 @@ public class FrameListarVendas extends javax.swing.JInternalFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1267, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(jLabel2)
+                .addGap(27, 27, 27)
+                .addComponent(total)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,8 +174,12 @@ public class FrameListarVendas extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(total))
+                .addGap(32, 32, 32))
         );
 
         pack();
@@ -189,47 +194,12 @@ public class FrameListarVendas extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel codigo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JLabel nome;
-    private javax.swing.JButton vendBusca;
-    private javax.swing.JTextField vendCliente;
-    private javax.swing.JTextField vendData;
-    private javax.swing.JTextField vendFuncionario;
-    private javax.swing.JTextField vendProduto;
+    private javax.swing.JTable jTvenda;
+    private javax.swing.JLabel total;
     // End of variables declaration//GEN-END:variables
 
-    public Vendas getVendas() throws ExceptionConveniencia {
-        Vendas vendas = new Vendas();
-
-        if (vendProduto.getText().trim().isEmpty()) {
-            throw new ExceptionConveniencia("Código da venda deve ser informado!");
-        }
-
-        if (!validaCaracteres(vendProduto.getText())) {
-            throw new ExceptionConveniencia("Código da venda inválido!");
-        }
-
-        vendas.setVenProduto(Integer.parseInt(vendProduto.getText()));
-        vendas.setVenCliente(Integer.parseInt(vendCliente.getText()));
-        vendas.setVenData(vendData.getText());
-        vendas.setVenFuncionario(Integer.parseInt(vendFuncionario.getText()));
-
-        return vendas;
-    }
-
-    public boolean validaCaracteres(String vtxt) {
-        String caracteres = "0123456789,";
-
-        for (int i = 0; i < vtxt.length(); i++) {
-            if (!caracteres.contains(vtxt.substring(i, i + 1))) {
-                return false;
-            }
-        }
-        return true;
-    }
 }

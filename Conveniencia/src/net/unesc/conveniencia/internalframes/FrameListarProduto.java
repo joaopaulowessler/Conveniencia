@@ -13,11 +13,11 @@ import net.unesc.conveniencia.log.Log;
 public class FrameListarProduto extends javax.swing.JInternalFrame {
 
     Log log = new Log();
+    int vi = 0;
     
     List<Produto> lista = new ArrayList<Produto>();
     
     ProdutoDao produtoDao = new ProdutoDao();
-    DefaultTableModel modelo = new javax.swing.table.DefaultTableModel();
     
     public FrameListarProduto() {
         initComponents();
@@ -25,15 +25,16 @@ public class FrameListarProduto extends javax.swing.JInternalFrame {
         this.lista = produtoDao.getAll();
         
         for (int i = 0; i < lista.size(); i ++){
-            jTcliente.setValueAt(lista.get(i).getProCodigo(), i, 0);
-            jTcliente.setValueAt(lista.get(i).getProDesc(), i, 1);
-            jTcliente.setValueAt(lista.get(i).getProUnidade(), i, 2);
-            jTcliente.setValueAt(lista.get(i).getProFornecedor(), i, 3);
-            jTcliente.setValueAt(lista.get(i).getProPreco(), i, 4);
-            jTcliente.setValueAt(lista.get(i).getProDataCadastro(), i, 5);
+            vi ++;
+            jTproduto.setValueAt(lista.get(i).getProCodigo(), i, 0);
+            jTproduto.setValueAt(lista.get(i).getProDesc(), i, 1);
+            jTproduto.setValueAt(lista.get(i).getProUnidade(), i, 2);
+            jTproduto.setValueAt(lista.get(i).getProFornecedor(), i, 3);
+            jTproduto.setValueAt(lista.get(i).getProPreco(), i, 4);
+            jTproduto.setValueAt(lista.get(i).getProDataCadastro(), i, 5);
         }
-        
-        jTcliente.setVisible(true);
+        total.setText(String.valueOf(vi));
+        jTproduto.setVisible(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -41,7 +42,11 @@ public class FrameListarProduto extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTcliente = new javax.swing.JTable();
+        jTproduto = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        total = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -64,8 +69,8 @@ public class FrameListarProduto extends javax.swing.JInternalFrame {
             }
         });
 
-        jTcliente.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTcliente.setModel(new javax.swing.table.DefaultTableModel(
+        jTproduto.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTproduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -91,20 +96,59 @@ public class FrameListarProduto extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTcliente);
+        jScrollPane1.setViewportView(jTproduto);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        jLabel1.setText("Produtos Cadastrados");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(517, 517, 517)
+                .addComponent(jLabel1)
+                .addContainerGap(538, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel1)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+
+        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jLabel2.setText("Total de Clientes:");
+
+        total.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1327, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addComponent(jLabel2)
+                .addGap(27, 27, 27)
+                .addComponent(total)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(total))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -119,7 +163,11 @@ public class FrameListarProduto extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTcliente;
+    private javax.swing.JTable jTproduto;
+    private javax.swing.JLabel total;
     // End of variables declaration//GEN-END:variables
 }

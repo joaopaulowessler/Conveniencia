@@ -160,21 +160,35 @@ public class FuncionarioDao {
 
     public List<Funcionario> getAll() {
         List<Funcionario> lista = new ArrayList<Funcionario>();
-        /*Connection conn = null;
+        Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "select codigo, descricao from funcionarios";
+            String sql = "select fun_codigo, fun_nome, fun_rg, fun_cpf, fun_email, fun_cidade, " +
+                         "fun_estado, fun_endereco from funcionario";
             ps = conn.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
             while(rs.next()) {
                 Integer codigo = rs.getInt(1);
-                String descricao = rs.getString(2);
-                Funcionario p = new Funcionario();
-                p.setCodigo(codigo);
-                p.setDescricao(descricao);
-                lista.add(p);
+                String nome    = rs.getString(2);
+                String rg      = rs.getString(3);
+                String cpf     = rs.getString(4);
+                String email   = rs.getString(5);
+                String cidade  = rs.getString(6);
+                String estado  = rs.getString(7);
+                String ende    = rs.getString(8);
+                Funcionario fun = new Funcionario();
+                fun.setFunCodigo(codigo);
+                fun.setFunNome(nome);
+                fun.setFunRg(rg);
+                fun.setFunCpf(cpf);
+                fun.setFunEmail(email);
+                fun.setFunCidade(cidade);
+                fun.setFunEstado(estado);
+                fun.setFunEndereco(ende);
+                
+                lista.add(fun);
             }
         } catch(SQLException e) {
             System.out.println("ERRO: " + e.getMessage());
@@ -193,7 +207,7 @@ public class FuncionarioDao {
                     System.out.println("ERRO: " + ex.getMessage());
                 }
             }
-        }*/
+        }
         return lista;
     }
 

@@ -158,21 +158,35 @@ public class ClienteDao {
 
     public List<Cliente> getAll() {
         List<Cliente> lista = new ArrayList<Cliente>();
-        /*Connection conn = null;
+        Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "select codigo, descricao from produtos";
+            String sql = "select cli_codigo, cli_nome, cli_rg, cli_cpf, cli_email, cli_cidade, " +
+                         "cli_estado, cli_endereco from cliente";
             ps = conn.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
             while(rs.next()) {
                 Integer codigo = rs.getInt(1);
-                String descricao = rs.getString(2);
-                Produto p = new Produto();
-                p.setCodigo(codigo);
-                p.setDescricao(descricao);
-                lista.add(p);
+                String nome    = rs.getString(2);
+                String rg      = rs.getString(3);
+                String cpf     = rs.getString(4);
+                String email   = rs.getString(5);
+                String cidade  = rs.getString(6);
+                String estado  = rs.getString(7);
+                String ende    = rs.getString(8);
+                Cliente cli = new Cliente();
+                cli.setCliCodigo(codigo);
+                cli.setCliNome(nome);
+                cli.setCliRg(rg);
+                cli.setCliCpf(cpf);
+                cli.setCliEmail(email);
+                cli.setCliCidade(cidade);
+                cli.setCliEstado(estado);
+                cli.setCliEndereco(ende);
+                
+                lista.add(cli);
             }
         } catch(SQLException e) {
             System.out.println("ERRO: " + e.getMessage());
@@ -191,7 +205,7 @@ public class ClienteDao {
                     System.out.println("ERRO: " + ex.getMessage());
                 }
             }
-        }*/
+        }
         return lista;
     }
 

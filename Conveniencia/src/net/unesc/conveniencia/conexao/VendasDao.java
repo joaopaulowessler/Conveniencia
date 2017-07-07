@@ -149,21 +149,33 @@ public class VendasDao {
 
     public List<Vendas> getAll() {
         List<Vendas> lista = new ArrayList<Vendas>();
-        /*Connection conn = null;
+        Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = Conexao.getConnection();
-            String sql = "select codigo, descricao from vendas";
+            String sql = "select ven_codigo, cli_codigo, fun_codigo, pro_codigo, " +
+                         "ven_data, ven_quantidade, ven_observacao from venda";
             ps = conn.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
             while(rs.next()) {
-                Integer codigo = rs.getInt(1);
-                String descricao = rs.getString(2);
-                Vendas p = new Vendas();
-                p.setCodigo(codigo);
-                p.setDescricao(descricao);
-                lista.add(p);
+                Integer codigo  = rs.getInt(1);
+                Integer cliente = rs.getInt(2);
+                Integer func    = rs.getInt(3);
+                Integer prod    = rs.getInt(4);
+                String  data    = rs.getString(5);
+                Float   qtd     = rs.getFloat(6);
+                String  obs     = rs.getString(5);
+                Vendas ven = new Vendas();
+                ven.setVenCodigo(codigo);
+                ven.setVenCliente(cliente);
+                ven.setVenFuncionario(func);
+                ven.setVenProduto(prod);
+                ven.setVenData(data);
+                ven.setVenQuantidade(qtd);
+                ven.setVenObserva(obs);
+                
+                lista.add(ven);
             }
         } catch(SQLException e) {
             System.out.println("ERRO: " + e.getMessage());
@@ -182,7 +194,7 @@ public class VendasDao {
                     System.out.println("ERRO: " + ex.getMessage());
                 }
             }
-        }*/
+        }
         return lista;
     }
 
