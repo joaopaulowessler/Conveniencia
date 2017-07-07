@@ -597,7 +597,6 @@ public class FrameVendas extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_vendProdutoFocusLost
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btbuscli;
     private javax.swing.JButton btbusfun;
@@ -684,11 +683,11 @@ public class FrameVendas extends javax.swing.JInternalFrame {
         }
             
         Produto pro = ProdutoDao.getProduto(Integer.parseInt(vendProduto.getText()));
-        if(pro != null){
+        if(pro == null){
             vendProduto.requestFocus();
             throw new ExceptionConveniencia("Produto não encontrado!");
         }        
-        
+       
         vend.setVenCodigo(Integer.parseInt(vendCodigo.getText()));
         vend.setVenData(vendData.getText());
         vend.setVenCliente(Integer.parseInt(vendCliente.getText()));
