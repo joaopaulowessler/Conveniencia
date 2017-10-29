@@ -8,13 +8,10 @@ CREATE USER SA PASSWORD ""
 GRANT DBA TO SA
 SET WRITE_DELAY 10
 SET SCHEMA PUBLIC
-INSERT INTO PRODUTO VALUES(1,'teste produto','um','fornecedor',1.0,'data')
-INSERT INTO PRODUTO VALUES(2,'dawd','dawd','daw',213.0,'23123')
-INSERT INTO PRODUTO VALUES(3,'132','3123','3423',432.0,'42342')
+INSERT INTO PRODUTO VALUES(1,'produto teste','UM','fornecedor',10.0,'10/10/2015')
 INSERT INTO CLIENTE VALUES(1,'Jo\u00e3o Paulo','100.825.289-18','5.50915',NULL,'99882255','joao@joao','criciuma','SC ','M')
 INSERT INTO FUNCIONARIO VALUES(1,'teste funcionario','cpf','rg','M','tel','data','email','cidade','AM ','endereco')
 INSERT INTO USUARIO VALUES(1,'admin','admin','Administrador')
 INSERT INTO USUARIO VALUES(2,'joao','joao123','Jo\u00e3o Paulo Niehues Wessler')
 INSERT INTO USUARIO VALUES(3,'tiago','tiago123','Tiago Behenck dos Santos')
 INSERT INTO USUARIO VALUES(4,'samuel','samuel123','Samuel Farias Martins')
-INSERT INTO VENDA VALUES(1,1,1,1,'123',123.0,'123')
